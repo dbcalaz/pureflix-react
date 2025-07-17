@@ -31,14 +31,14 @@ nav {
       display: flex;
       justify-content: center;
       text-align: center;
-      &.seleccionado{
+      &.seleccionado {
         background-color: #e6e6e6;
       }
-      &:hover{
+      &:hover {
         background-color: #e6e6e6;
       }
 
-      div{
+      div {
         align-content: center;
         margin-left: 8px;
       }
@@ -49,4 +49,8 @@ nav {
       }
     }
   }
+}
+.cuerpo {
+  position: fixed;
+  top: 70px;
 }
