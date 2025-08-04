@@ -1,9 +1,9 @@
-const CONTENIDO = [
+const Contenido = [
   {
     titulo: "Constantine",
     id: 1,
     tipo: "pelicula",
-    imagen: "./images/constantine.jpg",
+    imagen: "constantine.jpg",
     iframe:
       "<iframe src='https://www.youtube.com/embed/M8APRgAXguc?si=qVLg2wAuZet4njch'></iframe>",
     duracion: "2h 1min",
@@ -37,7 +37,7 @@ const CONTENIDO = [
     titulo: "Búsqueda Implacable 3",
     id: 2,
     tipo: "pelicula",
-    imagen: "./images/implacable.webp",
+    imagen: "implacable.webp",
     iframe:
       "<iframe src='https://www.youtube.com/embed/cwfDP4rB94Q?si=gaL8ttUNbvn80Lar'></iframe>",
     duracion: "1h 49min",
@@ -87,7 +87,7 @@ const CONTENIDO = [
     titulo: "Deadpool & Wolverine",
     id: 3,
     tipo: "pelicula",
-    imagen: "./images/deadpool.jpg",
+    imagen: "deadpool.jpg",
     iframe:
       "<iframe src='https://www.youtube.com/embed/UzFZR2dRsSY?si=1On3OxWeqv_ra7o2'></iframe>",
     duracion: "2h 8min",
@@ -117,7 +117,7 @@ const CONTENIDO = [
     titulo: "Super Mario Bros: La Película",
     id: 4,
     tipo: "pelicula",
-    imagen: "./images/marioBros.jpg",
+    imagen: "marioBros.jpg",
     iframe:
       "<iframe src='https://www.youtube.com/embed/SvJwEiy2Wok?si=_R5UspCzfUUt9eki'></iframe>",
     duracion: "1h 32min",
@@ -151,7 +151,7 @@ const CONTENIDO = [
     titulo: "Animales Fantásticos y dónde encontrarlos",
     id: 5,
     tipo: "pelicula",
-    imagen: "./images/animales.jpg",
+    imagen: "animales.jpg",
     iframe:
       "<iframe src='https://www.youtube.com/embed/W45vhTxKeQE?si=sqkovX41QkMdpzcg'></iframe>",
     duracion: "2h 13min",
@@ -185,7 +185,7 @@ const CONTENIDO = [
     titulo: "Toy Story 2",
     id: 6,
     tipo: "pelicula",
-    imagen: "./images/toyStory2.webp",
+    imagen: "toyStory2.webp",
     iframe:
       "<iframe src='https://www.youtube.com/embed/8xiXSo5xjjE?si=GwLN-d-DZTH_VEUq'></iframe>",
     duracion: "1h 32min",
@@ -211,7 +211,7 @@ const CONTENIDO = [
     titulo: "Godzilla x Kong: El nuevo imperio",
     id: 7,
     tipo: "pelicula",
-    imagen: "./images/Godzilla-y-Kong-Portada.jpg",
+    imagen: "Godzilla-y-Kong-Portada.jpg",
     iframe:
       "<iframe src='https://www.youtube.com/embed/rmoneJ_797s?si=0xrcZSInpQ_uwxkd'></iframe>",
     duracion: "1h 55min",
@@ -241,7 +241,7 @@ const CONTENIDO = [
     titulo: "Lilo y Stitch",
     id: 8,
     tipo: "pelicula",
-    imagen: "./images/lilo2.webp",
+    imagen: "lilo2.webp",
     iframe:
       "<iframe src='https://www.youtube.com/embed/9JIyINjMfcc?si=iOhyN0Xwv1ZqTcCy'></iframe>",
     duracion: "1h 48min",
@@ -291,7 +291,7 @@ const CONTENIDO = [
     titulo: "Los Simpsons",
     id: 9,
     tipo: "serie",
-    imagen: "./images/simpsons.webp",
+    imagen: "simpsons.webp",
     iframe:
       "<iframe src='https://www.youtube.com/embed/Fy781dK59e0?si=80rvkpXI3IvkswnW'></iframe>",
     genero: ["Comedia", "Familiar"],
@@ -358,7 +358,7 @@ const CONTENIDO = [
     titulo: "El Eternauta",
     id: 10,
     tipo: "serie",
-    imagen: "./images/eternauta.jpeg",
+    imagen: "eternauta.jpeg",
     iframe:
       "<iframe src='https://www.youtube.com/embed/ykLTd5aTa88?si=oR4l8QVCQS4ALl7D'></iframe>",
     genero: ["Ciencia Ficción"],
@@ -401,7 +401,7 @@ const CONTENIDO = [
     titulo: "Breaking Bad",
     id: 11,
     tipo: "serie",
-    imagen: "./images/breakingBad.webp",
+    imagen: "breakingBad.webp",
     iframe:
       "<iframe src='https://www.youtube.com/embed/V8WQhxHEmMc?si=8gG4Vqg08V8Ba8hQ'></iframe>",
     genero: ["Crimen", "Drama", "Suspenso"],
@@ -433,7 +433,7 @@ const CONTENIDO = [
     titulo: "Grey's Anatomy",
     id: 12,
     tipo: "serie",
-    imagen: "./images/grey.webp",
+    imagen: "grey.webp",
     iframe:
       "<iframe src='https://www.youtube.com/embed/8G4jvn-ncPE?si=Ycj6gy6DQ1eWQh6a'></iframe>",
     genero: ["Drama", "Medicina"],
@@ -489,7 +489,7 @@ const CONTENIDO = [
     titulo: "Better Call Saul",
     id: 13,
     tipo: "serie",
-    imagen: "./images/saul.jpg",
+    imagen: "saul.jpg",
     iframe:
       "<iframe src='https://www.youtube.com/embed/HN4oydykJFc?si=ITc5PFRmsdqBDpbg'></iframe>",
     genero: ["Drama", "Thriller"],
@@ -530,7 +530,7 @@ const CONTENIDO = [
     titulo: "Ginny & Georgia",
     id: 14,
     tipo: "serie",
-    imagen: "./images/GIINYPORT.jpg",
+    imagen: "GIINYPORT.jpg",
     iframe:
       "<iframe src='https://www.youtube.com/embed/H2ZPt8LNrVs?si=YZoxJK_g8o2rz1d9'></iframe>",
     genero: ["Drama", "Cine Romántico"],
@@ -580,7 +580,7 @@ const CONTENIDO = [
     titulo: "Atrapados",
     id: 15,
     tipo: "serie",
-    imagen: "./images/atrapad.webp",
+    imagen: "atrapad.webp",
     iframe:
       "<iframe src='https://www.youtube.com/embed/qFRyYnmZCk8?si=iLh9EM5gKUYpkFni'></iframe>",
     genero: ["Suspenso", "Thriller"],
@@ -622,7 +622,7 @@ const CONTENIDO = [
     titulo: "Stranger Things",
     id: 16,
     tipo: "serie",
-    imagen: "./images/stranger.jpg",
+    imagen: "stranger.jpg",
     iframe:
       "<iframe src='https://www.youtube.com/embed/FY1-YF0VqIM?si=x6c8IITM5VgzAur-'></iframe>",
     genero: ["Aventura", "Cine de Terror", "Ciencia Ficción"],
@@ -702,3 +702,5 @@ const CONTENIDO = [
     ],
   },
 ];
+
+export default Contenido;

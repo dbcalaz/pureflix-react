@@ -1,4 +1,4 @@
-const DATA_LANZAMIENTOS = [
+const DataLanzamientos = [
   {
     id: 1,
     tipo: "serie",
@@ -53,7 +53,7 @@ const DATA_LANZAMIENTOS = [
     tipo: "serie",
     titulo: "Sirens",
     imagen: "./images/Sirens.jpg",
-    descripcion: "próximo mes"
+    descripcion: "próximo mes",
   },
   {
     id: 9,
@@ -110,5 +110,7 @@ const DATA_LANZAMIENTOS = [
     titulo: "Motor Heads",
     imagen: "./images/Motorheads.jpg",
     descripcion: "próxima semana",
-  } 
+  },
 ];
+
+export default DataLanzamientos;

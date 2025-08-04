@@ -97,3 +97,24 @@ nav {
   width: 15rem;
 }
 
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+  top: 9rem;
+  gap: 1rem;
+  padding: 0 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 13rem;
+}
+
+.galeria img {
+  width: 100%;
+  height: auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
