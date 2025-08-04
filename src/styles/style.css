@@ -52,5 +52,48 @@ nav {
 }
 .cuerpo {
   position: fixed;
-  top: 70px;
+  top: 10rem;
 }
+
+.categoria_buscador {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 1rem;
+  position: fixed;
+  background-color: #fff;
+  width: 100%;
+  z-index: 2;
+  top: 3.4rem;
+}
+
+.form_categoria {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.categoria select {
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  border: 0.0625rem solid #272727;
+  background-color: #fff;
+}
+
+.buscador {
+  display: flex;
+  margin-right: 5rem;
+}
+
+.search {
+  background-image: url("../images/lupa.png");
+  background-repeat: no-repeat;
+  background-position: 0.0625rem center;
+  background-size: 1rem 1rem;
+  border-radius: 2rem;
+  padding: 0.5rem 1.5rem;
+  left: 5rem;
+  border: 0.0625rem solid #333;
+  width: 15rem;
+}
+

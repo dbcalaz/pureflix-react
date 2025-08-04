@@ -1,8 +1,7 @@
-export default function Home(){
-
-    return(
-        <div className="cuerpo">
-            <p>HOME</p>
-        </div>
-    );
+export default function Home({ CategoriaBuscador, opciones }) {
+  return (
+    <div className="cuerpo">
+      <CategoriaBuscador opciones={opciones}/>
+    </div>
+  );
 }
