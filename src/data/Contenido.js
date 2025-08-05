@@ -5,7 +5,7 @@ const Contenido = [
     tipo: "pelicula",
     imagen: "constantine.jpg",
     iframe:
-      "<iframe src='https://www.youtube.com/embed/M8APRgAXguc?si=qVLg2wAuZet4njch'></iframe>",
+      'https://www.youtube.com/embed/M8APRgAXguc?si=qVLg2wAuZet4njch',
     duracion: "2h 1min",
     genero: ["Acción", "Fantasía"],
     actores: [
@@ -39,7 +39,7 @@ const Contenido = [
     tipo: "pelicula",
     imagen: "implacable.webp",
     iframe:
-      "<iframe src='https://www.youtube.com/embed/cwfDP4rB94Q?si=gaL8ttUNbvn80Lar'></iframe>",
+      'https://www.youtube.com/embed/cwfDP4rB94Q?si=gaL8ttUNbvn80Lar',
     duracion: "1h 49min",
     genero: ["Acción"],
     actores: [
@@ -89,7 +89,7 @@ const Contenido = [
     tipo: "pelicula",
     imagen: "deadpool.jpg",
     iframe:
-      "<iframe src='https://www.youtube.com/embed/UzFZR2dRsSY?si=1On3OxWeqv_ra7o2'></iframe>",
+      'https://www.youtube.com/embed/UzFZR2dRsSY?si=1On3OxWeqv_ra7o2',
     duracion: "2h 8min",
     genero: ["Acción", "Comedia", "Superhéroes"],
     actores: [
@@ -119,7 +119,7 @@ const Contenido = [
     tipo: "pelicula",
     imagen: "marioBros.jpg",
     iframe:
-      "<iframe src='https://www.youtube.com/embed/SvJwEiy2Wok?si=_R5UspCzfUUt9eki'></iframe>",
+      'https://www.youtube.com/embed/SvJwEiy2Wok?si=_R5UspCzfUUt9eki',
     duracion: "1h 32min",
     genero: ["Aventura", "Comedia"],
     actores: [
@@ -153,7 +153,7 @@ const Contenido = [
     tipo: "pelicula",
     imagen: "animales.jpg",
     iframe:
-      "<iframe src='https://www.youtube.com/embed/W45vhTxKeQE?si=sqkovX41QkMdpzcg'></iframe>",
+      'https://www.youtube.com/embed/W45vhTxKeQE?si=sqkovX41QkMdpzcg',
     duracion: "2h 13min",
     genero: ["Fantasía", "Aventura"],
     actores: [
@@ -187,7 +187,7 @@ const Contenido = [
     tipo: "pelicula",
     imagen: "toyStory2.webp",
     iframe:
-      "<iframe src='https://www.youtube.com/embed/8xiXSo5xjjE?si=GwLN-d-DZTH_VEUq'></iframe>",
+      'https://www.youtube.com/embed/8xiXSo5xjjE?si=GwLN-d-DZTH_VEUq',
     duracion: "1h 32min",
     genero: ["Aventura", "Comedia"],
     actores: [
@@ -213,7 +213,7 @@ const Contenido = [
     tipo: "pelicula",
     imagen: "Godzilla-y-Kong-Portada.jpg",
     iframe:
-      "<iframe src='https://www.youtube.com/embed/rmoneJ_797s?si=0xrcZSInpQ_uwxkd'></iframe>",
+      'https://www.youtube.com/embed/rmoneJ_797s?si=0xrcZSInpQ_uwxkd',
     duracion: "1h 55min",
     genero: ["Monstruos", "Acción", "Ciencia Ficción"],
     actores: [
@@ -243,7 +243,7 @@ const Contenido = [
     tipo: "pelicula",
     imagen: "lilo2.webp",
     iframe:
-      "<iframe src='https://www.youtube.com/embed/9JIyINjMfcc?si=iOhyN0Xwv1ZqTcCy'></iframe>",
+      'https://www.youtube.com/embed/9JIyINjMfcc?si=iOhyN0Xwv1ZqTcCy',
     duracion: "1h 48min",
     genero: ["Comedia", "Ciencia Ficción"],
     actores: [
@@ -293,7 +293,7 @@ const Contenido = [
     tipo: "serie",
     imagen: "simpsons.webp",
     iframe:
-      "<iframe src='https://www.youtube.com/embed/Fy781dK59e0?si=80rvkpXI3IvkswnW'></iframe>",
+      'https://www.youtube.com/embed/Fy781dK59e0?si=80rvkpXI3IvkswnW',
     genero: ["Comedia", "Familiar"],
     actores: [
       {
@@ -360,7 +360,7 @@ const Contenido = [
     tipo: "serie",
     imagen: "eternauta.jpeg",
     iframe:
-      "<iframe src='https://www.youtube.com/embed/ykLTd5aTa88?si=oR4l8QVCQS4ALl7D'></iframe>",
+      'https://www.youtube.com/embed/ykLTd5aTa88?si=oR4l8QVCQS4ALl7D',
     genero: ["Ciencia Ficción"],
     actores: [
       {
@@ -403,7 +403,7 @@ const Contenido = [
     tipo: "serie",
     imagen: "breakingBad.webp",
     iframe:
-      "<iframe src='https://www.youtube.com/embed/V8WQhxHEmMc?si=8gG4Vqg08V8Ba8hQ'></iframe>",
+      'https://www.youtube.com/embed/V8WQhxHEmMc?si=8gG4Vqg08V8Ba8hQ',
     genero: ["Crimen", "Drama", "Suspenso"],
     actores: [
       {
@@ -435,7 +435,7 @@ const Contenido = [
     tipo: "serie",
     imagen: "grey.webp",
     iframe:
-      "<iframe src='https://www.youtube.com/embed/8G4jvn-ncPE?si=Ycj6gy6DQ1eWQh6a'></iframe>",
+      'https://www.youtube.com/embed/8G4jvn-ncPE?si=Ycj6gy6DQ1eWQh6a',
     genero: ["Drama", "Medicina"],
     actores: [
       {
@@ -491,7 +491,7 @@ const Contenido = [
     tipo: "serie",
     imagen: "saul.jpg",
     iframe:
-      "<iframe src='https://www.youtube.com/embed/HN4oydykJFc?si=ITc5PFRmsdqBDpbg'></iframe>",
+      'https://www.youtube.com/embed/HN4oydykJFc?si=ITc5PFRmsdqBDpbg',
     genero: ["Drama", "Thriller"],
     actores: [
       {
@@ -532,7 +532,7 @@ const Contenido = [
     tipo: "serie",
     imagen: "GIINYPORT.jpg",
     iframe:
-      "<iframe src='https://www.youtube.com/embed/H2ZPt8LNrVs?si=YZoxJK_g8o2rz1d9'></iframe>",
+      'https://www.youtube.com/embed/H2ZPt8LNrVs?si=YZoxJK_g8o2rz1d9',
     genero: ["Drama", "Cine Romántico"],
     actores: [
       {
@@ -582,7 +582,7 @@ const Contenido = [
     tipo: "serie",
     imagen: "atrapad.webp",
     iframe:
-      "<iframe src='https://www.youtube.com/embed/qFRyYnmZCk8?si=iLh9EM5gKUYpkFni'></iframe>",
+      'https://www.youtube.com/embed/qFRyYnmZCk8?si=iLh9EM5gKUYpkFni',
     genero: ["Suspenso", "Thriller"],
     actores: [
       {
@@ -624,7 +624,7 @@ const Contenido = [
     tipo: "serie",
     imagen: "stranger.jpg",
     iframe:
-      "<iframe src='https://www.youtube.com/embed/FY1-YF0VqIM?si=x6c8IITM5VgzAur-'></iframe>",
+      'https://www.youtube.com/embed/FY1-YF0VqIM?si=x6c8IITM5VgzAur-',
     genero: ["Aventura", "Cine de Terror", "Ciencia Ficción"],
     actores: [
       {
