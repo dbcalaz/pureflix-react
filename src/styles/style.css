@@ -15,7 +15,7 @@ nav {
   z-index: 1;
   left: 0;
   right: 0;
-
+  background-color:white;
   ul {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -50,10 +50,6 @@ nav {
     }
   }
 }
-.cuerpo {
-  position: fixed;
-  top: 10rem;
-}
 
 .categoria_buscador {
   display: flex;
@@ -64,7 +60,7 @@ nav {
   background-color: #fff;
   width: 100%;
   z-index: 2;
-  top: 3.4rem;
+  top: 3.1rem;
 }
 
 .form_categoria {
