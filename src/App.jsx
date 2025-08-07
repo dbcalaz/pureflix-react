@@ -14,16 +14,16 @@ function App() {
   const [pestania, setPestania] = useState("home");
   const opciones = [
     { valor: "vacio", nombreAmostrar: "Seleccionar categoría" },
-    { valor: "accion", nombreAmostrar: "Acción" },
-    { valor: "comedia", nombreAmostrar: "Comedia" },
+    { valor: "accion", nombreAmostrar: "accion" },
+    { valor: "comedia", nombreAmostrar: "comedia" },
     { valor: "documentales", nombreAmostrar: "Documentales" },
-    { valor: "drama", nombreAmostrar: "Drama" },
-    { valor: "fantasia", nombreAmostrar: "Fantasía" },
-    { valor: "familiar", nombreAmostrar: "Familiar" },
-    { valor: "suspenso", nombreAmostrar: "Suspenso" },
-    { valor: "aventura", nombreAmostrar: "Aventura" },
-    { valor: "ciencia ficcion", nombreAmostrar: "Ciencia Ficción" },
-    { valor: "thriller", nombreAmostrar: "Thriller" },
+    { valor: "drama", nombreAmostrar: "drama" },
+    { valor: "fantasia", nombreAmostrar: "fantasia" },
+    { valor: "familiar", nombreAmostrar: "familiar" },
+    { valor: "suspenso", nombreAmostrar: "suspenso" },
+    { valor: "aventura", nombreAmostrar: "aventura" },
+    { valor: "ciencia ficcion", nombreAmostrar: "ciencia ficcion" },
+    { valor: "thriller", nombreAmostrar: "thriller" },
   ];
   const [mostrarModalDetalle, setMostrarModalDetalle] = useState({});
 

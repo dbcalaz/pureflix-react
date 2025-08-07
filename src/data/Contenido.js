@@ -7,7 +7,7 @@ const Contenido = [
     iframe:
       'https://www.youtube.com/embed/M8APRgAXguc?si=qVLg2wAuZet4njch',
     duracion: "2h 1min",
-    genero: ["Acción", "Fantasía"],
+    genero: ["accion", "fantasia"],
     actores: [
       {
         nombre: "Keanu Reeves",
@@ -41,7 +41,7 @@ const Contenido = [
     iframe:
       'https://www.youtube.com/embed/cwfDP4rB94Q?si=gaL8ttUNbvn80Lar',
     duracion: "1h 49min",
-    genero: ["Acción"],
+    genero: ["accion"],
     actores: [
       {
         nombre: "Liam Neeson",
@@ -91,7 +91,7 @@ const Contenido = [
     iframe:
       'https://www.youtube.com/embed/UzFZR2dRsSY?si=1On3OxWeqv_ra7o2',
     duracion: "2h 8min",
-    genero: ["Acción", "Comedia", "Superhéroes"],
+    genero: ["accion", "comedia", "Superhéroes"],
     actores: [
       {
         nombre: "Ryan Reynolds",
@@ -121,7 +121,7 @@ const Contenido = [
     iframe:
       'https://www.youtube.com/embed/SvJwEiy2Wok?si=_R5UspCzfUUt9eki',
     duracion: "1h 32min",
-    genero: ["Aventura", "Comedia"],
+    genero: ["aventura", "comedia"],
     actores: [
       {
         nombre: "Chris Pratt",
@@ -155,7 +155,7 @@ const Contenido = [
     iframe:
       'https://www.youtube.com/embed/W45vhTxKeQE?si=sqkovX41QkMdpzcg',
     duracion: "2h 13min",
-    genero: ["Fantasía", "Aventura"],
+    genero: ["fantasia", "aventura"],
     actores: [
       {
         nombre: "Eddie Redmayne",
@@ -189,7 +189,7 @@ const Contenido = [
     iframe:
       'https://www.youtube.com/embed/8xiXSo5xjjE?si=GwLN-d-DZTH_VEUq',
     duracion: "1h 32min",
-    genero: ["Aventura", "Comedia"],
+    genero: ["aventura", "comedia"],
     actores: [
       {
         nombre: "Tom Hanks",
@@ -215,7 +215,7 @@ const Contenido = [
     iframe:
       'https://www.youtube.com/embed/rmoneJ_797s?si=0xrcZSInpQ_uwxkd',
     duracion: "1h 55min",
-    genero: ["Monstruos", "Acción", "Ciencia Ficción"],
+    genero: ["Monstruos", "accion", "ciencia ficcion"],
     actores: [
       {
         nombre: "Rebecca Hall",
@@ -245,7 +245,7 @@ const Contenido = [
     iframe:
       'https://www.youtube.com/embed/9JIyINjMfcc?si=iOhyN0Xwv1ZqTcCy',
     duracion: "1h 48min",
-    genero: ["Comedia", "Ciencia Ficción"],
+    genero: ["comedia", "ciencia ficcion"],
     actores: [
       {
         nombre: "Maia Kealoha",
@@ -294,7 +294,7 @@ const Contenido = [
     imagen: "simpsons.webp",
     iframe:
       'https://www.youtube.com/embed/Fy781dK59e0?si=80rvkpXI3IvkswnW',
-    genero: ["Comedia", "Familiar"],
+    genero: ["comedia", "familiar"],
     actores: [
       {
         nombre: "Dan Castellaneta",
@@ -361,7 +361,7 @@ const Contenido = [
     imagen: "eternauta.jpeg",
     iframe:
       'https://www.youtube.com/embed/ykLTd5aTa88?si=oR4l8QVCQS4ALl7D',
-    genero: ["Ciencia Ficción"],
+    genero: ["ciencia ficcion"],
     actores: [
       {
         nombre: "Ricardo Darín",
@@ -404,7 +404,7 @@ const Contenido = [
     imagen: "breakingBad.webp",
     iframe:
       'https://www.youtube.com/embed/V8WQhxHEmMc?si=8gG4Vqg08V8Ba8hQ',
-    genero: ["Crimen", "Drama", "Suspenso"],
+    genero: ["crimen", "drama", "suspenso"],
     actores: [
       {
         nombre: "Bryan Cranston",
@@ -436,7 +436,7 @@ const Contenido = [
     imagen: "grey.webp",
     iframe:
       'https://www.youtube.com/embed/8G4jvn-ncPE?si=Ycj6gy6DQ1eWQh6a',
-    genero: ["Drama", "Medicina"],
+    genero: ["drama", "Medicina"],
     actores: [
       {
         nombre: "Ellen Pompeo",
@@ -460,7 +460,7 @@ const Contenido = [
       },
     ],
     resumen:
-      "Drama médico centrado en la Dra. Meredith Grey y sus colegas en un hospital de Seattle que atraviesan desafíos personales y profesionales.",
+      "drama médico centrado en la Dra. Meredith Grey y sus colegas en un hospital de Seattle que atraviesan desafíos personales y profesionales.",
     temporadas: [
       { numero: 1, capitulos: 9 },
       { numero: 2, capitulos: 27 },
@@ -492,7 +492,7 @@ const Contenido = [
     imagen: "saul.jpg",
     iframe:
       'https://www.youtube.com/embed/HN4oydykJFc?si=ITc5PFRmsdqBDpbg',
-    genero: ["Drama", "Thriller"],
+    genero: ["drama", "thriller"],
     actores: [
       {
         nombre: "Bob Odenkirk",
@@ -533,7 +533,7 @@ const Contenido = [
     imagen: "GIINYPORT.jpg",
     iframe:
       'https://www.youtube.com/embed/H2ZPt8LNrVs?si=YZoxJK_g8o2rz1d9',
-    genero: ["Drama", "Cine Romántico"],
+    genero: ["drama", "Cine Romántico"],
     actores: [
       {
         nombre: "Brianne Howey",
@@ -583,7 +583,7 @@ const Contenido = [
     imagen: "atrapad.webp",
     iframe:
       'https://www.youtube.com/embed/qFRyYnmZCk8?si=iLh9EM5gKUYpkFni',
-    genero: ["Suspenso", "Thriller"],
+    genero: ["suspenso", "thriller"],
     actores: [
       {
         nombre: "Soledad Villamil",
@@ -625,7 +625,7 @@ const Contenido = [
     imagen: "stranger.jpg",
     iframe:
       'https://www.youtube.com/embed/FY1-YF0VqIM?si=x6c8IITM5VgzAur-',
-    genero: ["Aventura", "Cine de Terror", "Ciencia Ficción"],
+    genero: ["aventura", "Cine de Terror", "ciencia ficcion"],
     actores: [
       {
         nombre: "Winona Ryder",

@@ -24,8 +24,8 @@ export default function ModalDetalle({setMostrarModalDetalle, d }) {
           </div>
           <div className="info_linea">
             <h3>Actores:</h3>
-            <p id="actores">{d?.actores?.map(a => {
-              return <a href={a.wikipedia} target="_blank">{a.nombre}</a>
+            <p id="actores">{d?.actores?.map((a,i) => {
+              return <a key={"detalle_"+i} href={a.wikipedia} target="_blank">{a.nombre}</a>
             })}</p>
           </div>
           <p id="resumen">{d.resumen}</p>
