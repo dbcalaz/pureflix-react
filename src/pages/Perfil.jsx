@@ -1,4 +1,4 @@
-export default function Pefil(){
+export default function Perfil(){
 
     return(
         <div>
