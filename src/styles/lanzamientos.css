@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.box-seccion {
+  padding: 1rem;
+}
+
+.box-seccion h2 {
+  margin-bottom: 1rem;
+}
+
+.box {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.box img {
+  width: 100%;
+  height: auto;
+}
+
+.foto-suscripto {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.foto-suscripto img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.campana {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.campana.pintado img{
+  background-color: yellow;
+  opacity: 1;
+}
+
+.campana img {
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: white;
+  opacity: 0.5;
+  border-radius: 1rem;
+}
+
+.campana img:hover {
+  cursor: pointer;
+  background-color: yellow;
+  opacity: 1;
+}
+
+@media screen and (max-width: 64em) {
+  main {
+    margin-top: 6rem;
+  }
+  .box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 48em) {
+  .box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 30em) {
+  .box {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+  }
+}

@@ -1,80 +1,44 @@
-import Imagen from "./Imagen";
+import { useState } from "react";
+import ImagenGenerica from "./ImagenGenerica";
 
-export default function NavBar({
-  pestania,
-  setPestania,
-  setMostrarModalDetalle,
-}) {
-  function login() {
-    console.log("logueando");
-    fetch("http://127.0.0.1:8080/loginUser?usr=belen&pass=culo")
-      .then((response) => response.text())
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+function NavBar() {
+  const [botones, setBotones] = useState([
+    { txt: "Home", img: "home", activo: true },
+    { txt: "Series", img: "peliSerie", activo: false },
+    { txt: "Películas", img: "peliSerie", activo: false },
+    { txt: "Perfil", img: "perfil", activo: false },
+    { txt: "Próximos lanzamientos", img: "peliSerie", activo: false },
+  ]);
+  function actualizaActivo(indice) {
+    const nuevosBotones = [];
+    botones?.forEach((x, i) => {
+      x.activo = i === indice;
+      nuevosBotones.push(x);
+    });
+    setBotones(nuevosBotones);
   }
+
   return (
-    <nav
-      onClick={() => {
-        setMostrarModalDetalle({});
-      }}
-    >
-      <ul>
-        <li
-          className={pestania === "home" ? "seleccionado" : ""}
-          onClick={() => {
-            setPestania("home");
-          }}
-        >
-          <Imagen nombreArchivo="home" />
-          <div>Home</div>
-        </li>
-        <li
-          className={pestania === "series" ? "seleccionado" : ""}
-          onClick={() => {
-            setPestania("series");
-          }}
-        >
-          <Imagen nombreArchivo="peliSerieLan" />
-          <div>Series</div>
-        </li>
-        <li
-          className={pestania === "peliculas" ? "seleccionado" : ""}
-          onClick={() => {
-            setPestania("peliculas");
-          }}
-        >
-          <Imagen nombreArchivo="peliSerieLan" />
-          <div>Películas</div>
-        </li>
-        <li
-          className={pestania === "prox" ? "seleccionado" : ""}
-          onClick={() => {
-            setPestania("prox");
-          }}
-        >
-          <Imagen nombreArchivo="peliSerieLan" />
-          <div>Próximos Lanzamientos</div>
-        </li>
-        <li
-          className={pestania === "perfil" ? "seleccionado" : ""}
-          onClick={() => {
-            setPestania("perfil");
-          }}
-        >
-          <Imagen nombreArchivo="perfil" />
-          <div
-            onClick={() => {
-              login();
-            }}
-          >
-            Perfil
-          </div>
-        </li>
-      </ul>
-    </nav>
+    <header>
+      <nav className="nav">
+        <ul className="nav_ul">
+          {botones?.map((b, i) => {
+            return (
+              <li
+                className={b?.activo ? "activo home" : "home"}
+                onClick={() => actualizaActivo(i)}
+              >
+                <div>
+                  <ImagenGenerica imagen={b.img} />
+                  {b.txt}
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+    </header>
   );
 }
+
+export default NavBar;

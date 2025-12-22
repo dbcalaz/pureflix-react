@@ -1,0 +1,426 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.puntero:hover {
+  background-color: #e6e6e6;
+}
+
+.ContenedorGeneral {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  align-items: start;
+  padding-top: 4rem;
+}
+
+.contenedor-principal {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.formulario-contenedor {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  gap: 30px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 1100px;
+  width: 100%;
+}
+
+.columna,
+.FormularioContactoGlobal,
+.MetodoPagoGlobal {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: white;
+}
+
+.columna-izquierda {
+  align-items: center;
+}
+
+.FormularioContactoGlobal,
+.MetodoPagoGlobal {
+  padding: 2rem;
+  justify-content: center;
+}
+
+.FormularioContactoGlobal {
+  border-right: 1px solid #ccc;
+}
+
+.Registrarse {
+  text-align: center;
+  padding: 1rem;
+}
+
+.FormularioContacto,
+.sección-formulario {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 10px;
+}
+
+.FormularioContacto {
+  justify-content: center;
+}
+
+.FormularioContacto label {
+  width: 9rem;
+  text-align: right;
+  margin-right: 1rem;
+}
+
+.FormularioContacto input {
+  width: 60%;
+  max-width: 12rem;
+  padding: 0.4rem;
+  font-size: 1rem;
+}
+
+.sección-formulario label {
+  width: 150px;
+}
+
+.sección-formulario input,
+.sección-formulario p,
+.e-mail {
+  flex-grow: 1;
+  font-size: em;
+}
+
+.e-mail {
+  border: none;
+  padding: 8px 0;
+  margin: 0;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"] {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  width: 100%;
+}
+
+.ContenedorGeneral input {
+  border-radius: 0.2rem;
+  border-color: #a09d9d;
+}
+
+::placeholder {
+  color: rgb(155, 152, 148);
+}
+
+.MetodoPagoOpcion,
+.metodo-pago {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.MetodoPagoOpcion.columna {
+  align-items: flex-start;
+}
+
+.metodo-pago > label,
+.opcion-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.datos-tarjeta {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+  max-width: 350px;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.codigo-tarjeta {
+  max-width: 250px;
+}
+
+.opcion-checkbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 5px;
+}
+
+.seccion-titulo {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.cbu {
+  font-size: 0.9em;
+  margin: 5px 0 0 25px;
+}
+
+.botones,
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.boton {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  border: none;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.boton-guardar {
+  background-color: green;
+  border: none;
+}
+
+.boton-guardar:hover {
+  background-color: darkgreen;
+  border: none;
+}
+
+.boton-guardar:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.boton-cancelar {
+  background-color: red;
+}
+
+.boton-cancelar:hover {
+  background-color: darkred;
+}
+
+.boton-cerrar {
+  background-color: #3b70b0;
+}
+
+.boton-cerrar:hover {
+  background-color: #26456e;
+}
+
+.boton {
+  color: black;
+  text-decoration: none;
+}
+
+.foto-perfil {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.perfil-usuario {
+  margin-top: 10px;
+}
+
+.info_favorito_contenido {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 3.5rem;
+}
+
+.info_favorito_contenido h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.contenedor_info_carrusel {
+  display: flex; 
+  overflow-x: auto; 
+  scroll-snap-type: x mandatory; 
+  scroll-padding: 1rem; 
+  gap: 1rem;
+  padding-bottom: 1rem;
+  scroll-behavior: smooth; 
+}
+
+.info_carrusel {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.foto_carrusel {
+  width: 437px;
+  height: 228px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.foto_carrusel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.input-con-error {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  max-width: 12rem;
+  box-sizing: border-box;
+}
+
+.input-con-error .error {
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  height: 0.5em; /* la altura se ajusta al diseño */
+}
+.input-con-error .errorTarjeta {
+  color: red;
+  margin-top: 0px; 
+  padding: 0;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .formulario-contenedor,
+  .ContenedorGeneral {
+    grid-template-columns: 1fr;
+    height: auto;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .columna-izquierda img {
+    margin-top: 5rem;
+  }
+
+  .columna-izquierda,
+  .columna-central,
+  .columna-derecha {
+    width: 100%;
+  }
+
+  .FormularioContactoGlobal,
+  .MetodoPagoGlobal {
+    padding: 1.5rem 1rem;
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .FormularioContacto {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .FormularioContacto label {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 0.3rem;
+  }
+
+  .FormularioContacto input {
+    width: 100%;
+    max-width: none;
+  }
+
+  .sección-formulario {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sección-formulario label {
+    width: 100%;
+  }
+
+  .metodo-pago,
+  .MetodoPagoOpcion {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .MetodoPagoOpcion input[type="number"] {
+    width: 100%;
+    max-width: none;
+  }
+
+  .datos-tarjeta {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .opcion-checkbox {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .botones {
+    flex-direction: column;
+    gap: 10px;
+    margin: 1.875rem;
+  }
+
+  .boton {
+    width: 100%;
+  }
+
+  .info_carrusel {
+    flex: 0 0 90%;
+  }
+
+ .foto_carrusel {
+    width: 100%;
+    height: auto;
+  }
+
+  .foto_carrusel img {
+    height: auto;
+    object-fit: cover;
+  }
+
+  .info_favorito_contenido h2 {
+    font-size: 1.2rem;
+  }
+
+  footer {
+    padding-bottom: 1rem;
+    padding-top: 0.5rem;
+    width: 100%;
+    font-size: small;
+  }
+}
