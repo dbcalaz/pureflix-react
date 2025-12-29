@@ -1,11 +1,11 @@
 import { useState } from "react";
 import ImagenGenerica from "./ImagenGenerica";
 
-function NavBar() {
+function NavBar({tipo, setTipo}) {
   const [botones, setBotones] = useState([
-    { txt: "Home", img: "home", activo: true },
-    { txt: "Series", img: "peliSerie", activo: false },
-    { txt: "Películas", img: "peliSerie", activo: false },
+    { txt: "Home", mostrar:"home", img: "home", activo: true },
+    { txt: "Series", mostrar:"series", img: "peliSerie", activo: false },
+    { txt: "Películas", mostrar:"pelis", img: "peliSerie", activo: false },
     { txt: "Perfil", img: "perfil", activo: false },
     { txt: "Próximos lanzamientos", img: "peliSerie", activo: false },
   ]);
@@ -14,6 +14,8 @@ function NavBar() {
     botones?.forEach((x, i) => {
       x.activo = i === indice;
       nuevosBotones.push(x);
+      if (x.activo)
+        setTipo(x.mostrar)
     });
     setBotones(nuevosBotones);
   }
@@ -24,8 +26,8 @@ function NavBar() {
         <ul className="nav_ul">
           {botones?.map((b, i) => {
             return (
-              <li
-                className={b?.activo ? "activo home" : "home"}
+              <li key={"foto_navBar"+i}
+                className={b?.activo ? "activo puntero" : "puntero"}
                 onClick={() => actualizaActivo(i)}
               >
                 <div>
