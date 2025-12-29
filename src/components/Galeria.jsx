@@ -8,7 +8,7 @@ function concatenaCosas (c){
   return todo
 }
 
-function Galeria({ tipo }) {
+function Galeria({ tipo, setMostrarModalDetalle }) {
   let miArray;
   switch (tipo){
     case "pelis":
@@ -28,8 +28,8 @@ function Galeria({ tipo }) {
       <section className="galeria">
         {miArray.map((p, i) => {
           return (
-            <div key={"foto_" + tipo + "_" + i} className="foto">
-              <ImagenGenerica imagen={p.imagen.split(".")[0]} />
+            <div key={"foto_" + tipo + "_" + i} className="foto" onClick={() => {setMostrarModalDetalle(p)}}>
+              <ImagenGenerica imagen={p.imagen.split(".")[0]}/>
             </div>
           );
         })}
