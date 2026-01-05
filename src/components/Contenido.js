@@ -5,7 +5,7 @@ const Contenido = {
             "id": 1,
             "tipo": "pelicula",
             "imagen": "constantine.jpg",
-            "iframe": "<iframe src='https://www.youtube.com/embed/M8APRgAXguc?si=qVLg2wAuZet4njch'></iframe>",
+            "iframe": "https://www.youtube.com/embed/M8APRgAXguc?si=qVLg2wAuZet4njch",
             "duracion": "2h 1min",
             "genero": ["Acción", "Fantasía"],
             "actores": [
@@ -22,7 +22,7 @@ const Contenido = {
             "id": 2,
             "tipo": "pelicula",
             "imagen": "implacable.webp",
-            "iframe": "<iframe src='https://www.youtube.com/embed/cwfDP4rB94Q?si=gaL8ttUNbvn80Lar'></iframe>",
+            "iframe": "https://www.youtube.com/embed/cwfDP4rB94Q?si=gaL8ttUNbvn80Lar",
             "duracion": "1h 49min",
             "genero": ["Acción"],
             "actores": [
@@ -43,7 +43,7 @@ const Contenido = {
             "id": 3,
             "tipo": "pelicula",
             "imagen": "deadpool.jpg",
-            "iframe": "<iframe src='https://www.youtube.com/embed/UzFZR2dRsSY?si=1On3OxWeqv_ra7o2'></iframe>",
+            "iframe": "https://www.youtube.com/embed/UzFZR2dRsSY?si=1On3OxWeqv_ra7o2",
             "duracion": "2h 8min",
             "genero": ["Acción", "Comedia", "Superhéroes"],
             "actores": [
@@ -59,7 +59,7 @@ const Contenido = {
             "id": 4,
             "tipo": "pelicula",
             "imagen": "marioBros.jpg",
-            "iframe": "<iframe src='https://www.youtube.com/embed/SvJwEiy2Wok?si=_R5UspCzfUUt9eki'></iframe>",
+            "iframe": "https://www.youtube.com/embed/SvJwEiy2Wok?si=_R5UspCzfUUt9eki",
             "duracion": "1h 32min",
             "genero": ["Aventura", "Comedia"],
             "actores": [
@@ -76,7 +76,7 @@ const Contenido = {
             "id": 5,
             "tipo": "pelicula",
             "imagen": "animales.jpg",
-            "iframe": "<iframe src='https://www.youtube.com/embed/W45vhTxKeQE?si=sqkovX41QkMdpzcg'></iframe>",
+            "iframe": "https://www.youtube.com/embed/W45vhTxKeQE?si=sqkovX41QkMdpzcg",
             "duracion": "2h 13min",
             "genero": ["Fantasía", "Aventura"],
             "actores": [
@@ -93,7 +93,7 @@ const Contenido = {
             "id": 6,
             "tipo": "pelicula",
             "imagen": "toyStory2.webp",
-            "iframe": "<iframe src='https://www.youtube.com/embed/8xiXSo5xjjE?si=GwLN-d-DZTH_VEUq'></iframe>",
+            "iframe": "https://www.youtube.com/embed/8xiXSo5xjjE?si=GwLN-d-DZTH_VEUq",
             "duracion": "1h 32min",
             "genero": ["Aventura", "Comedia"],
             "actores": [
@@ -109,7 +109,7 @@ const Contenido = {
             "id": 8,
             "tipo": "pelicula",
             "imagen": "lilo2.webp",
-            "iframe": "<iframe src='https://www.youtube.com/embed/9JIyINjMfcc?si=iOhyN0Xwv1ZqTcCy'></iframe>",
+            "iframe": "https://www.youtube.com/embed/9JIyINjMfcc?si=iOhyN0Xwv1ZqTcCy",
             "duracion": "1h 48min",
             "genero": ["Comedia", "Ciencia Ficción"],
             "actores": [
@@ -132,7 +132,7 @@ const Contenido = {
             "id": 1,
             "tipo": "serie",
             "imagen": "simpsons.webp",
-            "iframe": "<iframe src='https://www.youtube.com/embed/Fy781dK59e0?si=80rvkpXI3IvkswnW'></iframe>",
+            "iframe": "https://www.youtube.com/embed/Fy781dK59e0?si=80rvkpXI3IvkswnW",
             "genero": ["Comedia", "Familiar"],
             "actores": [
                 { "nombre": "Dan Castellaneta", "wikipedia": "https://en.wikipedia.org/wiki/Dan_Castellaneta" },
@@ -185,7 +185,7 @@ const Contenido = {
             "id": 2,
             "tipo": "serie",
             "imagen": "eternauta.jpeg",
-            "iframe": "<iframe src='https://www.youtube.com/embed/ykLTd5aTa88?si=oR4l8QVCQS4ALl7D'></iframe>",
+            "iframe": "https://www.youtube.com/embed/ykLTd5aTa88?si=oR4l8QVCQS4ALl7D",
             "genero": ["Ciencia Ficción"],
             "actores": [
                 { "nombre": "Ricardo Darín", "wikipedia": "https://es.wikipedia.org/wiki/Ricardo_Darín" },
@@ -208,7 +208,7 @@ const Contenido = {
             "id": 3,
             "tipo": "serie",
             "imagen": "breakingBad.webp",
-            "iframe": "<iframe src='https://www.youtube.com/embed/V8WQhxHEmMc?si=8gG4Vqg08V8Ba8hQ'></iframe>",
+            "iframe": "https://www.youtube.com/embed/V8WQhxHEmMc?si=8gG4Vqg08V8Ba8hQ",
             "genero": ["Crimen", "Drama", "Suspenso"],
             "actores": [
                 { "nombre": "Bryan Cranston", "wikipedia": "https://en.wikipedia.org/wiki/Bryan_Cranston" },
@@ -229,7 +229,7 @@ const Contenido = {
             "id": 4,
             "tipo": "serie",
             "imagen": "grey.webp",
-            "iframe": "<iframe src='https://www.youtube.com/embed/8G4jvn-ncPE?si=Ycj6gy6DQ1eWQh6a'></iframe>",
+            "iframe": "https://www.youtube.com/embed/8G4jvn-ncPE?si=Ycj6gy6DQ1eWQh6a",
             "genero": ["Drama", "Medicina"],
             "actores": [
                 { "nombre": "Ellen Pompeo", "wikipedia": "https://en.wikipedia.org/wiki/Ellen_Pompeo" },
@@ -268,7 +268,7 @@ const Contenido = {
             "id": 5,
             "tipo": "serie",
             "imagen": "saul.jpg",
-            "iframe": "<iframe src='https://www.youtube.com/embed/HN4oydykJFc?si=ITc5PFRmsdqBDpbg'></iframe>",
+            "iframe": "https://www.youtube.com/embed/HN4oydykJFc?si=ITc5PFRmsdqBDpbg",
             "genero": ["Drama", "Thriller"],
             "actores": [
                 { "nombre": "Bob Odenkirk", "wikipedia": "https://en.wikipedia.org/wiki/Bob_Odenkirk" },
@@ -292,7 +292,7 @@ const Contenido = {
             "id": 6,
             "tipo": "serie",
             "imagen": "GIINYPORT.jpg",
-            "iframe": "<iframe src='https://www.youtube.com/embed/H2ZPt8LNrVs?si=YZoxJK_g8o2rz1d9'></iframe>",
+            "iframe": "https://www.youtube.com/embed/H2ZPt8LNrVs?si=YZoxJK_g8o2rz1d9",
             "genero": ["Drama", "Cine Romántico"],
             "actores": [
                 { "nombre": "Brianne Howey", "wikipedia": "https://en.wikipedia.org/wiki/Brianne_Howey" },
@@ -316,7 +316,7 @@ const Contenido = {
             "id": 7,
             "tipo": "serie",
             "imagen": "atrapad.webp",
-            "iframe": "<iframe src='https://www.youtube.com/embed/qFRyYnmZCk8?si=iLh9EM5gKUYpkFni'></iframe>",
+            "iframe": "https://www.youtube.com/embed/qFRyYnmZCk8?si=iLh9EM5gKUYpkFni",
             "genero": ["Suspenso", "Thriller"],
             "actores": [
                 { "nombre": "Soledad Villamil", "wikipedia": "https://es.wikipedia.org/wiki/Soledad_Villamil" },
@@ -337,7 +337,7 @@ const Contenido = {
             "id": 8,
             "tipo": "serie",
             "imagen": "stranger.jpg",
-            "iframe": "<iframe src='https://www.youtube.com/embed/FY1-YF0VqIM?si=x6c8IITM5VgzAur-'></iframe>",
+            "iframe": "https://www.youtube.com/embed/FY1-YF0VqIM?si=x6c8IITM5VgzAur-",
             "genero": ["Aventura", "Cine de Terror", "Ciencia Ficción"],
             "actores": [
                 { "nombre": "Winona Ryder", "wikipedia": "https://en.wikipedia.org/wiki/Winona_Ryder" },
