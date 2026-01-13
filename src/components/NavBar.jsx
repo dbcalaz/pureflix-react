@@ -3,9 +3,9 @@ import ImagenGenerica from "./ImagenGenerica";
 
 function NavBar({ tipo, setTipo }) {
   const [botones, setBotones] = useState([
-    { txt: "Home", mostrar: "home", img: "home", activo: true },
-    { txt: "Series", mostrar: "series", img: "peliSerie", activo: false },
-    { txt: "Películas", mostrar: "pelis", img: "peliSerie", activo: false },
+    { txt: "Home", mostrar: 0, img: "home", activo: true },
+    { txt: "Series", mostrar: 2, img: "peliSerie", activo: false },
+    { txt: "Películas", mostrar: 1, img: "peliSerie", activo: false },
     { txt: "Perfil", img: "perfil", activo: false },
     { txt: "Próximos lanzamientos", img: "peliSerie", activo: false },
   ]);
@@ -40,7 +40,6 @@ function NavBar({ tipo, setTipo }) {
             );
           })}
         </ul>
-        <div onClick={()=>{obtenerPeliculas()}}>HOLA</div>
       </nav>
     </header>
   );

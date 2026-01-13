@@ -7,7 +7,7 @@ import Galeria from './components/Galeria'
 import ModalDetalle from './components/ModalDetalle'
 
 function App() {
- const [tipo, setTipo] = useState ("home")
+ const [tipo, setTipo] = useState (0)
  const [mostrarModalDetalle, setMostrarModalDetalle] = useState({})
   return (
     <>

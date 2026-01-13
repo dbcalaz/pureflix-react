@@ -1,4 +1,3 @@
-import Contenido from "./Contenido";
 import { useState } from "react";
 function ModalDetalle({ mostrar, setMostrar }) {
   const [temporada, setTemporada] = useState();
@@ -86,7 +85,6 @@ function ModalDetalle({ mostrar, setMostrar }) {
                   {mostrar?.actores?.map((a, i) => (
                     <div key={"actor_" + i}>
                       <p>{a.nombre} {a.apellido}</p>
-                      {/*<div>{a.wikipedia}</div>*/}
                     </div>
                   ))}
                 </div>
