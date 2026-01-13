@@ -1,21 +1,22 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import ImagenGenerica from "./ImagenGenerica";
 
-function NavBar({tipo, setTipo}) {
+function NavBar({ tipo, setTipo }) {
   const [botones, setBotones] = useState([
-    { txt: "Home", mostrar:"home", img: "home", activo: true },
-    { txt: "Series", mostrar:"series", img: "peliSerie", activo: false },
-    { txt: "Películas", mostrar:"pelis", img: "peliSerie", activo: false },
+    { txt: "Home", mostrar: "home", img: "home", activo: true },
+    { txt: "Series", mostrar: "series", img: "peliSerie", activo: false },
+    { txt: "Películas", mostrar: "pelis", img: "peliSerie", activo: false },
     { txt: "Perfil", img: "perfil", activo: false },
     { txt: "Próximos lanzamientos", img: "peliSerie", activo: false },
   ]);
+
+
   function actualizaActivo(indice) {
     const nuevosBotones = [];
     botones?.forEach((x, i) => {
       x.activo = i === indice;
       nuevosBotones.push(x);
-      if (x.activo)
-        setTipo(x.mostrar)
+      if (x.activo) setTipo(x.mostrar);
     });
     setBotones(nuevosBotones);
   }
@@ -26,7 +27,8 @@ function NavBar({tipo, setTipo}) {
         <ul className="nav_ul">
           {botones?.map((b, i) => {
             return (
-              <li key={"foto_navBar"+i}
+              <li
+                key={"foto_navBar" + i}
                 className={b?.activo ? "activo puntero" : "puntero"}
                 onClick={() => actualizaActivo(i)}
               >
@@ -38,6 +40,7 @@ function NavBar({tipo, setTipo}) {
             );
           })}
         </ul>
+        <div onClick={()=>{obtenerPeliculas()}}>HOLA</div>
       </nav>
     </header>
   );

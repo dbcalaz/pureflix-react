@@ -17,19 +17,19 @@ function ModalDetalle({ mostrar, setMostrar }) {
           <div className="info_contenido">
             <div className="video_contenedor">
               <div className="video" id="video">
-                <iframe src={mostrar.iframe}></iframe>
+                <iframe src={mostrar?.link_trailer}></iframe>
               </div>
               <button className="boton">Comenzar</button>
             </div>
             <div className="info_descripcion">
               <div className="info_linea">
                 <h3>Título:</h3>
-                <p id="titulo">{mostrar.titulo}</p>
+                <p id="titulo">{mostrar?.titulo}</p>
               </div>
               {mostrar.tipo === "pelicula" && (
                 <div className="info_linea">
                   <h3>Duración:</h3>
-                  <p id="duracion">{mostrar.duracion}</p>
+                  <p id="duracion">{mostrar?.duracion}</p>
                 </div>
               )}
               {mostrar.tipo === "serie" && (
@@ -42,7 +42,7 @@ function ModalDetalle({ mostrar, setMostrar }) {
                     onChange={(e) => {
                       setTemporada(e.target.value);
                       const aux = [];
-                      const cantCapitulos = mostrar.temporadas.find(
+                      const cantCapitulos = mostrar?.temporadas.find(
                         (t) => parseInt(t.numero) === parseInt(e.target.value)
                       )?.capitulos;
 
@@ -52,7 +52,7 @@ function ModalDetalle({ mostrar, setMostrar }) {
                     }}
                   >
                     <option key={"opcion_temporada_null"}>Seleccionar</option>
-                    {mostrar.temporadas.map((t, i) => (
+                    {mostrar?.temporadas.map((t, i) => (
                       <option key={"opcion_temporada_" + i}>{t.numero}</option>
                     ))}
                   </select>
@@ -74,14 +74,18 @@ function ModalDetalle({ mostrar, setMostrar }) {
               )}
               <div className="info_linea">
                 <h3>Género:</h3>
-                <p id="genero">{mostrar.genero}</p>
+                <div id="genero">{mostrar?.genero?.map((g,i) => (
+                  <div key={"genero_" + i}>
+                    <p>{g.descripcion}</p>
+                  </div>
+                ))}</div>
               </div>
               <div className="info_linea">
                 <h3>Actores:</h3>
                 <div id="actores">
-                  {mostrar.actores.map((a, i) => (
+                  {mostrar?.actores?.map((a, i) => (
                     <div key={"actor_" + i}>
-                      <p>{a.nombre}</p>
+                      <p>{a.nombre} {a.apellido}</p>
                       {/*<div>{a.wikipedia}</div>*/}
                     </div>
                   ))}
@@ -89,7 +93,7 @@ function ModalDetalle({ mostrar, setMostrar }) {
               </div>
               <div className="info_linea">
                 <h3>Resumen:</h3>
-                <p id="resumen">{mostrar.resumen}</p>
+                <p id="resumen">{mostrar?.resumen}</p>
               </div>
             </div>
           </div>
