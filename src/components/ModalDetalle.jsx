@@ -65,26 +65,36 @@ function ModalDetalle({ mostrar, setMostrar }) {
                     }}
                   >
                     <option key={"opcion_capitulo_null"}>Seleccionar</option>
-                    {capitulos.map((c,i) => (
+                    {capitulos.map((c, i) => (
                       <option key={"opcion_capitulo_" + i}>{c}</option>
                     ))}
                   </select>
                 </div>
               )}
+              <div className="info_descripcion">
+                <div className="info_linea">
+                  <h3>Año:</h3>
+                  <p id="titulo">{mostrar?.anio}</p>
+                </div>
+              </div>
               <div className="info_linea">
                 <h3>Género:</h3>
-                <div id="genero">{mostrar?.genero?.map((g,i) => (
-                  <div key={"genero_" + i}>
-                    <p>{g.descripcion}</p>
-                  </div>
-                ))}</div>
+                <div id="genero">
+                  {mostrar?.genero?.map((g, i) => (
+                    <div key={"genero_" + i}>
+                      <p>{g.descripcion}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
               <div className="info_linea">
                 <h3>Actores:</h3>
                 <div id="actores">
                   {mostrar?.actores?.map((a, i) => (
                     <div key={"actor_" + i}>
-                      <p>{a.nombre} {a.apellido}</p>
+                      <p>
+                        {a.nombre} {a.apellido}
+                      </p>
                     </div>
                   ))}
                 </div>

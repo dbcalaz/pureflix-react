@@ -32,7 +32,7 @@ function NavBar({ tipo, setTipo }) {
                 className={b?.activo ? "activo puntero" : "puntero"}
                 onClick={() => actualizaActivo(i)}
               >
-                <div>
+                <div className="imagen">
                   <ImagenGenerica imagen={b.img} />
                   {b.txt}
                 </div>

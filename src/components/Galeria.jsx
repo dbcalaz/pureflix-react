@@ -2,13 +2,13 @@ import ImagenGenerica from "./ImagenGenerica";
 import { useEffect, useState } from "react";
 
 
-function Galeria({ tipo, setMostrarModalDetalle }) {
+function Galeria({ tipo, setMostrarModalDetalle, categorias, setCategorias, catSeleccionada, setCatSeleccionada }) {
 
   const [contenido, setContenido] = useState()
 
-  async function obtenerPeliculas(tipo) {
+  async function obtenerContenido(tipo) {
     try {
-      const res = await fetch(`http://127.0.0.1:9000/getPelis?tipo=${tipo}`);
+      const res = await fetch(`http://127.0.0.1:9000/getContenido?tipo=${tipo}&categoria=${catSeleccionada}`);
       const data = await res.json();
       setContenido(data);
       console.log("Recibiendo", data);
@@ -17,10 +17,9 @@ function Galeria({ tipo, setMostrarModalDetalle }) {
     }
   }
 
-
     useEffect(() => {
-    obtenerPeliculas(tipo);
-  }, [tipo]);
+    obtenerContenido(tipo);
+  }, [tipo, catSeleccionada]);
  
   return (
     <>
