@@ -2,13 +2,14 @@ import ImagenGenerica from "./ImagenGenerica";
 import { useEffect, useState } from "react";
 
 
-function Galeria({ tipo, setMostrarModalDetalle, categorias, setCategorias, catSeleccionada, setCatSeleccionada }) {
+function Galeria({ tipo, setMostrarModalDetalle, categorias, setCategorias, catSeleccionada, setCatSeleccionada, palabra }) {
 
   const [contenido, setContenido] = useState()
 
   async function obtenerContenido(tipo) {
     try {
-      const res = await fetch(`http://127.0.0.1:9000/getContenido?tipo=${tipo}&categoria=${catSeleccionada}`);
+      const url = `http://127.0.0.1:9000/getContenido?tipo=${tipo}&categoria=${catSeleccionada}&palabra=${palabra}`;
+      const res = await fetch(url);
       const data = await res.json();
       setContenido(data);
       console.log("Recibiendo", data);
@@ -19,7 +20,7 @@ function Galeria({ tipo, setMostrarModalDetalle, categorias, setCategorias, catS
 
     useEffect(() => {
     obtenerContenido(tipo);
-  }, [tipo, catSeleccionada]);
+  }, [tipo, catSeleccionada, palabra]);
  
   return (
     <>

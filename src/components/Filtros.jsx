@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function Filtros({categorias, setCategorias, catSeleccionda, setCatSeleccionada}) {
+function Filtros({categorias, setCategorias, catSeleccionda, setCatSeleccionada, setPalabra}) {
   
   useEffect(() => {
     async function obtenerCategorias() {
@@ -49,6 +49,9 @@ function Filtros({categorias, setCategorias, catSeleccionda, setCatSeleccionada}
             name="buscador"
             id="buscador"
             placeholder="Buscar por nombre"
+            onChange={(e) => {
+              setPalabra(e.target.value);
+            }}
           />
         </form>
       </article>

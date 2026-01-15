@@ -12,6 +12,7 @@ function App() {
   const [mostrarModalDetalle, setMostrarModalDetalle] = useState({});
   const [categorias, setCategorias] = useState([]);
   const [catSeleccionada, setCatSeleccionada] = useState(0);
+  const [palabra, setPalabra] = useState("");
 
   return (
     <>
@@ -21,6 +22,8 @@ function App() {
         setCategorias={setCategorias}
         catSeleccionada={catSeleccionada}
         setCatSeleccionada={setCatSeleccionada}
+        palabra={palabra}
+        setPalabra={setPalabra}
       />
       <Galeria
         tipo={tipo}
@@ -29,6 +32,8 @@ function App() {
         setCategorias={setCategorias}
         catSeleccionada={catSeleccionada}
         setCatSeleccionada={setCatSeleccionada}
+        palabra={palabra}
+        setPalabra={setPalabra}
       />
       {mostrarModalDetalle.id > 0 && (
         <ModalDetalle
