@@ -1,8 +1,10 @@
 import { useState } from "react";
+
 function ModalDetalle({ mostrar, setMostrar }) {
-  const [temporada, setTemporada] = useState();
+  const [temporada, setTemporada] = useState("");
   const [capitulos, setCapitulos] = useState([]);
-  const [capitulo, setCapitulo] = useState();
+  const [capituloSeleccionado, setCapituloSeleccionado] = useState(null);
+
   return (
     <div className="modal">
       <div
@@ -11,6 +13,7 @@ function ModalDetalle({ mostrar, setMostrar }) {
           setMostrar({});
         }}
       ></div>
+
       <div className="contenido-modal">
         <section className="info">
           <div className="info_contenido">
@@ -20,63 +23,74 @@ function ModalDetalle({ mostrar, setMostrar }) {
               </div>
               <button className="boton">Comenzar</button>
             </div>
+
             <div className="info_descripcion">
               <div className="info_linea">
                 <h3>Título:</h3>
-                <p id="titulo">{mostrar?.titulo}</p>
+                <p>{mostrar?.titulo}</p>
               </div>
-              {mostrar.tipo === "pelicula" && (
-                <div className="info_linea">
-                  <h3>Duración:</h3>
-                  <p id="duracion">{mostrar?.duracion}</p>
-                </div>
-              )}
-              {mostrar.tipo === "serie" && (
-                <div className="info_linea">
-                  <h3>Temporadas:</h3>
-                  <select
-                    name="Temporadas"
-                    id="Temporadas"
-                    value={temporada || ""}
-                    onChange={(e) => {
-                      setTemporada(e.target.value);
-                      const aux = [];
-                      const cantCapitulos = mostrar?.temporadas.find(
-                        (t) => parseInt(t.numero) === parseInt(e.target.value)
-                      )?.capitulos;
 
-                      for (let i = 1; i <= cantCapitulos; i++) aux.push(i);
-                      setCapitulos(aux);
-                      setCapitulo();
-                    }}
-                  >
-                    <option key={"opcion_temporada_null"}>Seleccionar</option>
-                    {mostrar?.temporadas.map((t, i) => (
-                      <option key={"opcion_temporada_" + i}>{t.numero}</option>
-                    ))}
-                  </select>
-                  <h3>Capítulos:</h3>
-                  <select
-                    name="Capitulo"
-                    id="Capitulo"
-                    value={capitulo || ""}
-                    onChange={(e) => {
-                      setCapitulo(e.target.value);
-                    }}
-                  >
-                    <option key={"opcion_capitulo_null"}>Seleccionar</option>
-                    {capitulos.map((c, i) => (
-                      <option key={"opcion_capitulo_" + i}>{c}</option>
-                    ))}
-                  </select>
-                </div>
+              {mostrar?.tipo === 2 && (
+                <>
+                  <div className="info_linea">
+                    <h3>Temporadas:</h3>
+                    <select
+                      value={temporada}
+                      onChange={(e) => {
+                        const nroTemp = e.target.value;
+                        setTemporada(nroTemp);
+
+                        const tempSeleccionada = mostrar?.temporadas?.find(
+                          (t) => String(t.nro) === String(nroTemp)
+                        );
+
+                        setCapitulos(tempSeleccionada?.capitulos || []);
+                        setCapituloSeleccionado(null); // reset
+                      }}
+                    >
+                      <option value="">Seleccionar</option>
+                      {mostrar?.temporadas?.map((t, i) => (
+                        <option key={"temporada_" + i} value={t.nro}>
+                          {t.nro}
+                        </option>
+                      ))}
+                    </select>
+
+                    <h3>Capítulos:</h3>
+                    <select
+                      value={capituloSeleccionado?.nro || ""}
+                      onChange={(e) => {
+                        const nroCap = e.target.value;
+                        const cap = capitulos.find(
+                          (c) => String(c.nro) === String(nroCap)
+                        );
+                        setCapituloSeleccionado(cap);
+                      }}
+                      disabled={!capitulos.length}
+                    >
+                      <option value="">Seleccionar</option>
+                      {capitulos.map((c, i) => (
+                        <option key={"capitulo_" + i} value={c.nro}>
+                          {c.titulo}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {capituloSeleccionado && (
+                    <div className="info_linea">
+                      <h3>Duración:</h3>
+                      <p>{capituloSeleccionado.duracion} min</p>
+                    </div>
+                  )}
+                </>
               )}
-              <div className="info_descripcion">
-                <div className="info_linea">
-                  <h3>Año:</h3>
-                  <p id="titulo">{mostrar?.anio}</p>
-                </div>
+
+              <div className="info_linea">
+                <h3>Año:</h3>
+                <p>{mostrar?.anio}</p>
               </div>
+
               <div className="info_linea">
                 <h3>Género:</h3>
                 <div id="genero">
@@ -87,6 +101,7 @@ function ModalDetalle({ mostrar, setMostrar }) {
                   ))}
                 </div>
               </div>
+
               <div className="info_linea">
                 <h3>Actores:</h3>
                 <div id="actores">
@@ -99,9 +114,10 @@ function ModalDetalle({ mostrar, setMostrar }) {
                   ))}
                 </div>
               </div>
+
               <div className="info_linea">
                 <h3>Resumen:</h3>
-                <p id="resumen">{mostrar?.resumen}</p>
+                <p>{mostrar?.resumen}</p>
               </div>
             </div>
           </div>
