@@ -1,23 +1,29 @@
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import ImagenGenerica from "./ImagenGenerica";
 
-function NavBar({ tipo, setTipo }) {
+function NavBar({ vista, setVista, setTipo }) {
   const [botones, setBotones] = useState([
-    { txt: "Home", mostrar: 0, img: "home", activo: true },
-    { txt: "Series", mostrar: 2, img: "peliSerie", activo: false },
-    { txt: "Películas", mostrar: 1, img: "peliSerie", activo: false },
-    { txt: "Perfil", img: "perfil", activo: false },
-    { txt: "Próximos lanzamientos", img: "peliSerie", activo: false },
+    { txt: "Home", vista: "home", tipo: 0, img: "home", activo: true },
+    { txt: "Series", vista: "series", tipo: 2, img: "peliSerie", activo: false },
+    { txt: "Películas", vista: "peliculas", tipo: 1, img: "peliSerie", activo: false },
+    { txt: "Perfil", vista: "perfil", img: "perfil", activo: false },
+    { txt: "Próximos lanzamientos", vista: "proximos", img: "peliSerie", activo: false }
   ]);
 
-
   function actualizaActivo(indice) {
-    const nuevosBotones = [];
-    botones?.forEach((x, i) => {
-      x.activo = i === indice;
-      nuevosBotones.push(x);
-      if (x.activo) setTipo(x.mostrar);
+    const nuevosBotones = botones.map((b, i) => {
+      const activo = i === indice;
+
+      if (activo) {
+        setVista(b.vista);
+        if (b.tipo !== undefined) {
+          setTipo(b.tipo);
+        }
+      }
+
+      return { ...b, activo };
     });
+
     setBotones(nuevosBotones);
   }
 
@@ -25,20 +31,18 @@ function NavBar({ tipo, setTipo }) {
     <header>
       <nav className="nav">
         <ul className="nav_ul">
-          {botones?.map((b, i) => {
-            return (
-              <li
-                key={"foto_navBar" + i}
-                className={b?.activo ? "activo puntero" : "puntero"}
-                onClick={() => actualizaActivo(i)}
-              >
-                <div className="imagen">
-                  <ImagenGenerica imagen={b.img} />
-                  {b.txt}
-                </div>
-              </li>
-            );
-          })}
+          {botones.map((b, i) => (
+            <li
+              key={"nav_" + i}
+              className={b.activo ? "activo puntero" : "puntero"}
+              onClick={() => actualizaActivo(i)}
+            >
+              <div className="imagen">
+                <ImagenGenerica imagen={b.img} />
+                {b.txt}
+              </div>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>

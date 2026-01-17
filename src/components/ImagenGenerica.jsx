@@ -89,6 +89,7 @@ const ImagenGenerica = ({ imagen }) => {
   else if (imagen === "Wonka") x = Wonka;
   else if (imagen === "YellowJackets") x = YellowJackets;
   else if (imagen === "You") x = You;
+  else if (imagen === "FotoPerfil") x = FotoPerfil;
 
   return (
     <div>
