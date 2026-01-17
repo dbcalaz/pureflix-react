@@ -32,49 +32,53 @@ function ModalDetalle({ mostrar, setMostrar }) {
 
               {mostrar?.tipo === 2 && (
                 <>
-                  <div className="info_linea">
-                    <h3>Temporadas:</h3>
-                    <select
-                      value={temporada}
-                      onChange={(e) => {
-                        const nroTemp = e.target.value;
-                        setTemporada(nroTemp);
+                  <div className="info_linea info_linea--selects">
+                    <div className="campo">
+                      <h3>Temporada:</h3>
+                      <select
+                        value={temporada}
+                        onChange={(e) => {
+                          const nroTemp = e.target.value;
+                          setTemporada(nroTemp);
 
-                        const tempSeleccionada = mostrar?.temporadas?.find(
-                          (t) => String(t.nro) === String(nroTemp)
-                        );
+                          const tempSeleccionada = mostrar?.temporadas?.find(
+                            (t) => String(t.nro) === String(nroTemp)
+                          );
 
-                        setCapitulos(tempSeleccionada?.capitulos || []);
-                        setCapituloSeleccionado(null); // reset
-                      }}
-                    >
-                      <option value="">Seleccionar</option>
-                      {mostrar?.temporadas?.map((t, i) => (
-                        <option key={"temporada_" + i} value={t.nro}>
-                          {t.nro}
-                        </option>
-                      ))}
-                    </select>
+                          setCapitulos(tempSeleccionada?.capitulos || []);
+                          setCapituloSeleccionado(null); // reset
+                        }}
+                      >
+                        <option value="">Seleccionar</option>
+                        {mostrar?.temporadas?.map((t, i) => (
+                          <option key={"temporada_" + i} value={t.nro}>
+                            {t.nro}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
 
-                    <h3>Capítulos:</h3>
-                    <select
-                      value={capituloSeleccionado?.nro || ""}
-                      onChange={(e) => {
-                        const nroCap = e.target.value;
-                        const cap = capitulos.find(
-                          (c) => String(c.nro) === String(nroCap)
-                        );
-                        setCapituloSeleccionado(cap);
-                      }}
-                      disabled={!capitulos.length}
-                    >
-                      <option value="">Seleccionar</option>
-                      {capitulos.map((c, i) => (
-                        <option key={"capitulo_" + i} value={c.nro}>
-                          {c.titulo}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="campo">
+                      <h3>Capítulo:</h3>
+                      <select
+                        value={capituloSeleccionado?.nro || ""}
+                        onChange={(e) => {
+                          const nroCap = e.target.value;
+                          const cap = capitulos.find(
+                            (c) => String(c.nro) === String(nroCap)
+                          );
+                          setCapituloSeleccionado(cap);
+                        }}
+                        disabled={!capitulos.length}
+                      >
+                        <option value="">Seleccionar</option>
+                        {capitulos.map((c, i) => (
+                          <option key={"capitulo_" + i} value={c.nro}>
+                            {c.titulo}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
 
                   {capituloSeleccionado && (
@@ -104,13 +108,19 @@ function ModalDetalle({ mostrar, setMostrar }) {
 
               <div className="info_linea">
                 <h3>Actores:</h3>
-                <div id="actores">
+
+                <div className="actores">
                   {mostrar?.actores?.map((a, i) => (
-                    <div key={"actor_" + i}>
-                      <p>
+                    <span key={"actor_" + i} className="actor">
+                      <a
+                        href={a.wikipedia}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         {a.nombre} {a.apellido}
-                      </p>
-                    </div>
+                      </a>
+                      {i < mostrar.actores.length - 1 && ", "}
+                    </span>
                   ))}
                 </div>
               </div>

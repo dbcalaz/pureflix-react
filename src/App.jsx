@@ -28,9 +28,6 @@ function App() {
       <Galeria
         tipo={tipo}
         setMostrarModalDetalle={setMostrarModalDetalle}
-        categorias={categorias}
-        setCategorias={setCategorias}
-        catSeleccionada={catSeleccionada}
         setCatSeleccionada={setCatSeleccionada}
         palabra={palabra}
         setPalabra={setPalabra}

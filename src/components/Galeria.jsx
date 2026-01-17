@@ -2,7 +2,7 @@ import ImagenGenerica from "./ImagenGenerica";
 import { useEffect, useState } from "react";
 
 
-function Galeria({ tipo, setMostrarModalDetalle, categorias, setCategorias, catSeleccionada, setCatSeleccionada, palabra }) {
+function Galeria({ tipo, setMostrarModalDetalle, catSeleccionada, palabra }) {
 
   const [contenido, setContenido] = useState()
 

@@ -184,17 +184,10 @@ img {
   padding-bottom: 4.5rem;
 }
 
-footer {
+.puntero:hover {
   background-color: #e6e6e6;
-  padding-bottom: 1.5rem;
-  padding-top: 1rem;
-  text-align: center;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
 }
 
-/*1024 px (tablets grandes o laptops pequeños)*/
 @media screen and (max-width: 64em) {
   .nav_ul {
     display: grid;
@@ -282,7 +275,6 @@ footer {
   }
 }
 
-/*768 px (tablets en orientación vertical, iPad, pantallas medias)*/
 @media screen and (max-width: 48em) {
   .nav_ul {
     display: grid;
@@ -394,16 +386,9 @@ footer {
     top: 10rem;
     margin-bottom: 14rem;
   }
-
-  footer {
-    padding-bottom: 1rem;
-    padding-top: 0.5rem;
-    width: 100%;
-    font-size: small;
-  }
 }
 
-/*480 px (smartphones, por ejemplo iPhone SE/8, Galaxy S8 en modo vertical)*/
+
 @media screen and (max-width: 30em) {
   .nav_ul {
     display: grid;
@@ -482,12 +467,5 @@ footer {
   .galeria {
     grid-template-columns: 1fr;
     margin-bottom: 13.5rem;
-  }
-
-  footer {
-    padding-bottom: 1rem;
-    padding-top: 0.5rem;
-    width: 100%;
-    font-size: x-small;
   }
 }
