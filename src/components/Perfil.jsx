@@ -5,18 +5,14 @@ function Perfil() {
     <>
       <div className="contenedor-principal">
         <form
-          action="./galeria.html"
-          method="get"
           className="formulario-contenedor"
         >
           <section className="columna columna-izquierda">
-             <ImagenGenerica imagen={"FotoPerfil"}/>
+            <ImagenGenerica imagen={"FotoPerfil"} />
             <p className="perfil-usuario" id="nombreDeUsuario">
               Nombre de usuario
             </p>
-            <a href="./index.html" className="boton boton-cerrar">
-              Cerrar sesión
-            </a>
+            <button onClick={() => setVista("login")}>Cerrar sesión</button>
           </section>
 
           <section className="columna columna-central">
@@ -45,7 +41,7 @@ function Perfil() {
                 name="nueva-contrasenia"
                 type="password"
                 placeholder="Ingrese nueva contraseña"
-                required
+                //required
               />
             </article>
 
@@ -56,7 +52,7 @@ function Perfil() {
                 name="repetir-contrasenia"
                 type="password"
                 placeholder="Ingrese nueva contraseña"
-                required
+                //required
               />
             </article>
 
@@ -137,7 +133,10 @@ function Perfil() {
 
       <section className="info_favorito_contenido">
         <h2>Mi lista</h2>
-        <div className="contenedor_info_carrusel" id="contenedorFavoritos"></div>
+        <div
+          className="contenedor_info_carrusel"
+          id="contenedorFavoritos"
+        ></div>
       </section>
 
       <section className="info_favorito_contenido">

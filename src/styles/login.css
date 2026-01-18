@@ -1,11 +1,4 @@
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #222;
-  color: #eee;
-  text-align: center;
-}
-
-form {
+.formulario {
   width: 40%;
   padding: 20px;
   margin: 50px auto;
@@ -22,14 +15,13 @@ form {
   margin-bottom: 1rem;
 }
 
-label {
+.labels {
   width: 9rem;
   text-align: right;
   margin-right: 4rem;
-  color: #eee;
 }
 
-input {
+.inputs {
   width: 14rem;
   padding: 0.625rem;
   font-size: 1rem;
@@ -45,23 +37,6 @@ input {
   justify-content: space-between;
   gap: 10px;
   flex-wrap: wrap;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-a {
-  text-align: center;
-  color: #3b70b0;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 .boton-confirmar,
@@ -123,7 +98,7 @@ a:hover {
 }
 
 @media screen and (max-width: 64em) {
-  form {
+  .formulario {
     width: 50%;
     padding: 1.25rem;
     margin: 3rem auto;
@@ -132,12 +107,12 @@ a:hover {
 }
 
 @media screen and (max-width: 48em) {
-  form {
+  .formulario {
     width: 70%;
     padding: 1rem;
   }
 
-  input {
+  .inputs {
     width: 10rem;
   }
 
@@ -146,14 +121,14 @@ a:hover {
     align-items: flex-start;
   }
 
-  label {
+  .labels {
     margin-bottom: 0.5em;
     text-align: right;
   }
 }
 
 @media screen and (max-width: 30em) {
-  form {
+  .formulario {
     width: 90%;
     padding: 1rem;
     margin: 1.9rem auto;
@@ -164,13 +139,13 @@ a:hover {
     flex-direction: column;
   }
 
-  input {
+  .inputs {
     font-size: 0.9rem;
     padding: 0.5rem;
     width: 14rem;
   }
 
-  label{
+  .labels{
     text-align: justify;
   }
 

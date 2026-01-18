@@ -28,7 +28,7 @@ import lupa from "../imagenes/lupa.png";
 import marioBros from "../imagenes/marioBros.jpg";
 import MisionImposible from "../imagenes/MisionImposible.jpg";
 import Motorheads from "../imagenes/Motorheads.jpg";
-import pure from "../imagenes/pure.JPG";
+import pure from "../imagenes/pure.jpg";
 import saul from "../imagenes/saul.jpg";
 import Severance from "../imagenes/Severance.jpg";
 import simpsons from "../imagenes/simpsons.webp";
@@ -90,6 +90,7 @@ const ImagenGenerica = ({ imagen }) => {
   else if (imagen === "YellowJackets") x = YellowJackets;
   else if (imagen === "You") x = You;
   else if (imagen === "FotoPerfil") x = FotoPerfil;
+  else if (imagen === "pure") x = pure;
 
   return (
     <div>

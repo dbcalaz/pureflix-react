@@ -1,17 +1,20 @@
 import { useState } from "react";
+import "./styles/login.css";
 import "./styles/galeria.css";
 import "./styles/serie_pelicula.css";
 import "./styles/perfil.css";
-import "./App.css";
 
 import NavBar from "./components/NavBar";
 import Galeria from "./components/Galeria";
 import ModalDetalle from "./components/ModalDetalle";
 import Filtros from "./components/Filtros";
 import Perfil from "./components/Perfil";
+import Login from "./components/Login";
+import Recuperar from "./components/Recuperar"
+import Registro from "./components/Registro";
 
 function App() {
-  const [vista, setVista] = useState("home");
+  const [vista, setVista] = useState("login");
   const [tipo, setTipo] = useState(0);
   const [mostrarModalDetalle, setMostrarModalDetalle] = useState({});
   const [categorias, setCategorias] = useState([]);
@@ -20,10 +23,15 @@ function App() {
 
   return (
     <>
-      <NavBar vista={vista} setVista={setVista} setTipo={setTipo} />
+      {vista === "login" && <Login setVista={setVista} />}
+
+      {vista === "recuperar" && <Recuperar setVista={setVista} />}
+
+      {vista === "registro" && <Registro setVista={setVista} />}
 
       {(vista === "home" || vista === "series" || vista === "peliculas") && (
         <>
+          <NavBar vista={vista} setVista={setVista} setTipo={setTipo} />
           <Filtros
             categorias={categorias}
             setCategorias={setCategorias}
@@ -48,7 +56,12 @@ function App() {
         </>
       )}
 
-      {vista === "perfil" && <Perfil />}
+      {vista === "perfil" && (
+        <>
+          <NavBar vista={vista} setVista={setVista} setTipo={setTipo} />
+          <Perfil />
+        </>
+      )}
     </>
   );
 }
