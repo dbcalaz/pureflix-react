@@ -3,6 +3,7 @@ import "./styles/login.css";
 import "./styles/galeria.css";
 import "./styles/serie_pelicula.css";
 import "./styles/perfil.css";
+import "./styles/lanzamientos.css";
 
 import NavBar from "./components/NavBar";
 import Galeria from "./components/Galeria";
@@ -12,6 +13,7 @@ import Perfil from "./components/Perfil";
 import Login from "./components/Login";
 import Recuperar from "./components/Recuperar"
 import Registro from "./components/Registro";
+import ProximosLanzamientos from "./components/ProximosLanzamientos";
 
 function App() {
   const [vista, setVista] = useState("login");
@@ -60,6 +62,13 @@ function App() {
         <>
           <NavBar vista={vista} setVista={setVista} setTipo={setTipo} />
           <Perfil />
+        </>
+      )}
+
+      {vista === "proximos" && (
+        <>
+          <NavBar vista={vista} setVista={setVista} setTipo={setTipo} />
+          <ProximosLanzamientos />
         </>
       )}
     </>

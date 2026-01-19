@@ -7,7 +7,7 @@ function NavBar({ vista, setVista, setTipo }) {
     { txt: "Series", vista: "series", tipo: 2, img: "peliSerie", activo: false },
     { txt: "Películas", vista: "peliculas", tipo: 1, img: "peliSerie", activo: false },
     { txt: "Perfil", vista: "perfil", img: "perfil", activo: false },
-    { txt: "Próximos lanzamientos", vista: "proximos", img: "peliSerie", activo: false }
+    { txt: "Próximos lanzamientos", vista: "proximos", tipo: 5, img: "peliSerie", activo: false }
   ]);
 
   function actualizaActivo(indice) {
