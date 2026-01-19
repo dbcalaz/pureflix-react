@@ -1,4 +1,4 @@
-import { imagenes } from "../public/imagenes";
+import { imagenes } from "../../public/imagenes";
 
 const ImagenGenerica = ({
   imagen,
