@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 main {
@@ -47,7 +48,7 @@ main {
   right: 0.5rem;
 }
 
-.campana.pintado img{
+.campana.pintado img {
   background-color: yellow;
   opacity: 1;
 }

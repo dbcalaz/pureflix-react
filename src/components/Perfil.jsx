@@ -4,11 +4,13 @@ function Perfil() {
   return (
     <>
       <div className="contenedor-principal">
-        <form
-          className="formulario-contenedor"
-        >
+        <form className="formulario-contenedor">
           <section className="columna columna-izquierda">
-            <ImagenGenerica imagen={"FotoPerfil"} />
+            <ImagenGenerica
+              imagen="FotoPerfil"
+              className="foto-perfil"
+              alt="fotoPerfil"
+            />
             <p className="perfil-usuario" id="nombreDeUsuario">
               Nombre de usuario
             </p>

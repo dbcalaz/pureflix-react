@@ -1,10 +1,8 @@
 import ImagenGenerica from "./ImagenGenerica";
 import { useEffect, useState } from "react";
 
-
 function Galeria({ tipo, setMostrarModalDetalle, catSeleccionada, palabra }) {
-
-  const [contenido, setContenido] = useState()
+  const [contenido, setContenido] = useState();
 
   async function obtenerContenido(tipo) {
     try {
@@ -18,10 +16,10 @@ function Galeria({ tipo, setMostrarModalDetalle, catSeleccionada, palabra }) {
     }
   }
 
-    useEffect(() => {
+  useEffect(() => {
     obtenerContenido(tipo);
   }, [tipo, catSeleccionada, palabra]);
- 
+
   return (
     <>
       <section className="galeria">
@@ -34,7 +32,9 @@ function Galeria({ tipo, setMostrarModalDetalle, catSeleccionada, palabra }) {
                 setMostrarModalDetalle(p);
               }}
             >
-              <ImagenGenerica imagen={p.imagen.split(".")[0]} />
+              <ImagenGenerica
+                imagen={p.imagen.split(".")[0]}
+              />
             </div>
           );
         })}

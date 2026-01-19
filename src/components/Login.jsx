@@ -1,10 +1,14 @@
 import ImagenGenerica from "./ImagenGenerica";
 
-function Login({ setVista}) {
+function Login({ setVista }) {
   return (
     <>
-      <div>
-        <ImagenGenerica imagen={"pure"} />
+      <div className="login-container">
+        <ImagenGenerica
+          imagen="pureflix"
+          alt="Pureflix"
+          className="logo-login"
+        />
 
         <div>
           <form
@@ -46,7 +50,9 @@ function Login({ setVista}) {
           </form>
 
           <section>
-            <button onClick={() => setVista("recuperar")}>¿Olvidaste tu contraseña?</button>
+            <button onClick={() => setVista("recuperar")}>
+              ¿Olvidaste tu contraseña?
+            </button>
             <button onClick={() => setVista("registro")}>Registrarse</button>
           </section>
         </div>
