@@ -1,9 +1,9 @@
 function Recuperar() {
   return (
     <>
-      <div>
-        <form>
-          <h1>Recuperar contraseña</h1>
+      <div className="container_recuperar">
+        <h1>Recuperar contraseña</h1>
+        <form className="form_recuperar">
           <div classNameName="label_input">
             <label htmlFor="gmail"> E-mail </label>
             <input
@@ -26,11 +26,11 @@ function Recuperar() {
             />
           </div>
 
-          <section className="botones">
-            <button className="boton-confirmar" type="submit" disabled>
+          <section className="section_btn_recuperar">
+            <button className="btn enviar" type="submit">
               Enviar email
             </button>
-            <button onClick={() => setVista("login")}>Cancelar</button>
+            <button className="btn cancelar" onClick={() => setVista("login")}>Cancelar</button>
           </section>
         </form>
       </div>

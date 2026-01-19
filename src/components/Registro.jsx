@@ -1,7 +1,7 @@
 function Registro() {
   return (
     <>
-      <div class="Registrarse">
+      <div className="Registrarse">
         <h1>Registrarse</h1>
       </div>
       <form id="form">

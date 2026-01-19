@@ -49,11 +49,11 @@ function Login({ setVista }) {
             </button>
           </form>
 
-          <section>
-            <button onClick={() => setVista("recuperar")}>
+          <section className="section_sec">
+            <button className="btn_sec" onClick={() => setVista("recuperar")}>
               ¿Olvidaste tu contraseña?
             </button>
-            <button onClick={() => setVista("registro")}>Registrarse</button>
+            <button className="btn_sec" onClick={() => setVista("registro")}>Registrarse</button>
           </section>
         </div>
       </div>
