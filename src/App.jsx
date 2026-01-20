@@ -42,6 +42,7 @@ function App() {
           <Galeria
             tipo={tipo}
             setMostrarModalDetalle={setMostrarModalDetalle}
+            catSeleccionada={catSeleccionada}
             setCatSeleccionada={setCatSeleccionada}
             palabra={palabra}
             setPalabra={setPalabra}

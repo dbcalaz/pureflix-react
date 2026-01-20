@@ -30,6 +30,7 @@ function Filtros({
           </label>
 
           <select
+            name="categoria"
             id="categoria"
             className="filters__select"
             value={catSeleccionada}
