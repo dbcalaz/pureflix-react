@@ -6,34 +6,30 @@ function ModalDetalle({ mostrar, setMostrar }) {
   const [capituloSeleccionado, setCapituloSeleccionado] = useState(null);
 
   return (
-    <div className="modal">
-      <div
-        className="modal-bg"
-        onClick={() => {
-          setMostrar({});
-        }}
-      ></div>
+    <div className="modal-detalle">
+      <div className="modal-detalle__overlay" onClick={() => setMostrar({})} />
 
-      <div className="contenido-modal">
-        <section className="info">
-          <div className="info_contenido">
-            <div className="video_contenedor">
-              <div className="video" id="video">
-                <iframe src={mostrar?.link_trailer}></iframe>
+      <div className="modal-detalle__contenido">
+        <section className="modal-detalle__info">
+          <div className="modal-detalle__layout">
+            <div className="modal-detalle__video-bloque">
+              <div className="modal-detalle__video">
+                <iframe src={mostrar?.link_trailer} title="Trailer" />
               </div>
-              <button className="boton">Comenzar</button>
+
+              <button className="modal-detalle__boton">Comenzar</button>
             </div>
 
-            <div className="info_descripcion">
-              <div className="info_linea">
+            <div className="modal-detalle__descripcion">
+              <div className="modal-detalle__fila">
                 <h3>Título:</h3>
                 <p>{mostrar?.titulo}</p>
               </div>
 
               {mostrar?.tipo === 2 && (
                 <>
-                  <div className="info_linea info_linea--selects">
-                    <div className="campo">
+                  <div className="modal-detalle__fila modal-detalle__fila--selects">
+                    <div className="modal-detalle__campo">
                       <h3>Temporada:</h3>
                       <select
                         value={temporada}
@@ -42,30 +38,29 @@ function ModalDetalle({ mostrar, setMostrar }) {
                           setTemporada(nroTemp);
 
                           const tempSeleccionada = mostrar?.temporadas?.find(
-                            (t) => String(t.nro) === String(nroTemp)
+                            (t) => String(t.nro) === String(nroTemp),
                           );
 
                           setCapitulos(tempSeleccionada?.capitulos || []);
-                          setCapituloSeleccionado(null); // reset
+                          setCapituloSeleccionado(null);
                         }}
                       >
                         <option value="">Seleccionar</option>
                         {mostrar?.temporadas?.map((t, i) => (
-                          <option key={"temporada_" + i} value={t.nro}>
+                          <option key={i} value={t.nro}>
                             {t.nro}
                           </option>
                         ))}
                       </select>
                     </div>
 
-                    <div className="campo">
+                    <div className="modal-detalle__campo">
                       <h3>Capítulo:</h3>
                       <select
                         value={capituloSeleccionado?.nro || ""}
                         onChange={(e) => {
-                          const nroCap = e.target.value;
                           const cap = capitulos.find(
-                            (c) => String(c.nro) === String(nroCap)
+                            (c) => String(c.nro) === e.target.value,
                           );
                           setCapituloSeleccionado(cap);
                         }}
@@ -73,7 +68,7 @@ function ModalDetalle({ mostrar, setMostrar }) {
                       >
                         <option value="">Seleccionar</option>
                         {capitulos.map((c, i) => (
-                          <option key={"capitulo_" + i} value={c.nro}>
+                          <option key={i} value={c.nro}>
                             {c.titulo}
                           </option>
                         ))}
@@ -82,7 +77,7 @@ function ModalDetalle({ mostrar, setMostrar }) {
                   </div>
 
                   {capituloSeleccionado && (
-                    <div className="info_linea">
+                    <div className="modal-detalle__fila">
                       <h3>Duración:</h3>
                       <p>{capituloSeleccionado.duracion} min</p>
                     </div>
@@ -90,28 +85,28 @@ function ModalDetalle({ mostrar, setMostrar }) {
                 </>
               )}
 
-              <div className="info_linea">
+              <div className="modal-detalle__fila">
                 <h3>Año:</h3>
                 <p>{mostrar?.anio}</p>
               </div>
 
-              <div className="info_linea">
+              <div className="modal-detalle__fila">
                 <h3>Género:</h3>
-                <div id="genero">
+                <div className="modal-detalle__generos">
                   {mostrar?.genero?.map((g, i) => (
-                    <div key={"genero_" + i}>
-                      <p>{g.descripcion}</p>
-                    </div>
+                    <span key={i}>
+                      {g.descripcion}
+                      {i < mostrar.genero.length - 1 && ", "}
+                    </span>
                   ))}
                 </div>
               </div>
 
-              <div className="info_linea">
+              <div className="modal-detalle__fila">
                 <h3>Actores:</h3>
-
-                <div className="actores">
+                <div className="modal-detalle__actores">
                   {mostrar?.actores?.map((a, i) => (
-                    <span key={"actor_" + i} className="actor">
+                    <span key={i}>
                       <a
                         href={a.wikipedia}
                         target="_blank"
@@ -125,7 +120,7 @@ function ModalDetalle({ mostrar, setMostrar }) {
                 </div>
               </div>
 
-              <div className="info_linea">
+              <div className="modal-detalle__fila">
                 <h3>Resumen:</h3>
                 <p>{mostrar?.resumen}</p>
               </div>

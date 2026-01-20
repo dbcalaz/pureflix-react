@@ -1,25 +1,26 @@
 function ProximosLanzamientos() {
   return (
-    <>
-      <div className="container">
-        <section className="box-seccion uno">
-          <h2>Estrenos de esta semana</h2>
-          <article className="box" id="esta_semana"></article>
-        </section>
-        <section className="box-seccion">
-          <h2>Estrenos de la próxima semana</h2>
-          <article className="box" id="proxima_semana"></article>
-        </section>
-        <section className="box-seccion">
-          <h2>Estrenos del mes que viene</h2>
-          <article className="box" id="proximo_mes"></article>
-        </section>
-        <section className="box-seccion">
-          <h2>En grabación</h2>
-          <article className="box" id="en_grabacion"></article>
-        </section>
-      </div>
-    </>
+    <div className="releases">
+      <section className="releases-section releases-section--current">
+        <h2 className="releases-title">Estrenos de esta semana</h2>
+        <article className="releases-grid" id="releases-current"></article>
+      </section>
+
+      <section className="releases-section">
+        <h2 className="releases-title">Estrenos de la próxima semana</h2>
+        <article className="releases-grid" id="releases-next-week"></article>
+      </section>
+
+      <section className="releases-section">
+        <h2 className="releases-title">Estrenos del mes que viene</h2>
+        <article className="releases-grid" id="releases-next-month"></article>
+      </section>
+
+      <section className="releases-section">
+        <h2 className="releases-title">En grabación</h2>
+        <article className="releases-grid" id="releases-filming"></article>
+      </section>
+    </div>
   );
 }
 

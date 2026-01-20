@@ -1,0 +1,59 @@
+.filters {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  margin-top: 4.5rem; // espacio real debajo del navbar
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__label {
+    font-weight: 600;
+  }
+
+  &__select {
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    border: 1px solid #ccc;
+    background-color: #fff;
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    width: 15rem;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    border: 1px solid #ccc;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .filters {
+    &__container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    &__input {
+      width: 100%;
+    }
+  }
+}

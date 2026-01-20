@@ -1,36 +1,45 @@
-function Recuperar() {
+function Recuperar({ setVista }) {
   return (
     <>
-      <div className="container_recuperar">
+      <div className="recover-container">
         <h1>Recuperar contraseña</h1>
-        <form className="form_recuperar">
-          <div classNameName="label_input">
-            <label htmlFor="gmail"> E-mail </label>
+
+        <form className="recover-form">
+          <div className="recover-field">
+            <label htmlFor="gmail">E-mail</label>
             <input
               type="email"
               placeholder="Ingrese email"
-              //required
               name="gmail"
               id="gmail"
             />
           </div>
 
-          <div className="label_input">
-            <label htmlFor="usuario"> Usuario </label>
+          <div className="recover-field">
+            <label htmlFor="usuario">Usuario</label>
             <input
               type="text"
               placeholder="Ingrese nombre de usuario"
-              //required
               name="user"
               id="usuario"
             />
           </div>
 
-          <section className="section_btn_recuperar">
-            <button className="btn enviar" type="submit">
+          <section className="recover-actions">
+            <button
+              className="recover-button recover-button--submit"
+              type="submit"
+            >
               Enviar email
             </button>
-            <button className="btn cancelar" onClick={() => setVista("login")}>Cancelar</button>
+
+            <button
+              className="recover-button recover-button--cancel"
+              onClick={() => setVista("login")}
+              type="button"
+            >
+              Cancelar
+            </button>
           </section>
         </form>
       </div>

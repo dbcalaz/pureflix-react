@@ -1,0 +1,47 @@
+.recover-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    margin-bottom: 1.5rem;
+  }
+
+  .recover-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+
+    .recover-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .recover-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+
+      .recover-button {
+        width: 10rem;
+        height: 2rem;
+        cursor: pointer;
+        border: none;
+
+        &--submit {
+          background-color: green;
+        }
+
+        &--cancel {
+          background-color: red;
+        }
+      }
+    }
+  }
+}

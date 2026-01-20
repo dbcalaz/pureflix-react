@@ -7,53 +7,61 @@ function Login({ setVista }) {
         <ImagenGenerica
           imagen="pureflix"
           alt="Pureflix"
-          className="logo-login"
+          className="login-logo"
         />
 
         <div>
           <form
-            className="formulario"
+            className="login-form"
             onSubmit={(e) => {
               e.preventDefault();
               setVista("home");
             }}
           >
-            <div className="label_input">
-              <label className="labels" htmlFor="usuario">
+            <div className="login-field">
+              <label className="login-label" htmlFor="usuario">
                 Nombre de usuario
               </label>
               <input
-                className="inputs"
+                className="login-input"
                 type="text"
                 placeholder="Nombre de usuario"
                 name="user"
                 id="usuario"
-                //required
               />
             </div>
-            <div className="label_input">
-              <label className="labels" htmlFor="contrasenia">
+
+            <div className="login-field">
+              <label className="login-label" htmlFor="contrasenia">
                 Contraseña
               </label>
               <input
-                className="inputs"
+                className="login-input"
                 type="password"
                 placeholder="Contraseña"
                 name="password"
                 id="contrasenia"
-                //required
               />
             </div>
-            <button className="boton-login" type="submit">
+
+            <button className="login-submit" type="submit">
               Iniciar sesión
             </button>
           </form>
 
-          <section className="section_sec">
-            <button className="btn_sec" onClick={() => setVista("recuperar")}>
+          <section className="login-secondary-actions">
+            <button
+              className="login-secondary-button"
+              onClick={() => setVista("recuperar")}
+            >
               ¿Olvidaste tu contraseña?
             </button>
-            <button className="btn_sec" onClick={() => setVista("registro")}>Registrarse</button>
+            <button
+              className="login-secondary-button"
+              onClick={() => setVista("registro")}
+            >
+              Registrarse
+            </button>
           </section>
         </div>
       </div>

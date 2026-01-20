@@ -1,9 +1,6 @@
 import { useState } from "react";
-import "./styles/login.css";
-import "./styles/galeria.css";
-import "./styles/serie_pelicula.css";
-import "./styles/perfil.css";
-import "./styles/lanzamientos.css";
+
+import "./styles/index.scss";
 
 import NavBar from "./components/NavBar";
 import Galeria from "./components/Galeria";

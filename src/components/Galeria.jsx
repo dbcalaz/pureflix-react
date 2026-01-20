@@ -21,25 +21,17 @@ function Galeria({ tipo, setMostrarModalDetalle, catSeleccionada, palabra }) {
   }, [tipo, catSeleccionada, palabra]);
 
   return (
-    <>
-      <section className="galeria">
-        {contenido?.map((p, i) => {
-          return (
-            <div
-              key={"foto_" + tipo + "_" + i}
-              className="foto"
-              onClick={() => {
-                setMostrarModalDetalle(p);
-              }}
-            >
-              <ImagenGenerica
-                imagen={p.imagen.split(".")[0]}
-              />
-            </div>
-          );
-        })}
-      </section>
-    </>
+    <section className="galeria">
+      {contenido?.map((p, i) => (
+        <div
+          key={"foto_" + tipo + "_" + i}
+          className="galeria__item"
+          onClick={() => setMostrarModalDetalle(p)}
+        >
+          <ImagenGenerica imagen={p.imagen.split(".")[0]} />
+        </div>
+      ))}
+    </section>
   );
 }
 

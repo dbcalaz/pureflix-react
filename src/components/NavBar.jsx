@@ -28,16 +28,16 @@ function NavBar({ vista, setVista, setTipo }) {
   }
 
   return (
-    <header>
-      <nav className="nav">
-        <ul className="nav_ul">
+    <header className="navbar">
+      <nav className="navbar__nav">
+        <ul className="navbar__list">
           {botones.map((b, i) => (
             <li
               key={"nav_" + i}
-              className={b.activo ? "activo puntero" : "puntero"}
+              className={`navbar__item ${b.activo ? "is-active" : ""}`}
               onClick={() => actualizaActivo(i)}
             >
-              <div className="imagen">
+              <div className="navbar__item-content">
                 <ImagenGenerica imagen={b.img} />
                 {b.txt}
               </div>

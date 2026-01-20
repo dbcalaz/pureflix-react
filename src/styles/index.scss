@@ -1,0 +1,15 @@
+@use "./base";
+
+/* Components */
+@use "./components/buttons";
+@use "./components/navbar";
+@use "./components/filtros";
+@use "./components/modal-detalle";
+@use "./components/galeria";
+
+/* Pages */
+@use "./pages/login";
+@use "./pages/recuperar";
+@use "./pages/registro";
+@use "./pages/perfil";
+@use "./pages/proximos-lanzamientos";
