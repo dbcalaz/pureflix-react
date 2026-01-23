@@ -59,7 +59,7 @@ function App() {
       {vista === "perfil" && (
         <>
           <NavBar vista={vista} setVista={setVista} setTipo={setTipo} />
-          <Perfil />
+          <Perfil setVista={setVista}/>
         </>
       )}
 

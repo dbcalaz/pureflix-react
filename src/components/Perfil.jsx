@@ -19,7 +19,6 @@ function Perfil({ setVista }) {
               type="button"
               className="perfil__logout"
               onClick={(e) => {
-                e.preventDefault();
                 setVista("login");
               }}
             >

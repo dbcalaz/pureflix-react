@@ -1,13 +1,70 @@
+import FetchPost from "./FetchPost";
+import { useState, useEffect } from "react";
+
 function Registro({ setVista }) {
+  const [email, setEmail] = useState("");
+  const [usuario, setUsuario] = useState("");
+  const [pass, setPass] = useState("");
+  const [pass2, setPass2] = useState("");
+  const [metodoPago, setMetodoPago] = useState("");
+  const [camposCompletos, setCamposCompletos] = useState(false);
+  const [mensajeError, setMensajeError] = useState("");
+  const [tipoPago, setTipoPago] = useState("");
+  const [cuponPago, setCuponPago] = useState("");
+
+  useEffect(() => {
+    if (tipoPago === "tarjeta") {
+      setMetodoPago("tarjeta");
+    } else if (tipoPago === "transferencia") {
+      setMetodoPago("transferencia");
+    } else if (tipoPago === "cupon" && cuponPago) {
+      setMetodoPago(cuponPago);
+    } else {
+      setMetodoPago("");
+    }
+  }, [tipoPago, cuponPago]);
+
+  useEffect(() => {
+    if (email && usuario && pass && pass2 && pass === pass2 && metodoPago) {
+      setCamposCompletos(true);
+    } else {
+      setCamposCompletos(false);
+    }
+  }, [email, usuario, pass, pass2, metodoPago]);
+
+  async function registrarUsuario() {
+    const datos = {
+      email: email,
+      nombre_usuario: usuario,
+      pass: pass,
+      metodo_pago: metodoPago,
+    };
+
+    try {
+      const res = await FetchPost("registrarNuevoUsuario", datos);
+
+      if (!res.ok) {
+        const err = await res.json();
+        setMensajeError(err.mensaje || "Error al registrar");
+        console.error(err.mensaje);
+        return;
+      }
+
+      setVista("login");
+    } catch (e) {
+      console.error(e);
+      setMensajeError("Error de conexión");
+    }
+  }
+
   return (
     <>
       <div className="register-header">
         <h1>Registrarse</h1>
       </div>
 
-      <form className="register-form">
+      <div className="register-form">
         <div className="register-layout">
-
           {/* Datos de contacto */}
           <section className="register-contact">
             <article className="register-field">
@@ -18,6 +75,7 @@ function Registro({ setVista }) {
                   id="email"
                   name="email"
                   placeholder="Ingrese email"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <p className="register-error"></p>
               </div>
@@ -31,6 +89,7 @@ function Registro({ setVista }) {
                   id="nombreDeUsuario"
                   name="nombreDeUsuario"
                   placeholder="Nombre de usuario"
+                  onChange={(e) => setUsuario(e.target.value)}
                 />
                 <p className="register-error"></p>
               </div>
@@ -44,6 +103,7 @@ function Registro({ setVista }) {
                   id="contrasenia"
                   name="contrasenia"
                   placeholder="Contraseña"
+                  onChange={(e) => setPass(e.target.value)}
                 />
                 <p className="register-error"></p>
               </div>
@@ -57,6 +117,7 @@ function Registro({ setVista }) {
                   id="repetirContrasenia"
                   name="repetirContrasenia"
                   placeholder="Repetir contraseña"
+                  onChange={(e) => setPass2(e.target.value)}
                 />
                 <p className="register-error"></p>
               </div>
@@ -69,14 +130,17 @@ function Registro({ setVista }) {
 
             <article className="register-payment-option">
               <label>
-                <input type="radio" name="metodoPago" value="tarjeta" />
+                <input
+                  type="radio"
+                  name="metodoPago"
+                  value="tarjeta"
+                  onChange={(e) => {
+                    setTipoPago(e.target.value);
+                    setCuponPago("");
+                  }}
+                />
                 Tarjeta de crédito
               </label>
-
-              <div className="register-card-data">
-                <input type="number" placeholder="Número de tarjeta" />
-                <input type="number" placeholder="XXX" />
-              </div>
 
               <div className="register-input-group">
                 <p className="register-error"></p>
@@ -86,19 +150,49 @@ function Registro({ setVista }) {
 
             <article className="register-payment-option">
               <label>
-                <input type="radio" name="metodoPago" value="cupon" />
+                <input
+                  type="radio"
+                  name="metodoPago"
+                  value="cupon"
+                  onChange={(e) => {
+                    setTipoPago(e.target.value);
+                    setCuponPago("");
+                  }}
+                />
                 Cupón de pago
               </label>
 
               <div className="register-checkbox-group">
-                <label><input type="checkbox" /> Pago fácil</label>
-                <label><input type="checkbox" /> RapiPago</label>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={cuponPago === "pago_facil"}
+                    onChange={() => setCuponPago("pago_facil")}
+                  />{" "}
+                  Pago fácil
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={cuponPago === "rapipago"}
+                    onChange={() => setCuponPago("rapipago")}
+                  />{" "}
+                  RapiPago
+                </label>
               </div>
             </article>
 
             <article className="register-payment-option">
               <label>
-                <input type="radio" name="metodoPago" value="transferencia" />
+                <input
+                  type="radio"
+                  name="metodoPago"
+                  value="transferencia"
+                  onChange={(e) => {
+                    setTipoPago(e.target.value);
+                    setCuponPago("");
+                  }}
+                />
                 Transferencia bancaria
               </label>
               <p className="register-cbu">CBU: 0000003100055994120766</p>
@@ -109,8 +203,8 @@ function Registro({ setVista }) {
             <div className="register-actions">
               <button
                 className="register-button register-button--confirm"
-                type="submit"
-                disabled
+                disabled={!camposCompletos}
+                onClick={registrarUsuario}
               >
                 Confirmar
               </button>
@@ -124,9 +218,8 @@ function Registro({ setVista }) {
               </button>
             </div>
           </section>
-
         </div>
-      </form>
+      </div>
     </>
   );
 }

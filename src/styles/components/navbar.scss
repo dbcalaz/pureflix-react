@@ -26,16 +26,6 @@
     padding: 0.5rem;
     cursor: pointer;
 
-    &:first-child {
-      border-top-left-radius: 0.25rem;
-      border-bottom-left-radius: 0.25rem;
-    }
-
-    &:last-child {
-      border-top-right-radius: 0.25rem;
-      border-bottom-right-radius: 0.25rem;
-    }
-
     &:hover {
       background-color: #e6e6e6;
     }
