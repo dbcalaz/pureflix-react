@@ -1,6 +1,6 @@
 import ImagenGenerica from "./ImagenGenerica";
 
-function Perfil({ setVista }) {
+function Perfil({ setVista, setMostrarModalCancelarSuscripcion }) {
   return (
     <>
       <div className="perfil">
@@ -18,7 +18,7 @@ function Perfil({ setVista }) {
             <button
               type="button"
               className="perfil__logout"
-              onClick={(e) => {
+              onClick={() => {
                 setVista("login");
               }}
             >
@@ -107,6 +107,7 @@ function Perfil({ setVista }) {
               <button
                 type="button"
                 className="perfil__btn perfil__btn--cancelar"
+                onClick={() => setMostrarModalCancelarSuscripcion(true)}
               >
                 Cancelar suscripción
               </button>

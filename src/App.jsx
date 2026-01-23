@@ -8,9 +8,10 @@ import ModalDetalle from "./components/ModalDetalle";
 import Filtros from "./components/Filtros";
 import Perfil from "./components/Perfil";
 import Login from "./components/Login";
-import Recuperar from "./components/Recuperar"
+import Recuperar from "./components/Recuperar";
 import Registro from "./components/Registro";
 import ProximosLanzamientos from "./components/ProximosLanzamientos";
+import ModalCancelarSuscripcion from "./components/ModalCancelarSuscripcion";
 
 function App() {
   const [vista, setVista] = useState("login");
@@ -19,6 +20,8 @@ function App() {
   const [categorias, setCategorias] = useState([]);
   const [catSeleccionada, setCatSeleccionada] = useState(0);
   const [palabra, setPalabra] = useState("");
+  const [mostrarModalCancelarSuscripcion, setMostrarModalCancelarSuscripcion] =
+    useState(false);
 
   return (
     <>
@@ -59,7 +62,22 @@ function App() {
       {vista === "perfil" && (
         <>
           <NavBar vista={vista} setVista={setVista} setTipo={setTipo} />
-          <Perfil setVista={setVista}/>
+          <Perfil
+            setVista={setVista}
+            setMostrarModalCancelarSuscripcion={
+              setMostrarModalCancelarSuscripcion
+            }
+          />
+          {mostrarModalCancelarSuscripcion && (
+            <ModalCancelarSuscripcion
+              onConfirmar={() => {
+                // acá en el futuro va el back - darDeBajaUsuario()
+                setVista("login");
+                setMostrarModalCancelarSuscripcion(false);
+              }}
+              onCancelar={() => setMostrarModalCancelarSuscripcion(false)}
+            />
+          )}
         </>
       )}
 
