@@ -129,38 +129,31 @@ function Registro({ setVista }) {
             <p className="register-section-title">Método de pago</p>
 
             <article className="register-payment-option">
-              <label>
-                <input
-                  type="radio"
-                  name="metodoPago"
-                  value="tarjeta"
-                  onChange={(e) => {
-                    setTipoPago(e.target.value);
-                    setCuponPago("");
-                  }}
+              <input
+                type="radio"
+                name="metodoPago"
+                value="tarjeta"
+                onChange={(e) => {
+                  setTipoPago(e.target.value);
+                  setCuponPago("");
+                }}
                 />
-                Tarjeta de crédito
-              </label>
-
-              <div className="register-input-group">
-                <p className="register-error"></p>
-                <p className="register-error"></p>
-              </div>
+                <label>Tarjeta de crédito</label>
             </article>
 
-            <article className="register-payment-option">
-              <label>
+            <article className="register-payment-suboption">
+              <div className="register-payment-label-input">
                 <input
-                  type="radio"
-                  name="metodoPago"
-                  value="cupon"
-                  onChange={(e) => {
-                    setTipoPago(e.target.value);
-                    setCuponPago("");
-                  }}
+                type="radio"
+                name="metodoPago"
+                value="cupon"
+                onChange={(e) => {
+                  setTipoPago(e.target.value);
+                  setCuponPago("");
+                }}
                 />
-                Cupón de pago
-              </label>
+                <label>Cupón de pago</label>
+              </div>
 
               <div className="register-checkbox-group">
                 <label>
@@ -182,19 +175,19 @@ function Registro({ setVista }) {
               </div>
             </article>
 
-            <article className="register-payment-option">
-              <label>
+            <article className="register-payment-suboption">
+              <div className="register-payment-label-input">
                 <input
-                  type="radio"
-                  name="metodoPago"
-                  value="transferencia"
-                  onChange={(e) => {
-                    setTipoPago(e.target.value);
-                    setCuponPago("");
-                  }}
+                type="radio"
+                name="metodoPago"
+                value="transferencia"
+                onChange={(e) => {
+                  setTipoPago(e.target.value);
+                  setCuponPago("");
+                }}
                 />
-                Transferencia bancaria
-              </label>
+                <label>Transferencia bancaria</label>
+              </div>
               <p className="register-cbu">CBU: 0000003100055994120766</p>
             </article>
 

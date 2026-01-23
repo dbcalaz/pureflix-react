@@ -16,7 +16,7 @@ function Recuperar({ setVista }) {
           </div>
 
           <div className="recover-field">
-            <label htmlFor="usuario">Usuario</label>
+            <label htmlFor="usuario">Nombre de usuario</label>
             <input
               type="text"
               placeholder="Ingrese nombre de usuario"

@@ -8,9 +8,9 @@
 }
 
 .register-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding-top: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .register-contact,
@@ -19,7 +19,6 @@
   flex-direction: column;
   gap: 1.5rem;
   padding: 2rem;
-  background-color: white;
 }
 
 .register-contact {
@@ -29,7 +28,7 @@
 .register-field {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 3rem;
 
   label {
     width: 9rem;
@@ -46,6 +45,8 @@
 .register-input-group {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   .register-error {
     color: red;
@@ -61,8 +62,19 @@
 
 .register-payment-option {
   display: flex;
+  gap: 1rem;  
+}
+
+.register-payment-suboption {
+  display: flex;
   flex-direction: column;
+  gap: 1rem;  
+}
+
+.register-payment-label-input{
+  display: flex;
   gap: 1rem;
+  align-items: center;
 }
 
 .register-card-data {
@@ -91,12 +103,13 @@
 .register-button {
   padding: 10px 20px;
   font-size: 1rem;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
-  border: none;
+  border: solid 1px #000;
+  width: 10rem;
 
   &--confirm {
-    background-color: green;
+    background-color: #6bdb5e;
 
     &:disabled {
       background-color: gray;
@@ -106,6 +119,6 @@
   }
 
   &--cancel {
-    background-color: red;
+    background-color: #e3572d;
   }
 }

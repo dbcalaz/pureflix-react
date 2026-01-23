@@ -5,7 +5,9 @@ function Perfil({ setVista, setMostrarModalCancelarSuscripcion }) {
     <>
       <div className="perfil">
         <form className="perfil__form">
-          {/* Columna izquierda */}
+          
+          <div className="perfil__contenido">
+            {/* Columna izquierda */}
           <section className="perfil__columna perfil__columna--izquierda">
             <ImagenGenerica
               imagen="FotoPerfil"
@@ -62,15 +64,6 @@ function Perfil({ setVista, setMostrarModalCancelarSuscripcion }) {
                 <input type="radio" name="metodo-pago" />
                 Tarjeta de crédito
               </label>
-
-              <div className="perfil__tarjeta">
-                <input type="number" placeholder="Número de tarjeta" />
-                <input type="number" placeholder="XXX" />
-              </div>
-
-              <div className="perfil__error">
-                <p className="perfil__error-text"></p>
-              </div>
             </article>
 
             <article className="perfil__pago">
@@ -97,7 +90,10 @@ function Perfil({ setVista, setMostrarModalCancelarSuscripcion }) {
               <p className="perfil__cbu">CBU: 2183909411100018971375</p>
             </article>
 
-            <div className="perfil__acciones">
+          </section>
+          </div>
+
+          <div className="perfil__acciones">
               <button
                 type="submit"
                 className="perfil__btn perfil__btn--guardar"
@@ -112,7 +108,6 @@ function Perfil({ setVista, setMostrarModalCancelarSuscripcion }) {
                 Cancelar suscripción
               </button>
             </div>
-          </section>
         </form>
       </div>
 

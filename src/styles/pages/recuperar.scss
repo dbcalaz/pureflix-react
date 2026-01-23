@@ -1,12 +1,11 @@
 .recover-container {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
   h1 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
   }
 
   .recover-form {
@@ -19,27 +18,45 @@
 
     .recover-field {
       display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+      gap: 3rem;
+      align-items: center;
+
+      label{
+        width: 10rem;
+        text-align: right;
+      }
+
+      input{
+        width: 260px;
+        padding: 0.65rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        background: transparent;
+        color: #eee;
+      }
     }
 
     .recover-actions {
       display: flex;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 5rem;
+      margin-top: 1rem;
 
       .recover-button {
-        width: 10rem;
-        height: 2rem;
+        width: 12rem;
         cursor: pointer;
-        border: none;
+        border: solid 1px #000;
+        border-radius: 4px;
+        font-size: 1rem;
+        padding: 0.7rem;
 
         &--submit {
-          background-color: green;
+          background-color:#6bdb5e;
         }
 
         &--cancel {
-          background-color: red;
+          background-color: #e3572d;
         }
       }
     }

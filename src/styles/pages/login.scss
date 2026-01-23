@@ -20,14 +20,18 @@
     width: 100%;
     padding: 2rem;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     .login-field {
       display: flex;
       gap: 2rem;
       margin-bottom: 1.2rem;
+      align-items: center;
 
       .login-label {
-        width: 160px;
+        width: 10rem;
         text-align: right;
       }
 
@@ -36,21 +40,21 @@
         padding: 0.65rem;
         font-size: 1rem;
         border: 1px solid #ccc;
-        border-radius: 6px;
+        border-radius: 4px;
         background: transparent;
         color: #eee;
       }
     }
 
     .login-submit {
-      width: 260px;
+      width: 20rem;
       margin-top: 2rem;
       padding: 0.7rem;
       font-size: 1rem;
-      border-radius: 10px;
-      border: none;
+      border-radius: 6px;
+      border: solid 1px #000;
       cursor: pointer;
-      background-color: #3b70b0;
+      background-color: #6bdb5e;
       color: black;
     }
   }

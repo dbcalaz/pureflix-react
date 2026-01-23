@@ -5,6 +5,13 @@
   padding: 1.25rem;
 
   &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  &__contenido {
     display: grid;
     grid-template-columns: 1fr 2fr 2fr;
     gap: 2rem;
@@ -35,18 +42,38 @@
     margin-top: 0.5rem;
   }
 
+  &__logout{
+    width: 15rem;
+    font-size: 1rem;
+    padding: 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    border: solid 1px #000;
+    background-color: royalblue;
+  }
+
   &__campo {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 2.5rem;
 
     label {
-      width: 150px;
+      width: 10rem;
+      text-align: right;
     }
 
-    input,
-    p {
-      flex: 1;
+    input{
+      width: 260px;
+      padding: 0.65rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: transparent;
+      color: #eee;
+    }
+
+    p{
+      flex: 1; 
     }
   }
 
@@ -80,23 +107,25 @@
 
   &__acciones {
     display: flex;
-    gap: 1rem;
+    gap: 4rem;
     margin-top: 2rem;
-    flex-wrap: wrap;
+    margin-bottom: 5rem;
   }
 
   &__btn {
-    padding: 0.6rem 1.2rem;
-    border-radius: 0.4rem;
+    width: 15rem;
+    font-size: 1rem;
+    padding: 0.7rem;
+    border-radius: 4px;
     cursor: pointer;
-    border: none;
+    border: solid 1px #000;
 
     &--guardar {
-      background-color: green;
+      background-color: #6bdb5e;
     }
 
     &--cancelar {
-      background-color: red;
+      background-color: #e3572d;
     }
   }
 
@@ -120,6 +149,7 @@
   }
 }
 
+/* ModalCancelarSuscripción*/
 .perfil-modal {
   position: fixed;
   top: 0;
@@ -157,7 +187,7 @@
 
     p {
       margin-bottom: 1.5rem;
-      font-size: 1rem;
+      font-size: 1.3rem;
       color: #333;
     }
   }
@@ -169,9 +199,10 @@
 
     button {
       flex: 1;
-      padding: 0.6rem 1rem;
-      border-radius: 0.5rem;
-      border: none;
+      font-size: 1rem;
+      padding: 0.7rem;
+      border-radius: 4px;
+      border: solid 1px #000;
       font-weight: bold;
       cursor: pointer;
       transition: background-color 0.2s ease;
