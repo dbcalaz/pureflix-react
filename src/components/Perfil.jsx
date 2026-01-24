@@ -4,9 +4,17 @@ import { useState, useEffect } from "react";
 function Perfil({ setVista, setMostrarModalCancelarSuscripcion }) {
   const [datos, setDatos] = useState();
 
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+      setVista("login");
+    }
+  }, []);
+
   async function obtenerDatosUsuario() {
     try {
-      const url = `http://127.0.0.1:9000/getUsuarios`;
+      const userId = localStorage.getItem("userId");
+      const url = `http://127.0.0.1:9000/getUsuarioById?id=${userId}`;
       const res = await fetch(url);
       const data = await res.json();
       setDatos(data);
@@ -17,7 +25,10 @@ function Perfil({ setVista, setMostrarModalCancelarSuscripcion }) {
   }
 
   useEffect(() => {
-    obtenerDatosUsuario();
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+      obtenerDatosUsuario();
+    }
   }, []);
 
   return (
@@ -95,11 +106,11 @@ function Perfil({ setVista, setMostrarModalCancelarSuscripcion }) {
 
                 <div className="perfil__checkbox">
                   <div className="perfil__pago--opcion">
-                    <input type="checkbox"/>
+                    <input type="checkbox" />
                     <label>Pago fácil</label>
                   </div>
                   <div className="perfil__pago--opcion">
-                    <input type="checkbox"/>
+                    <input type="checkbox" />
                     <label>RapiPago</label>
                   </div>
                 </div>

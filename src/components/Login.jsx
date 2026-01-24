@@ -1,6 +1,47 @@
+import { useState } from "react";
 import ImagenGenerica from "./ImagenGenerica";
+import FetchPost from "./FetchPost";
 
 function Login({ setVista }) {
+  const [nombreUsuario, setNombreUsuario] = useState("");
+  const [password, setPassword] = useState("");
+  const [mensajeError, setMensajeError] = useState("");
+  const [estaCargando, setEstaCargando] = useState(false);
+
+  const intentarIniciarSesion = async (e) => {
+    e.preventDefault();
+    setMensajeError("");
+
+    if (!nombreUsuario || !password) {
+      setMensajeError("Debe completar todos los campos");
+      return;
+    }
+
+    setEstaCargando(true);
+
+    try {
+      const res = await FetchPost("login", {
+        nombre_usuario: nombreUsuario,
+        pass: password,
+      });
+
+      if (!res.ok) {
+        setMensajeError("Usuario y/o contraseña incorrecta");
+        setEstaCargando(false);
+        return;
+      }
+
+      // más adelante acá vas a guardar token
+      const data = await res.json();
+      localStorage.setItem("userId", data.id);
+      setVista("home");
+    } catch (error) {
+      setMensajeError("Error de conexión con el servidor");
+    } finally {
+      setEstaCargando(false);
+    }
+  };
+
   return (
     <>
       <div className="login-container">
@@ -11,13 +52,7 @@ function Login({ setVista }) {
         />
 
         <div>
-          <form
-            className="login-form"
-            onSubmit={(e) => {
-              e.preventDefault();
-              setVista("home");
-            }}
-          >
+          <form className="login-form" onSubmit={intentarIniciarSesion}>
             <div className="login-field">
               <label className="login-label" htmlFor="usuario">
                 Nombre de usuario
@@ -28,6 +63,7 @@ function Login({ setVista }) {
                 placeholder="Nombre de usuario"
                 name="user"
                 id="usuario"
+                onChange={(e) => setNombreUsuario(e.target.value)}
               />
             </div>
 
@@ -41,11 +77,20 @@ function Login({ setVista }) {
                 placeholder="Contraseña"
                 name="password"
                 id="contrasenia"
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
-            <button className="login-submit" type="submit">
-              Iniciar sesión
+            {mensajeError && (
+              <div className="login-error-message">{mensajeError}</div>
+            )}
+
+            <button
+              className="login-submit"
+              type="submit"
+              disabled={estaCargando}
+            >
+              {estaCargando ? "Ingresando..." : "Iniciar sesión"}
             </button>
           </form>
 
