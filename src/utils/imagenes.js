@@ -17,7 +17,7 @@ import Dune2 from "../imagenes/Dune2.jpg";
 import eternauta from "../imagenes/eternauta.jpeg";
 import faviconP from "../imagenes/faviconP.png";
 import Formula1 from "../imagenes/Formula1.jpg";
-import FotoPerfil from "../imagenes/FotoPerfil.png";
+import porDefault from "../imagenes/porDefault.png";
 import GIINYPORT from "../imagenes/GIINYPORT.jpg";
 import grey from "../imagenes/grey.webp";
 import implacable from "../imagenes/implacable.webp";
@@ -42,6 +42,7 @@ import Wicked from "../imagenes/Wicked.jpg";
 import Wonka from "../imagenes/Wonka.jpg";
 import YellowJackets from "../imagenes/YellowJackets.jpg";
 import You from "../imagenes/You.jpg";
+import edit from "../imagenes/edit.svg";
 
 export const imagenes = {
   home,
@@ -63,7 +64,7 @@ export const imagenes = {
   eternauta,
   faviconP,
   Formula1,
-  FotoPerfil,
+  porDefault,
   GIINYPORT,
   grey,
   implacable,
@@ -88,4 +89,5 @@ export const imagenes = {
   Wonka,
   YellowJackets,
   You,
+  edit,
 };
