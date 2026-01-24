@@ -59,158 +59,162 @@ function Registro({ setVista }) {
 
   return (
     <>
-      <div className="register-header">
-        <h1>Registrarse</h1>
-      </div>
+      <div className="register-container">
+        <div className="register-header">
+          <h1>Registrarse</h1>
+        </div>
 
-      <div className="register-form">
-        <div className="register-layout">
-          {/* Datos de contacto */}
-          <section className="register-contact">
-            <article className="register-field">
-              <label htmlFor="email">E-mail</label>
-              <div className="register-input-group">
+        <div className="register-form">
+          <div className="register-layout">
+            {/* Datos de contacto */}
+            <section className="register-contact">
+              <article className="register-field">
+                <label htmlFor="email">E-mail</label>
+                <div className="register-input-group">
+                  <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    placeholder="Ingrese email"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <p className="register-error"></p>
+                </div>
+              </article>
+
+              <article className="register-field">
+                <label htmlFor="nombreDeUsuario">Nombre de usuario</label>
+                <div className="register-input-group">
+                  <input
+                    type="text"
+                    id="nombreDeUsuario"
+                    name="nombreDeUsuario"
+                    placeholder="Nombre de usuario"
+                    onChange={(e) => setUsuario(e.target.value)}
+                  />
+                  <p className="register-error"></p>
+                </div>
+              </article>
+
+              <article className="register-field">
+                <label htmlFor="contrasenia">Contraseña</label>
+                <div className="register-input-group">
+                  <input
+                    type="password"
+                    id="contrasenia"
+                    name="contrasenia"
+                    placeholder="Contraseña"
+                    onChange={(e) => setPass(e.target.value)}
+                  />
+                  <p className="register-error"></p>
+                </div>
+              </article>
+
+              <article className="register-field">
+                <label htmlFor="repetirContrasenia">Repetir contraseña</label>
+                <div className="register-input-group">
+                  <input
+                    type="password"
+                    id="repetirContrasenia"
+                    name="repetirContrasenia"
+                    placeholder="Repetir contraseña"
+                    onChange={(e) => setPass2(e.target.value)}
+                  />
+                  <p className="register-error"></p>
+                </div>
+              </article>
+            </section>
+
+            {/* Método de pago */}
+            <section className="register-payment">
+              <p className="register-section-title">Método de pago</p>
+
+              <article className="register-payment-option">
                 <input
-                  type="text"
-                  id="email"
-                  name="email"
-                  placeholder="Ingrese email"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <p className="register-error"></p>
-              </div>
-            </article>
-
-            <article className="register-field">
-              <label htmlFor="nombreDeUsuario">Nombre de usuario</label>
-              <div className="register-input-group">
-                <input
-                  type="text"
-                  id="nombreDeUsuario"
-                  name="nombreDeUsuario"
-                  placeholder="Nombre de usuario"
-                  onChange={(e) => setUsuario(e.target.value)}
-                />
-                <p className="register-error"></p>
-              </div>
-            </article>
-
-            <article className="register-field">
-              <label htmlFor="contrasenia">Contraseña</label>
-              <div className="register-input-group">
-                <input
-                  type="password"
-                  id="contrasenia"
-                  name="contrasenia"
-                  placeholder="Contraseña"
-                  onChange={(e) => setPass(e.target.value)}
-                />
-                <p className="register-error"></p>
-              </div>
-            </article>
-
-            <article className="register-field">
-              <label htmlFor="repetirContrasenia">Repetir contraseña</label>
-              <div className="register-input-group">
-                <input
-                  type="password"
-                  id="repetirContrasenia"
-                  name="repetirContrasenia"
-                  placeholder="Repetir contraseña"
-                  onChange={(e) => setPass2(e.target.value)}
-                />
-                <p className="register-error"></p>
-              </div>
-            </article>
-          </section>
-
-          {/* Método de pago */}
-          <section className="register-payment">
-            <p className="register-section-title">Método de pago</p>
-
-            <article className="register-payment-option">
-              <input
-                type="radio"
-                name="metodoPago"
-                value="tarjeta"
-                onChange={(e) => {
-                  setTipoPago(e.target.value);
-                  setCuponPago("");
-                }}
+                  type="radio"
+                  name="metodoPago"
+                  value="tarjeta"
+                  onChange={(e) => {
+                    setTipoPago(e.target.value);
+                    setCuponPago("");
+                  }}
                 />
                 <label>Tarjeta de crédito</label>
-            </article>
+              </article>
 
-            <article className="register-payment-suboption">
-              <div className="register-payment-label-input">
-                <input
-                type="radio"
-                name="metodoPago"
-                value="cupon"
-                onChange={(e) => {
-                  setTipoPago(e.target.value);
-                  setCuponPago("");
-                }}
-                />
-                <label>Cupón de pago</label>
-              </div>
-
-              <div className="register-checkbox-group">
-                <label>
+              <article className="register-payment-suboption">
+                <div className="register-payment-label-input">
                   <input
-                    type="checkbox"
-                    checked={cuponPago === "pago_facil"}
-                    onChange={() => setCuponPago("pago_facil")}
-                  />{" "}
-                  Pago fácil
-                </label>
-                <label>
+                    type="radio"
+                    name="metodoPago"
+                    value="cupon"
+                    onChange={(e) => {
+                      setTipoPago(e.target.value);
+                      setCuponPago("");
+                    }}
+                  />
+                  <label>Cupón de pago</label>
+                </div>
+
+                <div className="register-checkbox-group">
+                  <label>
+                    <input
+                      type="checkbox"
+                      disabled={tipoPago !== "cupon"}
+                      checked={cuponPago === "pago_facil"}
+                      onChange={() => setCuponPago("pago_facil")}
+                    />{" "}
+                    Pago fácil
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      disabled={tipoPago !== "cupon"}
+                      checked={cuponPago === "rapipago"}
+                      onChange={() => setCuponPago("rapipago")}
+                    />{" "}
+                    RapiPago
+                  </label>
+                </div>
+              </article>
+
+              <article className="register-payment-suboption">
+                <div className="register-payment-label-input">
                   <input
-                    type="checkbox"
-                    checked={cuponPago === "rapipago"}
-                    onChange={() => setCuponPago("rapipago")}
-                  />{" "}
-                  RapiPago
-                </label>
+                    type="radio"
+                    name="metodoPago"
+                    value="transferencia"
+                    onChange={(e) => {
+                      setTipoPago(e.target.value);
+                      setCuponPago("");
+                    }}
+                  />
+                  <label>Transferencia bancaria</label>
+                </div>
+                <p className="register-cbu">CBU: 0000003100055994120766</p>
+              </article>
+
+              <p className="register-error"></p>
+
+              <div className="register-actions">
+                <button
+                  className="register-button register-button--confirm"
+                  disabled={!camposCompletos}
+                  onClick={registrarUsuario}
+                >
+                  Confirmar
+                </button>
+
+                <button
+                  className="register-button register-button--cancel"
+                  type="button"
+                  onClick={() => setVista("login")}
+                >
+                  Cancelar
+                </button>
               </div>
-            </article>
-
-            <article className="register-payment-suboption">
-              <div className="register-payment-label-input">
-                <input
-                type="radio"
-                name="metodoPago"
-                value="transferencia"
-                onChange={(e) => {
-                  setTipoPago(e.target.value);
-                  setCuponPago("");
-                }}
-                />
-                <label>Transferencia bancaria</label>
-              </div>
-              <p className="register-cbu">CBU: 0000003100055994120766</p>
-            </article>
-
-            <p className="register-error"></p>
-
-            <div className="register-actions">
-              <button
-                className="register-button register-button--confirm"
-                disabled={!camposCompletos}
-                onClick={registrarUsuario}
-              >
-                Confirmar
-              </button>
-
-              <button
-                className="register-button register-button--cancel"
-                type="button"
-                onClick={() => setVista("login")}
-              >
-                Cancelar
-              </button>
-            </div>
-          </section>
+            </section>
+          </div>
         </div>
       </div>
     </>

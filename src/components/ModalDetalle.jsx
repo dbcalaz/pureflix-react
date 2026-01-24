@@ -17,7 +17,7 @@ function ModalDetalle({ mostrar, setMostrar }) {
                 <iframe src={mostrar?.link_trailer} title="Trailer" />
               </div>
 
-              <button className="modal-detalle__boton">Comenzar</button>
+              {/*<button className="modal-detalle__boton">Comenzar</button>*/}
             </div>
 
             <div className="modal-detalle__descripcion">
