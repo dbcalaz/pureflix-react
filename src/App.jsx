@@ -14,6 +14,7 @@ import ProximosLanzamientos from "./components/ProximosLanzamientos";
 import ModalCancelarSuscripcion from "./components/ModalCancelarSuscripcion";
 
 function App() {
+  const [usuario, setUsuario] = useState({});
   const [vista, setVista] = useState("login");
   const [tipo, setTipo] = useState(0);
   const [mostrarModalDetalle, setMostrarModalDetalle] = useState({});
@@ -25,7 +26,7 @@ function App() {
 
   return (
     <>
-      {vista === "login" && <Login setVista={setVista} />}
+      {vista === "login" && <Login setVista={setVista} setUsuario={setUsuario} />}
 
       {vista === "recuperar" && <Recuperar setVista={setVista} />}
 
@@ -34,6 +35,7 @@ function App() {
       {(vista === "home" || vista === "series" || vista === "peliculas") && (
         <>
           <NavBar vista={vista} setVista={setVista} setTipo={setTipo} />
+          
           <Filtros
             categorias={categorias}
             setCategorias={setCategorias}
@@ -67,6 +69,7 @@ function App() {
             setMostrarModalCancelarSuscripcion={
               setMostrarModalCancelarSuscripcion
             }
+            usuario={usuario}
           />
           {mostrarModalCancelarSuscripcion && (
             <ModalCancelarSuscripcion

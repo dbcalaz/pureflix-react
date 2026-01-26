@@ -2,7 +2,7 @@ import { useState } from "react";
 import ImagenGenerica from "./ImagenGenerica";
 import FetchPost from "./FetchPost";
 
-function Login({ setVista }) {
+function Login({ setVista , setUsuario}) {
   const [nombreUsuario, setNombreUsuario] = useState("");
   const [password, setPassword] = useState("");
   const [mensajeError, setMensajeError] = useState("");
@@ -31,9 +31,8 @@ function Login({ setVista }) {
         return;
       }
 
-      // más adelante acá vas a guardar token
       const data = await res.json();
-      localStorage.setItem("userId", data.id);
+      setUsuario(data);
       setVista("home");
     } catch (error) {
       setMensajeError("Error de conexión con el servidor");

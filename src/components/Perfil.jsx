@@ -1,7 +1,7 @@
 import ImagenGenerica from "./ImagenGenerica";
 import { useState, useEffect } from "react";
 
-function Perfil({ setVista, setMostrarModalCancelarSuscripcion }) {
+function Perfil({ setVista, setMostrarModalCancelarSuscripcion, usuario }) {
   const [datos, setDatos] = useState();
 
   useEffect(() => {
@@ -11,24 +11,9 @@ function Perfil({ setVista, setMostrarModalCancelarSuscripcion }) {
     }
   }, []);
 
-  async function obtenerDatosUsuario() {
-    try {
-      const userId = localStorage.getItem("userId");
-      const url = `http://127.0.0.1:9000/getUsuarioById?id=${userId}`;
-      const res = await fetch(url);
-      const data = await res.json();
-      setDatos(data);
-      console.log("Recibiendo", data);
-    } catch (e) {
-      console.log("Error:", e);
-    }
-  }
-
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
-    if (userId) {
-      obtenerDatosUsuario();
-    }
+    //obtenerDatosUsuario();
+    console.log("Usuario en perfil:", usuario);
   }, []);
 
   return (
@@ -47,7 +32,7 @@ function Perfil({ setVista, setMostrarModalCancelarSuscripcion }) {
                 <ImagenGenerica imagen="edit" className="perfil__foto--edit" />
               </div>
               <p className="perfil__usuario" id="nombreDeUsuario">
-                {datos?.nombre_usuario}
+                {usuario?.nombre_usuario}
               </p>
               <button
                 type="button"
@@ -64,7 +49,7 @@ function Perfil({ setVista, setMostrarModalCancelarSuscripcion }) {
             <section className="perfil__columna perfil__columna--central">
               <article className="perfil__campo">
                 <label>Email</label>
-                <p className="perfil__email">{datos?.email}</p>
+                <p className="perfil__email">{usuario?.email}</p>
               </article>
 
               <article className="perfil__campo">
