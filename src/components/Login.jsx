@@ -2,7 +2,7 @@ import { useState } from "react";
 import ImagenGenerica from "./ImagenGenerica";
 import FetchPost from "./FetchPost";
 
-function Login({ setVista , setUsuario}) {
+function Login({ setVista, usuario, setUsuario }) {
   const [nombreUsuario, setNombreUsuario] = useState("");
   const [password, setPassword] = useState("");
   const [mensajeError, setMensajeError] = useState("");
@@ -14,6 +14,9 @@ function Login({ setVista , setUsuario}) {
 
     if (!nombreUsuario || !password) {
       setMensajeError("Debe completar todos los campos");
+      return;
+    } else if (usuario.activa === 0) {
+      setMensajeError("La cuenta no está activada. Verifique su email.");
       return;
     }
 

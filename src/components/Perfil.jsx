@@ -2,17 +2,15 @@ import ImagenGenerica from "./ImagenGenerica";
 import { useState, useEffect } from "react";
 
 function Perfil({ setVista, setMostrarModalCancelarSuscripcion, usuario }) {
-  const [datos, setDatos] = useState();
 
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
-    if (!userId) {
+    const userToken = usuario.token;
+    if (!userToken) {
       setVista("login");
     }
   }, []);
 
   useEffect(() => {
-    //obtenerDatosUsuario();
     console.log("Usuario en perfil:", usuario);
   }, []);
 

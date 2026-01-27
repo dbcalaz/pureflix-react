@@ -51,6 +51,7 @@ function Registro({ setVista }) {
       }
 
       setVista("login");
+      console.log("Usuario registrado con éxito. Verificar email para activar cuenta.");
     } catch (e) {
       console.error(e);
       setMensajeError("Error de conexión");

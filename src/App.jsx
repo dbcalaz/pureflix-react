@@ -26,7 +26,7 @@ function App() {
 
   return (
     <>
-      {vista === "login" && <Login setVista={setVista} setUsuario={setUsuario} />}
+      {vista === "login" && <Login setVista={setVista} usuario={usuario} setUsuario={setUsuario} />}
 
       {vista === "recuperar" && <Recuperar setVista={setVista} />}
 
