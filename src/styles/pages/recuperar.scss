@@ -34,7 +34,7 @@
         border: 1px solid #ccc;
         border-radius: 6px;
         background: transparent;
-        color: #eee;
+        color: #000;
       }
     }
 
@@ -54,6 +54,12 @@
 
         &--submit {
           background-color:#6bdb5e;
+
+          &:disabled {
+            background-color: #999;
+            cursor: not-allowed;
+            opacity: 0.6;
+          }
         }
 
         &--cancel {
