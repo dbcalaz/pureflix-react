@@ -1,11 +1,4 @@
-/*const formatData = (datos) => {
-	return Object.entries(datos)
-		.map(([key, value]) => `${key}:${value}`)
-		.join("\n")
-}*/
-
 const FetchPost = async (url, datos) => {
-	//const formattedData = formatData(datos)
 	const servidor = import.meta.env.VITE_SERVER
 	const puerto = import.meta.env.VITE_PORT
 	try {

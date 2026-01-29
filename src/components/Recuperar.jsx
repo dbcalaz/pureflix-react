@@ -1,4 +1,34 @@
+import { useEffect, useState } from "react";
+import FetchPost from "./FetchPost";
+
 function Recuperar({ setVista }) {
+  const [email, setEmail] = useState("");
+  const [nombreUsuario, setNombreUsuario] = useState("");
+  const [error, setError] = useState("");
+
+  async function envioEmailRecuperacion() {
+    const datos = {
+      email: email,
+      nombre_usuario: nombreUsuario,
+    };
+
+    try {
+      const res = await FetchPost("recuperarContrasena", datos);
+
+      if (!res.ok) {
+        const err = await res.json();
+        setError(err.mensaje || "Error al enviar email de recuperación");
+        console.error(err.mensaje);
+        return;
+      }
+
+      console.log("Email de recuperación enviado con éxito.");
+    } catch (e) {
+      console.error(e);
+      setError("Error de conexión");
+    }
+  }
+
   return (
     <>
       <div className="recover-container">
@@ -12,6 +42,7 @@ function Recuperar({ setVista }) {
               placeholder="Ingrese email"
               name="gmail"
               id="gmail"
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
@@ -22,6 +53,7 @@ function Recuperar({ setVista }) {
               placeholder="Ingrese nombre de usuario"
               name="user"
               id="usuario"
+              onChange={(e) => setNombreUsuario(e.target.value)}
             />
           </div>
 
@@ -29,6 +61,8 @@ function Recuperar({ setVista }) {
             <button
               className="recover-button recover-button--submit"
               type="submit"
+              disabled={!email || !nombreUsuario}
+              onClick={envioEmailRecuperacion}
             >
               Enviar email
             </button>
@@ -38,7 +72,7 @@ function Recuperar({ setVista }) {
               onClick={() => setVista("login")}
               type="button"
             >
-              Cancelar
+              Volver
             </button>
           </section>
         </form>
