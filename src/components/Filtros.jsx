@@ -53,6 +53,7 @@ function Filtros({
             className="filters__input"
             placeholder="Buscar por nombre"
             onChange={(e) => setPalabra(e.target.value)}
+            id="filter_search"
           />
         </form>
       </div>

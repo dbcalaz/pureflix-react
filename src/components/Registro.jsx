@@ -135,12 +135,13 @@ function Registro({ setVista }) {
                   type="radio"
                   name="metodoPago"
                   value="tarjeta"
+                  id="tarjeta"
                   onChange={(e) => {
                     setTipoPago(e.target.value);
                     setCuponPago("");
                   }}
                 />
-                <label>Tarjeta de crédito</label>
+                <label htmlFor="tarjeta">Tarjeta de crédito</label>
               </article>
 
               <article className="register-payment-suboption">
@@ -149,27 +150,30 @@ function Registro({ setVista }) {
                     type="radio"
                     name="metodoPago"
                     value="cupon"
+                    id="cupon_pago"
                     onChange={(e) => {
                       setTipoPago(e.target.value);
                       setCuponPago("");
                     }}
                   />
-                  <label>Cupón de pago</label>
+                  <label htmlFor="cupon_pago">Cupón de pago</label>
                 </div>
 
                 <div className="register-checkbox-group">
-                  <label>
+                  <label htmlFor="pago_facil">
                     <input
                       type="checkbox"
+                      id="pago_facil"
                       disabled={tipoPago !== "cupon"}
                       checked={cuponPago === "pago_facil"}
                       onChange={() => setCuponPago("pago_facil")}
                     />{" "}
                     Pago fácil
                   </label>
-                  <label>
+                  <label htmlFor="rapi_pago">
                     <input
                       type="checkbox"
+                      id="rapi_pago"
                       disabled={tipoPago !== "cupon"}
                       checked={cuponPago === "rapipago"}
                       onChange={() => setCuponPago("rapipago")}
@@ -185,12 +189,13 @@ function Registro({ setVista }) {
                     type="radio"
                     name="metodoPago"
                     value="transferencia"
+                    id="tranferencia"
                     onChange={(e) => {
                       setTipoPago(e.target.value);
                       setCuponPago("");
                     }}
                   />
-                  <label>Transferencia bancaria</label>
+                  <label htmlFor="tranferencia">Transferencia bancaria</label>
                 </div>
                 <p className="register-cbu">CBU: 0000003100055994120766</p>
               </article>
