@@ -14,6 +14,7 @@ function RegistroPage() {
   const [mensajeError, setMensajeError] = useState("");
   const [tipoPago, setTipoPago] = useState("");
   const [cuponPago, setCuponPago] = useState("");
+  const [mensajeOk, setMensajeOk] = useState("");
 
   useEffect(() => {
     if (tipoPago === "tarjeta") {
@@ -53,8 +54,13 @@ function RegistroPage() {
         return;
       }
 
-      setVista("login");
-      console.log("Usuario registrado con éxito. Verificar email para activar cuenta.");
+      setEmail("");
+      setUsuario("");
+      setPass("");
+      setPass2("");
+      setMetodoPago("");
+      //navigate("/login");
+      setMensajeOk("Usuario registrado con éxito. Verificar email para activar cuenta.");
     } catch (e) {
       console.error(e);
       setMensajeError("Error de conexión");
@@ -219,10 +225,11 @@ function RegistroPage() {
                   type="button"
                   onClick={() => navigate("/login")}
                 >
-                  Cancelar
+                  Volver
                 </button>
               </div>
             </section>
+            {mensajeOk && <p className="ok">{mensajeOk}</p>}
           </div>
         </div>
       </div>

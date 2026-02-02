@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import FetchPost from "../components/FetchPost";
 import ImagenGenerica from "../components/ImagenGenerica";
 
-/* helpers cookies */
 const getCookie = (name) => {
   const value = "; " + document.cookie;
   const parts = value.split("; " + name + "=");
@@ -17,7 +16,7 @@ const setCookie = (name, value, days) => {
   document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/`;
 };
 
-const LoginPage = () => {
+const LoginPage = ({ mensajeOk, mensajeError }) => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -26,7 +25,6 @@ const LoginPage = () => {
   const [mensaje, setMensaje] = useState("");
   const [estaCargando, setEstaCargando] = useState(false);
 
-  // 🔑 AUTO LOGIN DESDE COOKIE
   useEffect(() => {
     const token = getCookie("token");
     if (token) {
@@ -123,9 +121,7 @@ const LoginPage = () => {
               />
             </div>
 
-            {mensaje && (
-              <div className="login-error-message">{mensaje}</div>
-            )}
+            {mensaje && <div className="login-error-message">{mensaje}</div>}
 
             <button
               className="login-submit"
@@ -153,6 +149,8 @@ const LoginPage = () => {
               Registrarse
             </button>
           </section>
+          {mensajeOk && <p className="ok">{mensajeOk}</p>}
+          {mensajeError && <p className="error">{mensajeError}</p>}
         </div>
       </div>
     </>
