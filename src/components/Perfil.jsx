@@ -1,10 +1,15 @@
 import ImagenGenerica from "./ImagenGenerica";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function Perfil({ setVista, setMostrarModalCancelarSuscripcion, usuario }) {
+  const navigate = useNavigate();
   const [newPass, setNewPass] = useState("");
   const [newPassRep, setNewPassRep] = useState("");
   const [metodoPagoActual, setMetodoPagoActual] = useState(null);
+
+  const { logout } = useAuth();
 
   useEffect(() => {
     if (!usuario) return;
@@ -69,7 +74,12 @@ function Perfil({ setVista, setMostrarModalCancelarSuscripcion, usuario }) {
                 type="button"
                 className="perfil__logout"
                 onClick={() => {
-                  setVista("login");
+                  document.cookie = "token=; Max-Age=0; path=/";
+                  document.cookie = "nombre_usuario=; Max-Age=0; path=/";
+                  document.cookie = "email=; Max-Age=0; path=/";
+
+                  logout();
+                  navigate("/login");
                 }}
               >
                 Cerrar sesión

@@ -1,7 +1,10 @@
-import FetchPost from "./FetchPost";
+import FetchPost from "../components/FetchPost";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Registro({ setVista }) {
+function RegistroPage() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [usuario, setUsuario] = useState("");
   const [pass, setPass] = useState("");
@@ -214,7 +217,7 @@ function Registro({ setVista }) {
                 <button
                   className="register-button register-button--cancel"
                   type="button"
-                  onClick={() => setVista("login")}
+                  onClick={() => navigate("/login")}
                 >
                   Cancelar
                 </button>
@@ -227,4 +230,4 @@ function Registro({ setVista }) {
   );
 }
 
-export default Registro;
+export default RegistroPage;

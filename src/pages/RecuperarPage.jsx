@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
-import FetchPost from "./FetchPost";
+import FetchPost from "../components/FetchPost";
+import { useNavigate } from "react-router-dom";
 
-function Recuperar({ setVista }) {
+function RecuperarPage() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [nombreUsuario, setNombreUsuario] = useState("");
   const [error, setError] = useState("");
 
   async function envioEmailRecuperacion() {
+    e.preventDefault();
     const datos = {
       email: email,
       nombre_usuario: nombreUsuario,
@@ -69,7 +73,7 @@ function Recuperar({ setVista }) {
 
             <button
               className="recover-button recover-button--cancel"
-              onClick={() => setVista("login")}
+              onClick={() => navigate("/login")}
               type="button"
             >
               Volver
@@ -81,4 +85,4 @@ function Recuperar({ setVista }) {
   );
 }
 
-export default Recuperar;
+export default RecuperarPage;
