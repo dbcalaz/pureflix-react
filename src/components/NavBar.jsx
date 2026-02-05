@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ImagenGenerica from "./ImagenGenerica";
+import ImagenExterna from "./ImagenExterna";
 
 function NavBar({ vista, setVista, setTipo }) {
   const [botones, setBotones] = useState([
@@ -38,7 +38,7 @@ function NavBar({ vista, setVista, setTipo }) {
               onClick={() => actualizaActivo(i)}
             >
               <div className="navbar__item-content">
-                <ImagenGenerica imagen={b.img} />
+                <ImagenExterna nombreImagen={b.img + ".png"} />
                 {b.txt}
               </div>
             </li>
