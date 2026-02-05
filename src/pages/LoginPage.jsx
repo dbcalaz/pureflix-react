@@ -2,7 +2,7 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import FetchPost from "../components/FetchPost";
-import ImagenGenerica from "../components/ImagenGenerica";
+import ImagenExterna from "../components/ImagenExterna";
 
 const LoginPage = ({ mensajeOk, mensajeError }) => {
   const { login } = useAuth();
@@ -76,12 +76,11 @@ const LoginPage = ({ mensajeOk, mensajeError }) => {
   return (
     <>
       <div className="login-container">
-        <ImagenGenerica
-          imagen="pureflix"
+        <ImagenExterna
+          nombreImagen="pureflix.png"
           alt="Pureflix"
           className="login-logo"
         />
-
         <div>
           <form className="login-form" onSubmit={handleSubmit}>
             <div className="login-field">

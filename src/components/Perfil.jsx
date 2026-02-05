@@ -1,4 +1,4 @@
-import ImagenGenerica from "./ImagenGenerica";
+import ImagenExterna from "./ImagenExterna";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -37,7 +37,6 @@ function Perfil({ setMostrarModalCancelarSuscripcion, usuario }) {
 
         const data = await res.json();
         setDatosUsuario(data);
-        console.log(data.metodo_pago, typeof data.metodo_pago);
 
         const metodoPagoBack = Number(data.metodo_pago);
 
@@ -107,7 +106,7 @@ function Perfil({ setMostrarModalCancelarSuscripcion, usuario }) {
       setMensajeError("Error de conexión.");
     }
   }
-
+  
   return (
     <>
       <div className="perfil">
@@ -116,13 +115,13 @@ function Perfil({ setMostrarModalCancelarSuscripcion, usuario }) {
             {/* Columna izquierda */}
             <section className="perfil__columna perfil__columna--izquierda">
               <div className="perfil__foto">
-                <ImagenGenerica
-                  imagen="porDefault"
+                <ImagenExterna
+                  nombreImagen="porDefault.png"
                   className="perfil__foto--perfil"
                   alt="fotoPerfil"
                 />
-                <ImagenGenerica
-                  imagen="edit"
+                <ImagenExterna
+                  nombreImagen="edit.svg"
                   className="perfil__foto--edit"
                   onClick={() => editarFotoPerfil()}
                 />
@@ -197,7 +196,8 @@ function Perfil({ setMostrarModalCancelarSuscripcion, usuario }) {
                   <article className="perfil__pago">
                     <div className="perfil__pago--opcion">
                       <input
-                        type="checkbox"
+                        type="radio"
+                        name="metodo-pago"
                         id="cupon_pago"
                         checked={
                           metodoPagoSeleccionado === "pago_facil" ||

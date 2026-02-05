@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ImagenGenerica from "./ImagenGenerica";
+import ImagenExterna from "./ImagenExterna";
 
 function ModalDetalle({ mostrar, setMostrar }) {
   const [temporada, setTemporada] = useState("");
@@ -26,9 +26,9 @@ function ModalDetalle({ mostrar, setMostrar }) {
                   <p>{mostrar?.titulo}</p>
                 </div>
                 <div className="modal-detalle__campo modal-detalle__campo--heart">
-                <ImagenGenerica
+                  <ImagenExterna
                   className="modal-detalle__heart"
-                  imagen="favorito"
+                  nombreImagen="favorito.svg"
                   onClick={(e) => {
                     e.stopPropagation();
                     marcarFavorito(mostrar.id);

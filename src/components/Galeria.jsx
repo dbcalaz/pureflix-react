@@ -1,4 +1,4 @@
-import ImagenGenerica from "./ImagenGenerica";
+import ImagenExterna from "./ImagenExterna";
 import { useEffect, useState } from "react";
 
 function Galeria({ tipo, setMostrarModalDetalle, catSeleccionada, palabra }) {
@@ -28,7 +28,7 @@ function Galeria({ tipo, setMostrarModalDetalle, catSeleccionada, palabra }) {
           className="galeria__item"
           onClick={() => setMostrarModalDetalle(p)}
         >
-          <ImagenGenerica imagen={p.imagen.split(".")[0]} />
+          <ImagenExterna nombreImagen={p.imagen} />
         </div>
       ))}
     </section>
