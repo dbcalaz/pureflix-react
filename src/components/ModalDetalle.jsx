@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ImagenGenerica from "./ImagenGenerica";
 
 function ModalDetalle({ mostrar, setMostrar }) {
   const [temporada, setTemporada] = useState("");
@@ -16,14 +17,25 @@ function ModalDetalle({ mostrar, setMostrar }) {
               <div className="modal-detalle__video">
                 <iframe src={mostrar?.link_trailer} title="Trailer" />
               </div>
-
-              {/*<button className="modal-detalle__boton">Comenzar</button>*/}
             </div>
 
             <div className="modal-detalle__descripcion">
-              <div className="modal-detalle__fila">
-                <h3>Título:</h3>
-                <p>{mostrar?.titulo}</p>
+              <div className="modal-detalle__fila modal-detalle__fila--titulo">
+                <div className="modal-detalle__campo">
+                  <h3>Título:</h3>
+                  <p>{mostrar?.titulo}</p>
+                </div>
+                <div className="modal-detalle__campo modal-detalle__campo--heart">
+                <ImagenGenerica
+                  className="modal-detalle__heart"
+                  imagen="favorito"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    marcarFavorito(mostrar.id);
+                  }}
+                />
+                <span className="texto-oculto">Marcar favorito</span>
+                </div>
               </div>
 
               {mostrar?.tipo === 2 && (

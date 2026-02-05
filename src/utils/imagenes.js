@@ -8,10 +8,9 @@ import breakingBad from "../imagenes/breakingBad.webp";
 import campana3 from "../imagenes/campana3.png";
 import Conclave from "../imagenes/Conclave.jpg";
 import constantine from "../imagenes/constantine.jpg";
-import corazon3 from "../imagenes/corazon3.png";
+import favorito from "../imagenes/favorito.svg";
 import corazon4 from "../imagenes/corazon4.png";
 import deadpool from "../imagenes/deadpool.jpg";
-import derecha from "../imagenes/derecha.png";
 import DestinoFinal from "../imagenes/DestinoFinal.jpg";
 import Dune2 from "../imagenes/Dune2.jpg";
 import eternauta from "../imagenes/eternauta.jpeg";
@@ -21,7 +20,6 @@ import porDefault from "../imagenes/porDefault.png";
 import GIINYPORT from "../imagenes/GIINYPORT.jpg";
 import grey from "../imagenes/grey.webp";
 import implacable from "../imagenes/implacable.webp";
-import izquierda from "../imagenes/izquierda.png";
 import lilo2 from "../imagenes/lilo2.webp";
 import LosSimpsons from "../imagenes/LosSimpsons.jpg";
 import lupa from "../imagenes/lupa.png";
@@ -55,10 +53,9 @@ export const imagenes = {
   campana3,
   Conclave,
   constantine,
-  corazon3,
+  favorito,
   corazon4,
   deadpool,
-  derecha,
   DestinoFinal,
   Dune2,
   eternauta,
@@ -68,7 +65,6 @@ export const imagenes = {
   GIINYPORT,
   grey,
   implacable,
-  izquierda,
   lilo2,
   LosSimpsons,
   lupa,
