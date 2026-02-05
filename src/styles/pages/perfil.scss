@@ -13,7 +13,7 @@
 
   &__contenido {
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-columns: 1fr 3fr;
     gap: 2rem;
     max-width: 1100px;
     width: 100%;
@@ -30,19 +30,61 @@
     &--izquierda {
       align-items: center;
     }
+
+    &--medio {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
-  &__foto--perfil {
-    width: 10rem;
-    height: 10rem;
-    border-radius: 50%;
+  &__datos {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  &__foto {
+    position: relative;
+    width: 12rem;
+    height: 12rem;
+
+    &--perfil {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    &--edit {
+      position: absolute;
+      bottom: -0.3rem;
+      left: 10px;
+
+      width: 2.2rem;
+      height: 2.2rem;
+
+      background-color: #cac8c8;
+      border-radius: 50%;
+      padding: 0.4rem;
+
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      z-index: 2;
+
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
   }
 
   &__usuario {
     margin-top: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
   }
 
-  &__logout{
+  &__logout {
     width: 15rem;
     font-size: 1rem;
     padding: 0.7rem;
@@ -62,7 +104,7 @@
       text-align: right;
     }
 
-    input{
+    input {
       width: 260px;
       padding: 0.65rem;
       font-size: 1rem;
@@ -77,8 +119,8 @@
       }
     }
 
-    p{
-      flex: 1; 
+    p {
+      flex: 1;
     }
   }
 
@@ -95,7 +137,7 @@
   &__pago--opcion {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
   &__tarjeta {
@@ -108,16 +150,18 @@
   &__checkbox {
     display: flex;
     gap: 1.25rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    margin-left: 2rem;
   }
 
   &__cbu {
     font-size: 0.9rem;
-    margin-left: 1.5rem;
+    margin-left: 2rem;
   }
 
   &__acciones {
     display: flex;
+    justify-content: center;
     gap: 4rem;
     margin-top: 2rem;
     margin-bottom: 5rem;
@@ -135,10 +179,10 @@
       background-color: #6bdb5e;
 
       &:disabled {
-      background-color: #999;
-      cursor: not-allowed;
-      opacity: 0.6;
-    }
+        background-color: #999;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
     }
 
     &--cancelar {
