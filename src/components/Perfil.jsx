@@ -5,6 +5,8 @@ import { useAuth } from "../context/AuthContext";
 import FetchPut from "../components/FetchPut";
 
 function Perfil({ setMostrarModalCancelarSuscripcion, usuario }) {
+  const servidor = import.meta.env.VITE_SERVER;
+  const puerto = import.meta.env.VITE_PORT;
   const navigate = useNavigate();
   const { logout } = useAuth();
 
@@ -27,7 +29,7 @@ function Perfil({ setMostrarModalCancelarSuscripcion, usuario }) {
     const getDatosUsuario = async () => {
       try {
         const res = await fetch(
-          `http://127.0.0.1:9000/getDatosUsuario?token=${usuario.token}`,
+          `http://${servidor}:${puerto}/getDatosUsuario?token=${usuario.token}`,
         );
 
         if (!res.ok) {
@@ -106,7 +108,7 @@ function Perfil({ setMostrarModalCancelarSuscripcion, usuario }) {
       setMensajeError("Error de conexión.");
     }
   }
-  
+
   return (
     <>
       <div className="perfil">
@@ -116,7 +118,7 @@ function Perfil({ setMostrarModalCancelarSuscripcion, usuario }) {
             <section className="perfil__columna perfil__columna--izquierda">
               <div className="perfil__foto">
                 <ImagenExterna
-                  nombreImagen="porDefault.png"
+                  nombreImagen={datosUsuario?.foto_perfil}
                   className="perfil__foto--perfil"
                   alt="fotoPerfil"
                 />

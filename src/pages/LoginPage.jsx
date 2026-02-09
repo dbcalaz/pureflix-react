@@ -27,13 +27,33 @@ const LoginPage = ({ mensajeOk, mensajeError }) => {
 
   useEffect(() => {
     const token = getCookie("token");
-    if (token) {
-      const userToken = {
-        token,
-      };
-      login(userToken);
-      navigate("/");
+
+    if (!token) {
+      navigate("/login");
+      return;
     }
+
+    const validar = async () => {
+      try {
+        const res = await fetch(
+          `http://${servidor}:${puerto}/validarToken?token=${token}`,
+        );
+
+        if (!res.ok) {
+          logout();
+          navigate("/login");
+          return;
+        }
+
+        // opcional: si el endpoint devuelve algo
+        // const data = await res.json();
+      } catch (error) {
+        logout();
+        navigate("/login");
+      }
+    };
+
+    validar();
   }, []);
 
   const handleSubmit = async (e) => {
