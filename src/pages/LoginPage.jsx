@@ -44,11 +44,8 @@ const LoginPage = ({ mensajeOk, mensajeError }) => {
           navigate("/login");
           return;
         }
-
-        // opcional: si el endpoint devuelve algo
-        // const data = await res.json();
       } catch (error) {
-        logout();
+        //logout();
         navigate("/login");
       }
     };

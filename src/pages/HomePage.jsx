@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 
 import NavBar from "../components/NavBar";
@@ -8,6 +8,7 @@ import Filtros from "../components/Filtros";
 import Perfil from "../components/Perfil";
 import ProximosLanzamientos from "../components/ProximosLanzamientos";
 import ModalCancelarSuscripcion from "../components/ModalCancelarSuscripcion";
+import ModalFotoPerfil from "../components/ModalFotoPerfil";
 
 function HomePage() {
   const { user } = useAuth(); // usuario logueado
@@ -19,6 +20,15 @@ function HomePage() {
   const [palabra, setPalabra] = useState("");
   const [mostrarModalCancelarSuscripcion, setMostrarModalCancelarSuscripcion] =
     useState(false);
+  const [mostrarModalFotoPerfil, setMostrarModalFotoPerfil] = useState(false);
+  const [actualizarDatosUsuario, setActualizarDatosUsuario] = useState(false);
+
+  useEffect(() => {
+  if (actualizarDatosUsuario) {
+    setActualizarDatosUsuario(false);
+  }
+}, [actualizarDatosUsuario]);
+
 
   return (
     <>
@@ -60,14 +70,24 @@ function HomePage() {
             setMostrarModalCancelarSuscripcion={
               setMostrarModalCancelarSuscripcion
             }
+            setMostrarModalFotoPerfil={setMostrarModalFotoPerfil}
             usuario={user}
+            actualizarDatosUsuario={actualizarDatosUsuario}
           />
+
+          {mostrarModalFotoPerfil && (
+            <ModalFotoPerfil
+              mostrarModalFotoPerfil={mostrarModalFotoPerfil}
+              setMostrarModalFotoPerfil={setMostrarModalFotoPerfil}
+              usuario={user}
+              setActualizarDatosUsuario={setActualizarDatosUsuario}
+            />
+          )}
 
           {mostrarModalCancelarSuscripcion && (
             <ModalCancelarSuscripcion
               onConfirmar={() => {
                 // futuro: darDeBajaUsuario()
-                setVista("home");
                 setMostrarModalCancelarSuscripcion(false);
               }}
               onCancelar={() => setMostrarModalCancelarSuscripcion(false)}

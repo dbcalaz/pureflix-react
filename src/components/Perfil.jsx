@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import FetchPut from "../components/FetchPut";
 
-function Perfil({ setMostrarModalCancelarSuscripcion, usuario }) {
+function Perfil({ setMostrarModalCancelarSuscripcion, usuario, setMostrarModalFotoPerfil, actualizarDatosUsuario }) {
   const servidor = import.meta.env.VITE_SERVER;
   const puerto = import.meta.env.VITE_PORT;
   const navigate = useNavigate();
@@ -69,7 +69,8 @@ function Perfil({ setMostrarModalCancelarSuscripcion, usuario }) {
     };
 
     getDatosUsuario();
-  }, [usuario?.token, navigate]);
+    console.log("Usuario en perfil:", usuario);
+  }, [usuario?.token, navigate, actualizarDatosUsuario]);
 
   const passwordValida = newPass.length > 0 && newPass === newPassRep;
   const metodoPagoCambiado = metodoPagoGuardado !== metodoPagoSeleccionado;
@@ -87,7 +88,7 @@ function Perfil({ setMostrarModalCancelarSuscripcion, usuario }) {
       token: usuario.token,
       cambio_pass: passwordValida,
     };
-
+    
     try {
       const res = await FetchPut("actualizarUsuario", datosActualizados);
 
@@ -125,7 +126,7 @@ function Perfil({ setMostrarModalCancelarSuscripcion, usuario }) {
                 <ImagenExterna
                   nombreImagen="edit.svg"
                   className="perfil__foto--edit"
-                  onClick={() => editarFotoPerfil()}
+                  onClick={() => setMostrarModalFotoPerfil(true)}
                 />
               </div>
               <p className="perfil__usuario">{datosUsuario?.nombre_usuario}</p>
