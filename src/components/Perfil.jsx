@@ -4,7 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import FetchPut from "../components/FetchPut";
 
-function Perfil({ setMostrarModalCancelarSuscripcion, usuario, setMostrarModalFotoPerfil, actualizarDatosUsuario }) {
+function Perfil({
+  setMostrarModalCancelarSuscripcion,
+  usuario,
+  setMostrarModalFotoPerfil,
+  actualizarDatosUsuario,
+  setMostrarModalDetalle,
+  setFavoritos,
+  favoritos
+}) {
   const servidor = import.meta.env.VITE_SERVER;
   const puerto = import.meta.env.VITE_PORT;
   const navigate = useNavigate();
@@ -88,7 +96,7 @@ function Perfil({ setMostrarModalCancelarSuscripcion, usuario, setMostrarModalFo
       token: usuario.token,
       cambio_pass: passwordValida,
     };
-    
+
     try {
       const res = await FetchPut("actualizarUsuario", datosActualizados);
 
@@ -109,6 +117,22 @@ function Perfil({ setMostrarModalCancelarSuscripcion, usuario, setMostrarModalFo
       setMensajeError("Error de conexión.");
     }
   }
+
+  async function obtenerFavoritos() {
+    try {
+      const url = `http://${servidor}:${puerto}/getContenido?token=${usuario.token}&favorito=true`;
+      const res = await fetch(url);
+      const data = await res.json();
+      setFavoritos(data);
+      console.log("Recibiendo", data);
+    } catch (e) {
+      console.log("Error:", e);
+    }
+  }
+
+  useEffect(() => {
+    obtenerFavoritos();
+  }, [usuario.token]);
 
   return (
     <>
@@ -278,7 +302,17 @@ function Perfil({ setMostrarModalCancelarSuscripcion, usuario, setMostrarModalFo
       </div>
       <section className="perfil__listas">
         <h2>Mi lista</h2>
-        <div className="perfil__carrusel"></div>
+        <div className="perfil__carrusel">
+          {favoritos?.map((p, i) => (
+            <div
+              key={"foto_" + i}
+              className="perfil__carrusel--item"
+              onClick={() => setMostrarModalDetalle(p)}
+            >
+              <ImagenExterna nombreImagen={p.imagen} />
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="perfil__listas">

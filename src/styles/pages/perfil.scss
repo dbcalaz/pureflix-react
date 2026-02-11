@@ -198,6 +198,45 @@
     }
   }
 
+  &__carrusel {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+
+    /* opcional: scrollbar más prolijo */
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 4px;
+    }
+
+    &--item {
+      position: relative;
+      width: 100%;
+      cursor: pointer;
+      overflow: hidden;
+      border-radius: 0.5rem;
+
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        display: block;
+      }
+
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+  
   &__error-text {
     color: red;
     font-size: 0.85rem;

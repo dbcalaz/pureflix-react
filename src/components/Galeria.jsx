@@ -1,7 +1,7 @@
 import ImagenExterna from "./ImagenExterna";
 import { useEffect, useState } from "react";
 
-function Galeria({ tipo, setMostrarModalDetalle, catSeleccionada, palabra }) {
+function Galeria({ tipo, setMostrarModalDetalle, catSeleccionada, palabra, favoritos }) {
   const servidor = import.meta.env.VITE_SERVER;
   const puerto = import.meta.env.VITE_PORT;
   const [contenido, setContenido] = useState();

@@ -13,22 +13,25 @@ import ModalFotoPerfil from "../components/ModalFotoPerfil";
 function HomePage() {
   const { user } = useAuth(); // usuario logueado
   const [vista, setVista] = useState("home");
+  
   const [tipo, setTipo] = useState(0);
-  const [mostrarModalDetalle, setMostrarModalDetalle] = useState({});
   const [categorias, setCategorias] = useState([]);
   const [catSeleccionada, setCatSeleccionada] = useState(0);
   const [palabra, setPalabra] = useState("");
+  
+  const [mostrarModalDetalle, setMostrarModalDetalle] = useState({});
+  const [mostrarModalFotoPerfil, setMostrarModalFotoPerfil] = useState(false);
   const [mostrarModalCancelarSuscripcion, setMostrarModalCancelarSuscripcion] =
     useState(false);
-  const [mostrarModalFotoPerfil, setMostrarModalFotoPerfil] = useState(false);
+
   const [actualizarDatosUsuario, setActualizarDatosUsuario] = useState(false);
+  const [favoritos, setFavoritos] = useState([]);
 
   useEffect(() => {
-  if (actualizarDatosUsuario) {
-    setActualizarDatosUsuario(false);
-  }
-}, [actualizarDatosUsuario]);
-
+    if (actualizarDatosUsuario) {
+      setActualizarDatosUsuario(false);
+    }
+  }, [actualizarDatosUsuario]);
 
   return (
     <>
@@ -58,6 +61,9 @@ function HomePage() {
             <ModalDetalle
               mostrar={mostrarModalDetalle}
               setMostrar={setMostrarModalDetalle}
+              user={user}
+              favoritos={favoritos}
+              setFavoritos={setFavoritos}
             />
           )}
         </>
@@ -73,6 +79,9 @@ function HomePage() {
             setMostrarModalFotoPerfil={setMostrarModalFotoPerfil}
             usuario={user}
             actualizarDatosUsuario={actualizarDatosUsuario}
+            setMostrarModalDetalle={setMostrarModalDetalle}
+            setFavoritos={setFavoritos}
+            favoritos={favoritos}
           />
 
           {mostrarModalFotoPerfil && (
@@ -91,6 +100,16 @@ function HomePage() {
                 setMostrarModalCancelarSuscripcion(false);
               }}
               onCancelar={() => setMostrarModalCancelarSuscripcion(false)}
+            />
+          )}
+
+          {mostrarModalDetalle?.id > 0 && (
+            <ModalDetalle
+              mostrar={mostrarModalDetalle}
+              setMostrar={setMostrarModalDetalle}
+              user={user}
+              favoritos={favoritos}
+              setFavoritos={setFavoritos}
             />
           )}
         </>

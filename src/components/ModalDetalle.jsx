@@ -1,10 +1,92 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ImagenExterna from "./ImagenExterna";
+import FetchPost from "./FetchPost";
 
-function ModalDetalle({ mostrar, setMostrar }) {
+function ModalDetalle({ mostrar, setMostrar, user, favoritos, setFavoritos }) {
+  const servidor = import.meta.env.VITE_SERVER;
+  const puerto = import.meta.env.VITE_PORT;
+
   const [temporada, setTemporada] = useState("");
   const [capitulos, setCapitulos] = useState([]);
   const [capituloSeleccionado, setCapituloSeleccionado] = useState(null);
+  const [mensajeError, setMensajeError] = useState("");
+  const [mensajeOk, setMensajeOk] = useState("");
+  const [esFavorito, setEsFavorito] = useState(false);
+  const [cargandoFavorito, setCargandoFavorito] = useState(false);
+
+  useEffect(() => {
+    if (!mostrar?.id || !favoritos) return;
+
+    const estaEnFavoritos = favoritos.some((f) => f.id === mostrar.id);
+
+    setEsFavorito(estaEnFavoritos);
+  }, [mostrar, favoritos]);
+
+  async function marcarFavorito(idContenido) {
+    if (cargandoFavorito) return;
+
+    setCargandoFavorito(true);
+    setMensajeOk("");
+    setMensajeError("");
+
+    const datos = {
+      token: user.token,
+      id_contenido: idContenido,
+    };
+
+    try {
+      const res = await FetchPost("marcarFavorito", datos);
+
+      if (!res.ok) {
+        const err = await res.json();
+        setMensajeError(err.mensaje || "Error al marcar favorito");
+        return;
+      }
+
+      const data = await res.json();
+      setMensajeOk(data.mensaje || "Se marcó como favorito correctamente");
+      setEsFavorito(true);
+      setFavoritos((prev) => [...prev, mostrar]);
+    } catch (e) {
+      setMensajeError("Error de conexión.");
+    } finally {
+      setCargandoFavorito(false);
+    }
+  }
+
+  async function eliminarFavorito(idContenido) {
+    if (cargandoFavorito) return;
+
+    setCargandoFavorito(true);
+    setMensajeOk("");
+    setMensajeError("");
+
+    let id_contenido = idContenido;
+    console.log("id_contenido: " , id_contenido);
+    let token = user.token;
+
+    try {
+      const url = `http://${servidor}:${puerto}/eliminarFavorito?id_contenido=${id_contenido}&token=${token}`;
+      const res = await fetch(url, {
+        method: "DELETE",
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        setMensajeError(err.mensaje || "Error al desmarcar favorito");
+        return;
+      }
+
+      const data = await res.json();
+      setMensajeOk(data.mensaje || "Se desmarcó como favorito correctamente");
+      setEsFavorito(false);
+      setFavoritos((prev) => prev.filter((f) => f.id !== mostrar.id));
+    } catch (e) {
+      setMensajeError("Error de conexión.");
+    } finally {
+      setCargandoFavorito(false);
+    }
+  }
 
   return (
     <div className="modal-detalle">
@@ -27,14 +109,26 @@ function ModalDetalle({ mostrar, setMostrar }) {
                 </div>
                 <div className="modal-detalle__campo modal-detalle__campo--heart">
                   <ImagenExterna
-                  className="modal-detalle__heart"
-                  nombreImagen="favorito.svg"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    marcarFavorito(mostrar.id);
-                  }}
-                />
-                <span className="texto-oculto">Marcar favorito</span>
+                    className={`modal-detalle__heart ${esFavorito ? "favorito-activo" : ""}`}
+                    nombreImagen="fav.svg"
+                    onClick={(e) => {
+                      e.stopPropagation();
+
+                      if (cargandoFavorito) return;
+
+                      if (esFavorito) {
+                        eliminarFavorito(mostrar.id);
+                      } else {
+                        marcarFavorito(mostrar.id);
+                      }
+                    }}
+                  />
+                  {!esFavorito && (
+                    <span className="texto-oculto">Marcar favorito</span>
+                  )}
+                  {esFavorito && (
+                    <span className="texto-oculto">Desmarcar favorito</span>
+                  )}
                 </div>
               </div>
 
