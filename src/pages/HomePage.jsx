@@ -13,12 +13,12 @@ import ModalFotoPerfil from "../components/ModalFotoPerfil";
 function HomePage() {
   const { user } = useAuth(); // usuario logueado
   const [vista, setVista] = useState("home");
-  
+
   const [tipo, setTipo] = useState(0);
   const [categorias, setCategorias] = useState([]);
   const [catSeleccionada, setCatSeleccionada] = useState(0);
   const [palabra, setPalabra] = useState("");
-  
+
   const [mostrarModalDetalle, setMostrarModalDetalle] = useState({});
   const [mostrarModalFotoPerfil, setMostrarModalFotoPerfil] = useState(false);
   const [mostrarModalCancelarSuscripcion, setMostrarModalCancelarSuscripcion] =
@@ -115,7 +115,17 @@ function HomePage() {
         </>
       )}
 
-      {vista === "proximos" && <ProximosLanzamientos />}
+      {vista === "proximos" && (
+        <ProximosLanzamientos setMostrarModalDetalle={setMostrarModalDetalle} />
+      )}
+
+      {mostrarModalDetalle?.id > 0 && (
+        <ModalDetalle
+          mostrar={mostrarModalDetalle}
+          setMostrar={setMostrarModalDetalle}
+          user={user}
+        />
+      )}
     </>
   );
 }

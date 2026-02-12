@@ -5,12 +5,12 @@
 @use "./components/navbar";
 @use "./components/filtros";
 @use "./components/modal-detalle";
-@use "./components/galeria";
 @use "./components/modal-foto-perfil";
 
 /* Pages */
 @use "./pages/login";
 @use "./pages/recuperar";
+@use "./pages/galeria";
 @use "./pages/registro";
 @use "./pages/perfil";
 @use "./pages/proximos-lanzamientos";

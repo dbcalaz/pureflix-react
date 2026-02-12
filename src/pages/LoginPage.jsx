@@ -8,10 +8,14 @@ const LoginPage = ({ mensajeOk, mensajeError }) => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
+  const servidor = import.meta.env.VITE_SERVER;
+  const puerto = import.meta.env.VITE_PORT;
+
   const [nombreUsuario, setNombreUsuario] = useState("");
   const [password, setPassword] = useState("");
   const [mensaje, setMensaje] = useState("");
   const [estaCargando, setEstaCargando] = useState(false);
+  const [usuario, setUsuario] = useState();
 
   const getCookie = (name) => {
     const value = "; " + document.cookie;
@@ -29,28 +33,27 @@ const LoginPage = ({ mensajeOk, mensajeError }) => {
     const token = getCookie("token");
 
     if (!token) {
-      navigate("/login");
+      setUsuario(null);
       return;
     }
 
-    const validar = async () => {
+    const validarToken = async () => {
       try {
         const res = await fetch(
           `http://${servidor}:${puerto}/validarToken?token=${token}`,
         );
 
-        if (!res.ok) {
-          logout();
-          navigate("/login");
-          return;
+        if (res.ok) {
+          setUsuario({ token });
+        } else {
+          setUsuario(null);
         }
-      } catch (error) {
-        //logout();
-        navigate("/login");
+      } catch {
+        setUsuario(null);
       }
     };
 
-    validar();
+    validarToken();
   }, []);
 
   const handleSubmit = async (e) => {

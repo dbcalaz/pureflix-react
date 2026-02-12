@@ -1,14 +1,14 @@
 import ImagenExterna from "./ImagenExterna";
 import { useEffect, useState } from "react";
 
-function Galeria({ tipo, setMostrarModalDetalle, catSeleccionada, palabra, favoritos }) {
+function Galeria({ tipo, setMostrarModalDetalle, catSeleccionada, palabra }) {
   const servidor = import.meta.env.VITE_SERVER;
   const puerto = import.meta.env.VITE_PORT;
   const [contenido, setContenido] = useState();
 
   async function obtenerContenido(tipo) {
     try {
-      const url = `http://${servidor}:${puerto}/getContenido?tipo=${tipo}&categoria=${catSeleccionada}&palabra=${palabra}`;
+      const url = `http://${servidor}:${puerto}/getContenido?tipo=${tipo}&categoria=${catSeleccionada}&palabra=${palabra}&proximo=false`;
       const res = await fetch(url);
       const data = await res.json();
       setContenido(data);
