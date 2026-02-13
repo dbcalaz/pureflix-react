@@ -152,7 +152,6 @@ function Perfil({
     obtenerFavoritos();
   }, [usuario.token]);
 
-
   return (
     <>
       <div className="perfil">

@@ -11,8 +11,8 @@ import ModalCancelarSuscripcion from "../components/ModalCancelarSuscripcion";
 import ModalFotoPerfil from "../components/ModalFotoPerfil";
 
 function HomePage() {
-  const { user } = useAuth(); // usuario logueado
-  const [vista, setVista] = useState("home");
+  const { user } = useAuth();
+  const [vista, setVista] = useState("");
 
   const [tipo, setTipo] = useState(0);
   const [categorias, setCategorias] = useState([]);
@@ -29,11 +29,36 @@ function HomePage() {
   const [favoritos, setFavoritos] = useState([]);
   const [notificaciones, setNotificaciones] = useState([]);
 
+  
   useEffect(() => {
     if (actualizarDatosUsuario) {
       setActualizarDatosUsuario(false);
     }
   }, [actualizarDatosUsuario]);
+  
+  useEffect(() => {
+    const getCookieVista = (name) => {
+      const value = "; " + document.cookie;
+      const parts = value.split("; " + name + "=");
+      if (parts.length === 2) return parts.pop().split(";").shift();
+    };
+
+    const x = getCookieVista("vista") ;
+    
+    if(x){
+      if(x === "series"){
+        setTipo(2);
+      }
+      if(x === "peliculas"){
+        setTipo(1);
+      }
+
+      setVista(x);
+    }else{
+      setVista("home")
+      setTipo(0);
+    }
+  }, []);
 
   return (
     <>
@@ -48,7 +73,7 @@ function HomePage() {
             setCatSeleccionada={setCatSeleccionada}
             palabra={palabra}
             setPalabra={setPalabra}
-          />
+            />
 
           <Galeria
             tipo={tipo}
@@ -100,10 +125,10 @@ function HomePage() {
           {mostrarModalCancelarSuscripcion && (
             <ModalCancelarSuscripcion
               onConfirmar={() => {
-                // futuro: darDeBajaUsuario()
                 setMostrarModalCancelarSuscripcion(false);
               }}
               onCancelar={() => setMostrarModalCancelarSuscripcion(false)}
+              user={user}
             />
           )}
 

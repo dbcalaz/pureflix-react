@@ -36,15 +36,13 @@ const LoginPage = ({ mensajeOk, mensajeError }) => {
       setUsuario(null);
       return;
     }
-
     const validarToken = async () => {
       try {
         const res = await fetch(
           `http://${servidor}:${puerto}/validarToken?token=${token}`,
         );
-
         if (res.ok) {
-          setUsuario({ token });
+          setUsuario({ token: token });
         } else {
           setUsuario(null);
         }
@@ -55,6 +53,13 @@ const LoginPage = ({ mensajeOk, mensajeError }) => {
 
     validarToken();
   }, []);
+
+  useEffect(() => {
+    if (usuario) {
+      login(usuario);
+      navigate("/");
+    }
+  }, [usuario]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -83,7 +88,7 @@ const LoginPage = ({ mensajeOk, mensajeError }) => {
       Object.entries(data).forEach(([key, value]) => {
         setCookie(key, value, 1);
       });
-
+      console.log("login data: ", data);
       login(data);
       navigate("/");
     } catch {
