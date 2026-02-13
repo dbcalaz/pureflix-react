@@ -11,7 +11,9 @@ function Perfil({
   actualizarDatosUsuario,
   setMostrarModalDetalle,
   setFavoritos,
-  favoritos
+  favoritos,
+  setNotificaciones,
+  notificaciones,
 }) {
   const servidor = import.meta.env.VITE_SERVER;
   const puerto = import.meta.env.VITE_PORT;
@@ -118,13 +120,29 @@ function Perfil({
     }
   }
 
+  async function obtenerNotificaciones() {
+    try {
+      const url = `http://${servidor}:${puerto}/getContenido?token=${usuario.token}&notificacion=true&proximo=true`;
+      const res = await fetch(url);
+      const data = await res.json();
+      setNotificaciones(data);
+      console.log("Recibiendo notificaciones", data);
+    } catch (e) {
+      console.log("Error:", e);
+    }
+  }
+
+  useEffect(() => {
+    obtenerNotificaciones();
+  }, [usuario.token]);
+
   async function obtenerFavoritos() {
     try {
       const url = `http://${servidor}:${puerto}/getContenido?token=${usuario.token}&favorito=true`;
       const res = await fetch(url);
       const data = await res.json();
       setFavoritos(data);
-      console.log("Recibiendo", data);
+      console.log("Recibiendo favoritos", data);
     } catch (e) {
       console.log("Error:", e);
     }
@@ -133,6 +151,7 @@ function Perfil({
   useEffect(() => {
     obtenerFavoritos();
   }, [usuario.token]);
+
 
   return (
     <>
@@ -317,7 +336,17 @@ function Perfil({
 
       <section className="perfil__listas">
         <h2>Próximos lanzamientos</h2>
-        <div className="perfil__carrusel"></div>
+        <div className="perfil__carrusel">
+          {notificaciones?.map((p, i) => (
+            <div
+              key={"foto_" + i}
+              className="perfil__carrusel--item"
+              onClick={() => setMostrarModalDetalle(p)}
+            >
+              <ImagenExterna nombreImagen={p.imagen} />
+            </div>
+          ))}
+        </div>
       </section>
     </>
   );

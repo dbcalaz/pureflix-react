@@ -2,32 +2,53 @@ import { useState, useEffect } from "react";
 import ImagenExterna from "./ImagenExterna";
 import FetchPost from "./FetchPost";
 
-function ModalDetalle({ mostrar, setMostrar, user, favoritos, setFavoritos }) {
+function ModalDetalle({
+  mostrar,
+  setMostrar,
+  user,
+  favoritos,
+  setFavoritos,
+  notificaciones,
+  setNotificaciones,
+}) {
   const servidor = import.meta.env.VITE_SERVER;
   const puerto = import.meta.env.VITE_PORT;
 
   const [temporada, setTemporada] = useState("");
   const [capitulos, setCapitulos] = useState([]);
   const [capituloSeleccionado, setCapituloSeleccionado] = useState(null);
+  
   const [mensajeError, setMensajeError] = useState("");
   const [mensajeOk, setMensajeOk] = useState("");
+
   const [esFavorito, setEsFavorito] = useState(false);
-  const [cargandoFavorito, setCargandoFavorito] = useState(false);
+  const [esNotificacion, setEsNotificacion] = useState(false);
+  const [cargandoAccion, setCargandoAccion] = useState(false);
 
   useEffect(() => {
-    if (!mostrar?.id || !favoritos) return;
+    if (!mostrar?.id) return;
 
-    const estaEnFavoritos = favoritos.some((f) => f.id === mostrar.id);
+    if (mostrar?.es_proximo) {
+      const estaEnNotificaciones = notificaciones?.some(
+        (n) => n.id === mostrar.id,
+      );
+      setEsNotificacion(estaEnNotificaciones);
+    } else {
+      const estaEnFavoritos = favoritos?.some((f) => f.id === mostrar.id);
+      setEsFavorito(estaEnFavoritos);
+    }
+  }, [mostrar, favoritos, notificaciones]);
 
-    setEsFavorito(estaEnFavoritos);
-  }, [mostrar, favoritos]);
+  async function marcarAccion(idContenido) {
+    if (cargandoAccion) return;
 
-  async function marcarFavorito(idContenido) {
-    if (cargandoFavorito) return;
-
-    setCargandoFavorito(true);
+    setCargandoAccion(true);
     setMensajeOk("");
     setMensajeError("");
+
+    const esProximo = mostrar?.es_proximo === true;
+
+    const endpoint = esProximo ? "marcarNotificacion" : "marcarFavorito";
 
     const datos = {
       token: user.token,
@@ -35,56 +56,93 @@ function ModalDetalle({ mostrar, setMostrar, user, favoritos, setFavoritos }) {
     };
 
     try {
-      const res = await FetchPost("marcarFavorito", datos);
+      const res = await FetchPost(endpoint, datos);
 
       if (!res.ok) {
         const err = await res.json();
-        setMensajeError(err.mensaje || "Error al marcar favorito");
+        setMensajeError(
+          err.mensaje ||
+            (esProximo
+              ? "Error al marcar notificación"
+              : "Error al marcar favorito"),
+        );
         return;
       }
 
       const data = await res.json();
-      setMensajeOk(data.mensaje || "Se marcó como favorito correctamente");
-      setEsFavorito(true);
-      setFavoritos((prev) => [...prev, mostrar]);
+
+      setMensajeOk(
+        data.mensaje ||
+          (esProximo
+            ? "Notificación activada correctamente"
+            : "Se marcó como favorito correctamente"),
+      );
+
+      if (esProximo) {
+        setEsNotificacion(true);
+        setNotificaciones((prev) => [...prev, mostrar]);
+      } else {
+        setEsFavorito(true);
+        setFavoritos((prev) => [...prev, mostrar]);
+      }
     } catch (e) {
       setMensajeError("Error de conexión.");
     } finally {
-      setCargandoFavorito(false);
+      setCargandoAccion(false);
     }
   }
 
-  async function eliminarFavorito(idContenido) {
-    if (cargandoFavorito) return;
+  async function eliminarAccion(idContenido) {
+    if (cargandoAccion) return;
 
-    setCargandoFavorito(true);
+    setCargandoAccion(true);
     setMensajeOk("");
     setMensajeError("");
 
-    let id_contenido = idContenido;
-    console.log("id_contenido: " , id_contenido);
-    let token = user.token;
+    const esProximo = mostrar?.es_proximo === true;
+
+    const endpoint = esProximo ? "eliminarNotificacion" : "eliminarFavorito";
+
+    const token = user.token;
 
     try {
-      const url = `http://${servidor}:${puerto}/eliminarFavorito?id_contenido=${id_contenido}&token=${token}`;
+      const url = `http://${servidor}:${puerto}/${endpoint}?id_contenido=${idContenido}&token=${token}`;
+
       const res = await fetch(url, {
         method: "DELETE",
       });
 
       if (!res.ok) {
         const err = await res.json();
-        setMensajeError(err.mensaje || "Error al desmarcar favorito");
+        setMensajeError(
+          err.mensaje ||
+            (esProximo
+              ? "Error al eliminar notificación"
+              : "Error al desmarcar favorito"),
+        );
         return;
       }
 
       const data = await res.json();
-      setMensajeOk(data.mensaje || "Se desmarcó como favorito correctamente");
-      setEsFavorito(false);
-      setFavoritos((prev) => prev.filter((f) => f.id !== mostrar.id));
+
+      setMensajeOk(
+        data.mensaje ||
+          (esProximo
+            ? "Notificación eliminada correctamente"
+            : "Se desmarcó como favorito correctamente"),
+      );
+
+      if (esProximo) {
+        setEsNotificacion(false);
+        setNotificaciones((prev) => prev.filter((n) => n.id !== mostrar.id));
+      } else {
+        setEsFavorito(false);
+        setFavoritos((prev) => prev.filter((f) => f.id !== mostrar.id));
+      }
     } catch (e) {
       setMensajeError("Error de conexión.");
     } finally {
-      setCargandoFavorito(false);
+      setCargandoAccion(false);
     }
   }
 
@@ -109,26 +167,39 @@ function ModalDetalle({ mostrar, setMostrar, user, favoritos, setFavoritos }) {
                 </div>
                 <div className="modal-detalle__campo modal-detalle__campo--heart">
                   <ImagenExterna
-                    className={`modal-detalle__heart ${esFavorito ? "favorito-activo" : ""}`}
-                    nombreImagen="fav.svg"
+                    className={`modal-detalle__icon ${
+                      mostrar?.es_proximo
+                        ? esNotificacion
+                          ? "favorito-activo"
+                          : ""
+                        : esFavorito
+                          ? "favorito-activo"
+                          : ""
+                    }`}
+                    nombreImagen={mostrar?.es_proximo ? "bell.svg" : "fav.svg"}
                     onClick={(e) => {
                       e.stopPropagation();
 
-                      if (cargandoFavorito) return;
+                      const esProximo = mostrar?.es_proximo === true;
+                      const activo = esProximo ? esNotificacion : esFavorito;
 
-                      if (esFavorito) {
-                        eliminarFavorito(mostrar.id);
+                      if (activo) {
+                        eliminarAccion(mostrar.id);
                       } else {
-                        marcarFavorito(mostrar.id);
+                        marcarAccion(mostrar.id);
                       }
                     }}
                   />
-                  {!esFavorito && (
-                    <span className="texto-oculto">Marcar favorito</span>
-                  )}
-                  {esFavorito && (
-                    <span className="texto-oculto">Desmarcar favorito</span>
-                  )}
+
+                  <span className="texto-oculto">
+                    {mostrar?.es_proximo
+                      ? esNotificacion
+                        ? "Desmarcar notificación"
+                        : "Marcar notificación"
+                      : esFavorito
+                        ? "Desmarcar favorito"
+                        : "Marcar favorito"}
+                  </span>
                 </div>
               </div>
 

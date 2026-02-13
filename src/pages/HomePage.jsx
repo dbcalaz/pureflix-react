@@ -25,7 +25,9 @@ function HomePage() {
     useState(false);
 
   const [actualizarDatosUsuario, setActualizarDatosUsuario] = useState(false);
+
   const [favoritos, setFavoritos] = useState([]);
+  const [notificaciones, setNotificaciones] = useState([]);
 
   useEffect(() => {
     if (actualizarDatosUsuario) {
@@ -82,6 +84,8 @@ function HomePage() {
             setMostrarModalDetalle={setMostrarModalDetalle}
             setFavoritos={setFavoritos}
             favoritos={favoritos}
+            notificaciones={notificaciones}
+            setNotificaciones={setNotificaciones}
           />
 
           {mostrarModalFotoPerfil && (
@@ -110,13 +114,19 @@ function HomePage() {
               user={user}
               favoritos={favoritos}
               setFavoritos={setFavoritos}
+              notificaciones={notificaciones}
+              setNotificaciones={setNotificaciones}
             />
           )}
         </>
       )}
 
       {vista === "proximos" && (
-        <ProximosLanzamientos setMostrarModalDetalle={setMostrarModalDetalle} />
+        <ProximosLanzamientos
+          setMostrarModalDetalle={setMostrarModalDetalle}
+          notificaciones={notificaciones}
+          setNotificaciones={setNotificaciones}
+        />
       )}
 
       {mostrarModalDetalle?.id > 0 && (
@@ -124,6 +134,10 @@ function HomePage() {
           mostrar={mostrarModalDetalle}
           setMostrar={setMostrarModalDetalle}
           user={user}
+          favoritos={favoritos}
+          setFavoritos={setFavoritos}
+          notificaciones={notificaciones}
+          setNotificaciones={setNotificaciones}
         />
       )}
     </>
