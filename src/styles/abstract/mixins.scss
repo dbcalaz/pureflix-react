@@ -1,0 +1,26 @@
+@use "../abstract/variables" as *;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin button-primary {
+  background-color: $color-accent;
+  color: $color-text-primary;
+  border-radius: $radius-md;
+  transition: $transition-normal;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+@mixin card-hover {
+  transition: $transition-normal;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}

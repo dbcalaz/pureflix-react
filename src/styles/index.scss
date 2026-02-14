@@ -1,4 +1,12 @@
-@use "./base";
+@use "abstract/variables";
+@use "abstract/mixins";
+@use "abstract/breakpoints";
+
+@use "base/globals";
+@use "base/reset";
+@use "base/tipografia";
+
+@use "layout/container";
 
 /* Components */
 @use "./components/buttons";
