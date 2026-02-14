@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+const servidor = import.meta.env.VITE_SERVER;
+const puerto = import.meta.env.VITE_PORT;
 
 function Filtros({
   categorias,
@@ -10,7 +12,7 @@ function Filtros({
   useEffect(() => {
     async function obtenerCategorias() {
       try {
-        const res = await fetch('http://127.0.0.1:9000/getCategorias');
+        const res = await fetch(`http://${servidor}:${puerto}/getCategorias`);
         const data = await res.json();
         setCategorias(data);
       } catch (e) {
@@ -39,7 +41,7 @@ function Filtros({
             <option value="vacio">Seleccionar categoría</option>
             {categorias?.map((c, i) => {
               return (
-                <option key={"categoria_" + i}  value={c.id}>
+                <option key={"categoria_" + i} value={c.id}>
                   {c.descripcion}
                 </option>
               );
