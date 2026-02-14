@@ -100,20 +100,20 @@ const LoginPage = ({ mensajeOk, mensajeError }) => {
 
   return (
     <>
-      <div className="login-container">
+      <div className="login">
         <ImagenExterna
-          nombreImagen="pureflix.png"
+          nombreImagen="logo.svg"
           alt="Pureflix"
           className="login-logo"
         />
         <div>
-          <form className="login-form" onSubmit={handleSubmit}>
-            <div className="login-field">
-              <label className="login-label" htmlFor="usuario">
+          <form className="login__form" onSubmit={handleSubmit}>
+            <div className="login__field">
+              <label className="login__label" htmlFor="usuario">
                 Nombre de usuario
               </label>
               <input
-                className="login-input"
+                className="login__input"
                 type="text"
                 placeholder="Nombre de usuario"
                 id="usuario"
@@ -125,12 +125,12 @@ const LoginPage = ({ mensajeOk, mensajeError }) => {
               />
             </div>
 
-            <div className="login-field">
-              <label className="login-label" htmlFor="contrasenia">
+            <div className="login__field">
+              <label className="login__label" htmlFor="contrasenia">
                 Contraseña
               </label>
               <input
-                className="login-input"
+                className="login__input"
                 type="password"
                 placeholder="Contraseña"
                 id="contrasenia"
@@ -142,10 +142,10 @@ const LoginPage = ({ mensajeOk, mensajeError }) => {
               />
             </div>
 
-            {mensaje && <div className="login-error-message">{mensaje}</div>}
+            {mensaje && <div className="login__error">{mensaje}</div>}
 
             <button
-              className="login-submit"
+              className="login__submit"
               type="submit"
               disabled={estaCargando}
             >
@@ -153,9 +153,9 @@ const LoginPage = ({ mensajeOk, mensajeError }) => {
             </button>
           </form>
 
-          <section className="login-secondary-actions">
+          <section className="login__secondary">
             <button
-              className="login-secondary-button"
+              className="login__link"
               onClick={() => navigate("/recuperar")}
               type="button"
             >
@@ -163,7 +163,7 @@ const LoginPage = ({ mensajeOk, mensajeError }) => {
             </button>
 
             <button
-              className="login-secondary-button"
+              className="login__link"
               onClick={() => navigate("/registro")}
               type="button"
             >
