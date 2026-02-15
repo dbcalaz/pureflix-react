@@ -34,6 +34,12 @@ function RegistroPage() {
     } else {
       setCamposCompletos(false);
     }
+
+    if (pass && pass2 && pass !== pass2) {
+      setMensajeError("Las contraseñas no coinciden");
+    } else {
+      setMensajeError("");
+    }
   }, [email, usuario, pass, pass2, metodoPago]);
 
   async function registrarUsuario() {
@@ -59,8 +65,9 @@ function RegistroPage() {
       setPass("");
       setPass2("");
       setMetodoPago("");
-      //navigate("/login");
-      setMensajeOk("Usuario registrado con éxito. Verificar email para activar cuenta.");
+      setMensajeOk(
+        "Usuario registrado con éxito. Verificar email para activar cuenta.",
+      );
     } catch (e) {
       console.error(e);
       setMensajeError("Error de conexión");
@@ -68,172 +75,199 @@ function RegistroPage() {
   }
 
   return (
-    <>
-      <div className="register-container">
-        <div className="register-header">
-          <h1>Registrarse</h1>
+    <div className="register">
+      <div className="register__container">
+        <div className="register__header">
+          <h1 className="register__title">Crear cuenta</h1>
         </div>
 
-        <div className="register-form">
-          <div className="register-layout">
-            {/* Datos de contacto */}
-            <section className="register-contact">
-              <article className="register-field">
-                <label htmlFor="email">E-mail</label>
-                <div className="register-input-group">
+        <form className="register__form">
+          <div className="register__layout">
+            {/*contacto*/}
+            <section className="register__section register__section--contact">
+              <article className="register__field">
+                <label htmlFor="email" className="register__label">
+                  E-mail
+                </label>
+
+                <div className="register__input-group">
                   <input
                     type="text"
                     id="email"
                     name="email"
                     placeholder="Ingrese email"
+                    className="register__input"
+                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                  <p className="register-error"></p>
                 </div>
               </article>
 
-              <article className="register-field">
-                <label htmlFor="nombreDeUsuario">Nombre de usuario</label>
-                <div className="register-input-group">
+              <article className="register__field">
+                <label htmlFor="nombreDeUsuario" className="register__label">
+                  Nombre de usuario
+                </label>
+
+                <div className="register__input-group">
                   <input
                     type="text"
                     id="nombreDeUsuario"
                     name="nombreDeUsuario"
                     placeholder="Nombre de usuario"
+                    className="register__input"
+                    value={usuario}
                     onChange={(e) => setUsuario(e.target.value)}
                   />
-                  <p className="register-error"></p>
                 </div>
               </article>
 
-              <article className="register-field">
-                <label htmlFor="contrasenia">Contraseña</label>
-                <div className="register-input-group">
+              <article className="register__field">
+                <label htmlFor="contrasenia" className="register__label">
+                  Contraseña
+                </label>
+
+                <div className="register__input-group">
                   <input
                     type="password"
                     id="contrasenia"
                     name="contrasenia"
                     placeholder="Contraseña"
+                    className="register__input"
+                    value={pass}
                     onChange={(e) => setPass(e.target.value)}
                   />
-                  <p className="register-error"></p>
                 </div>
               </article>
 
-              <article className="register-field">
-                <label htmlFor="repetirContrasenia">Repetir contraseña</label>
-                <div className="register-input-group">
+              <article className="register__field">
+                <label htmlFor="repetirContrasenia" className="register__label">
+                  Repetir contraseña
+                </label>
+
+                <div className="register__input-group">
                   <input
                     type="password"
                     id="repetirContrasenia"
                     name="repetirContrasenia"
                     placeholder="Repetir contraseña"
+                    className="register__input"
+                    value={pass2}
                     onChange={(e) => setPass2(e.target.value)}
                   />
-                  <p className="register-error"></p>
                 </div>
               </article>
             </section>
 
-            {/* Método de pago */}
-            <section className="register-payment">
-              <p className="register-section-title">Método de pago</p>
+            {/*METODO DE PAGO*/}
+            <section className="register__section register__section--payment">
+              <h2 className="register__section-title">Método de pago</h2>
 
-              <article className="register-payment-option">
-                <input
-                  type="radio"
-                  name="metodoPago"
-                  value="tarjeta"
-                  id="tarjeta"
-                  onChange={(e) => {
-                    setTipoPago(e.target.value);
-                    setCuponPago("");
-                  }}
-                />
-                <label htmlFor="tarjeta">Tarjeta de crédito</label>
-              </article>
-
-              <article className="register-payment-suboption">
-                <div className="register-payment-label-input">
+              <div className="register__payment-options">
+                <label
+                  className={`register__payment-card ${tipoPago === "tarjeta" ? "register__payment-card--active" : ""}`}
+                >
                   <input
                     type="radio"
                     name="metodoPago"
-                    value="cupon"
-                    id="cupon_pago"
+                    value="tarjeta"
+                    checked={tipoPago === "tarjeta"}
                     onChange={(e) => {
                       setTipoPago(e.target.value);
                       setCuponPago("");
                     }}
                   />
-                  <label htmlFor="cupon_pago">Cupón de pago</label>
-                </div>
+                  <span> 💳 Tarjeta de crédito</span>
+                </label>
 
-                <div className="register-checkbox-group">
-                  <label htmlFor="pago_facil">
-                    <input
-                      type="checkbox"
-                      id="pago_facil"
-                      disabled={tipoPago !== "cupon"}
-                      checked={cuponPago === "pago_facil"}
-                      onChange={() => setCuponPago("pago_facil")}
-                    />{" "}
-                    Pago fácil
-                  </label>
-                  <label htmlFor="rapi_pago">
-                    <input
-                      type="checkbox"
-                      id="rapi_pago"
-                      disabled={tipoPago !== "cupon"}
-                      checked={cuponPago === "rapipago"}
-                      onChange={() => setCuponPago("rapipago")}
-                    />{" "}
-                    RapiPago
-                  </label>
-                </div>
-              </article>
-
-              <article className="register-payment-suboption">
-                <div className="register-payment-label-input">
-                  <input
-                    type="radio"
-                    name="metodoPago"
-                    value="transferencia"
-                    id="tranferencia"
-                    onChange={(e) => {
-                      setTipoPago(e.target.value);
-                      setCuponPago("");
-                    }}
-                  />
-                  <label htmlFor="tranferencia">Transferencia bancaria</label>
-                </div>
-                <p className="register-cbu">CBU: 0000003100055994120766</p>
-              </article>
-
-              <p className="register-error"></p>
-
-              <div className="register-actions">
-                <button
-                  className="register-button register-button--confirm"
-                  disabled={!camposCompletos}
-                  onClick={registrarUsuario}
+                <div
+                  className={`register__payment-card ${tipoPago === "cupon" ? "register__payment-card--active" : ""}`}
                 >
-                  Confirmar
-                </button>
+                  <label className="register__payment-main">
+                    <input
+                      type="radio"
+                      name="metodoPago"
+                      value="cupon"
+                      checked={tipoPago === "cupon"}
+                      onChange={(e) => {
+                        setTipoPago(e.target.value);
+                        setCuponPago("");
+                      }}
+                    />
+                    <span>🎟 Cupón de pago</span>
+                  </label>
 
-                <button
-                  className="register-button register-button--cancel"
-                  type="button"
-                  onClick={() => navigate("/login")}
+                  <div className="register__checkbox-group">
+                    <label>
+                      <input
+                        type="checkbox"
+                        disabled={tipoPago !== "cupon"}
+                        checked={cuponPago === "pago_facil"}
+                        onChange={() => setCuponPago("pago_facil")}
+                      />
+                      Pago Fácil
+                    </label>
+
+                    <label>
+                      <input
+                        type="checkbox"
+                        disabled={tipoPago !== "cupon"}
+                        checked={cuponPago === "rapipago"}
+                        onChange={() => setCuponPago("rapipago")}
+                      />
+                      RapiPago
+                    </label>
+                  </div>
+                </div>
+
+                <div
+                  className={`register__payment-card ${tipoPago === "transferencia" ? "register__payment-card--active" : ""}`}
                 >
-                  Volver
-                </button>
+                  <label className="register__payment-main">
+                    <input
+                      type="radio"
+                      name="metodoPago"
+                      value="transferencia"
+                      checked={tipoPago === "transferencia"}
+                      onChange={(e) => {
+                        setTipoPago(e.target.value);
+                        setCuponPago("");
+                      }}
+                    />
+                    <span>🏦 Transferencia bancaria</span>
+                  </label>
+
+                  <p className="register__cbu">CBU: 0000003100055994120766</p>
+                </div>
               </div>
+
+              {mensajeOk && <p className="register__ok">{mensajeOk}</p>}
+              {mensajeError && (
+                <p className="register__error">{mensajeError}</p>
+              )}
             </section>
-            {mensajeOk && <p className="ok">{mensajeOk}</p>}
           </div>
-        </div>
+
+          <div className="register__actions">
+            <button
+              type="button"
+              className="register__button register__button--confirm"
+              disabled={!camposCompletos}
+              onClick={registrarUsuario}
+            >
+              Confirmar
+            </button>
+
+            <button
+              type="button"
+              className="register__button register__button--cancel"
+              onClick={() => navigate("/login")}
+            >
+              Volver
+            </button>
+          </div>
+        </form>
       </div>
-    </>
+    </div>
   );
 }
 

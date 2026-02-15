@@ -9,7 +9,7 @@
 @mixin button-primary {
   background-color: $color-accent;
   color: $color-text-primary;
-  border-radius: $radius-md;
+  border-radius: $radius-sm;
   transition: $transition-normal;
 
   &:hover {

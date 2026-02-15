@@ -1,3 +1,5 @@
+@use "../abstract/variables" as *;
+
 a {
   text-decoration: none;
   color: inherit;
@@ -15,4 +17,15 @@ button {
 
 ul {
   list-style: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: $color-text-primary;
+  transition: background-color 9999s ease-in-out 0s;
+  box-shadow: 0 0 0px 1000px $color-input-bg inset;
+  border: 1px solid $color-input-border;
 }

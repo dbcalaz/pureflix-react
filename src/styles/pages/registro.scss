@@ -1,131 +1,198 @@
-.register-container{
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.register-header {
-  text-align: center;
-  padding: 1rem;
-}
+@use "../abstract/variables" as *;
+@use "../abstract/mixins" as *;
 
-.register-form {
-  width: 100%;
-}
+.register {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  background-color: $color-bg-main;
+  font-family: $font-main;
 
-.register-layout {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  @include flex-center;
 
-.register-contact,
-.register-payment {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 2rem;
-}
-
-.register-contact {
-  border-right: 1px solid #ccc;
-}
-
-.register-field {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-
-  label {
-    width: 9rem;
-    text-align: right;
+  &__container {
+    width: 100%;
+    max-width: 480px;
+    background: $color-bg-card;
+    padding: 2rem;
+    border-radius: $radius-md;
+    border: 1px solid $color-border-soft;
   }
 
-  input {
-    width: 12rem;
-    padding: 0.4rem;
-    font-size: 1rem;
+  &__header {
+    text-align: center;
+    margin-bottom: 2rem;
   }
-}
 
-.register-input-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  .register-error {
-    color: red;
-    font-size: 0.85rem;
-    height: 0.8em;
+  &__title {
+    font-size: 1.6rem;
   }
-}
 
-.register-section-title {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
 
-.register-payment-option {
-  display: flex;
-  gap: 1rem;  
-}
+  &__layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 
-.register-payment-suboption {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;  
-}
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 
-.register-payment-label-input{
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
+  &__section-title {
+    font-weight: 600;
+  }
 
-.register-card-data {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
 
-.register-checkbox-group {
-  display: flex;
-  gap: 20px;
-}
+  &__label {
+    font-size: 0.9rem;
+    color: $color-text-secondary;
+  }
 
-.register-cbu {
-  font-size: 0.9em;
-  margin-left: 25px;
-}
+  &__input-group {
+    display: flex;
+    flex-direction: column;
+  }
 
-.register-actions {
-  display: flex;
-  justify-content: center;
-  gap: 1.25rem;
-  margin-top: 2rem;
-}
+  &__input {
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: $radius-sm;
+    border: 1px solid $color-input-border;
+    background-color: $color-input-bg;
+    color: $color-text-primary;
 
-.register-button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  border: solid 1px #000;
-  width: 10rem;
-
-  &--confirm {
-    background-color: #6bdb5e;
-
-    &:disabled {
-      background-color: #999;
-      cursor: not-allowed;
-      opacity: 0.6;
+    &:focus {
+      outline: none;
+      border-color: $color-accent;
     }
   }
 
-  &--cancel {
-    background-color: #e3572d;
+  &__error {
+    margin-bottom: $space-sm;
+    padding: 0.75rem;
+
+    background-color: $color-error-bg;
+    border: 1px solid $color-error-border;
+    border-radius: $radius-sm;
+
+    color: $color-error-text;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  &__ok{
+    margin-bottom: $space-sm;
+    padding: 0.75rem;
+
+    background-color: $color-ok-bg;
+    border: 1px solid $color-ok-border;
+    border-radius: $radius-sm;
+
+    color: $color-ok-text;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  &__payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__payment-card {
+    border: 1px solid $color-input-border;
+    border-radius: $radius-sm;
+    padding: 1rem;
+    transition: $transition-normal;
+
+    &--active {
+      border-color: $color-accent;
+      background-color: rgba(0, 0, 0, 0.03);
+    }
+  }
+
+  &__payment-main {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+  }
+
+  &__checkbox-group {
+    margin-top: 0.8rem;
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  &__cbu {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  &__actions {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__button {
+    padding: 0.8rem;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    border: none;
+    font-weight: 500;
+    transition: $transition-normal;
+
+    &--confirm {
+      @include button-primary;
+
+      &:disabled {
+        background-color: #999;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+    }
+
+    &--cancel {
+      background-color: #e3572d;
+      color: white;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .register {
+    &__container {
+      max-width: 900px;
+    }
+
+    &__layout {
+      flex-direction: row;
+      gap: 3rem;
+    }
+
+    &__section {
+      flex: 1;
+    }
+
+    &__actions {
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    &__button {
+      min-width: 180px;
+    }
   }
 }

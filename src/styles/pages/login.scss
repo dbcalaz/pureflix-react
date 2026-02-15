@@ -1,13 +1,12 @@
 @use "../abstract/variables" as *;
+@use "../abstract/mixins" as *;
 
 .login {
   min-height: 100vh;
   background-color: $color-bg-main;
 
-  display: flex;
+  @include flex-center;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 
   padding: $space-lg $space-sm;
   font-family: $font-main;
