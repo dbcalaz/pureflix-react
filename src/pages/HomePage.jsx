@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 
 import NavBar from "../components/NavBar";
+import BottomNav from "../components/BottomNav";
 import Galeria from "../components/Galeria";
 import ModalDetalle from "../components/ModalDetalle";
 import Filtros from "../components/Filtros";
@@ -12,7 +13,9 @@ import ModalFotoPerfil from "../components/ModalFotoPerfil";
 
 function HomePage() {
   const { user } = useAuth();
+
   const [vista, setVista] = useState("");
+  const [vistaGlobal, setVistaGlobal] = useState("inicio");
 
   const [tipo, setTipo] = useState(0);
   const [categorias, setCategorias] = useState([]);
@@ -29,13 +32,12 @@ function HomePage() {
   const [favoritos, setFavoritos] = useState([]);
   const [notificaciones, setNotificaciones] = useState([]);
 
-  
   useEffect(() => {
     if (actualizarDatosUsuario) {
       setActualizarDatosUsuario(false);
     }
   }, [actualizarDatosUsuario]);
-  
+
   useEffect(() => {
     const getCookieVista = (name) => {
       const value = "; " + document.cookie;
@@ -43,22 +45,33 @@ function HomePage() {
       if (parts.length === 2) return parts.pop().split(";").shift();
     };
 
-    const x = getCookieVista("vista") ;
-    
-    if(x){
-      if(x === "series"){
-        setTipo(2);
-      }
-      if(x === "peliculas"){
-        setTipo(1);
-      }
+    const x = getCookieVista("vista");
+
+    if (x) {
+      if (x === "series") setTipo(2);
+      if (x === "peliculas") setTipo(1);
 
       setVista(x);
-    }else{
-      setVista("home")
+    } else {
+      setVista("home");
       setTipo(0);
     }
   }, []);
+
+  useEffect(() => {
+    if (vistaGlobal === "inicio") {
+      setVista("home");
+      setTipo(0);
+    }
+
+    if (vistaGlobal === "proximos") {
+      setVista("proximos");
+    }
+
+    if (vistaGlobal === "perfil") {
+      setVista("perfil");
+    }
+  }, [vistaGlobal]);
 
   return (
     <>
@@ -73,7 +86,7 @@ function HomePage() {
             setCatSeleccionada={setCatSeleccionada}
             palabra={palabra}
             setPalabra={setPalabra}
-            />
+          />
 
           <Galeria
             tipo={tipo}
@@ -83,16 +96,6 @@ function HomePage() {
             palabra={palabra}
             setPalabra={setPalabra}
           />
-
-          {mostrarModalDetalle?.id > 0 && (
-            <ModalDetalle
-              mostrar={mostrarModalDetalle}
-              setMostrar={setMostrarModalDetalle}
-              user={user}
-              favoritos={favoritos}
-              setFavoritos={setFavoritos}
-            />
-          )}
         </>
       )}
 
@@ -131,18 +134,6 @@ function HomePage() {
               user={user}
             />
           )}
-
-          {mostrarModalDetalle?.id > 0 && (
-            <ModalDetalle
-              mostrar={mostrarModalDetalle}
-              setMostrar={setMostrarModalDetalle}
-              user={user}
-              favoritos={favoritos}
-              setFavoritos={setFavoritos}
-              notificaciones={notificaciones}
-              setNotificaciones={setNotificaciones}
-            />
-          )}
         </>
       )}
 
@@ -165,6 +156,12 @@ function HomePage() {
           setNotificaciones={setNotificaciones}
         />
       )}
+
+      <BottomNav
+        vistaGlobal={vistaGlobal}
+        setVistaGlobal={setVistaGlobal}
+        user={user}
+      />
     </>
   );
 }

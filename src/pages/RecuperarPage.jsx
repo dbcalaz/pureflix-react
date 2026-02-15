@@ -44,7 +44,7 @@ function RecuperarPage() {
       <div className="recover__container">
 
         <h1 className="recover__title">
-          Reestablecer contraseña
+          Restablecer contraseña
         </h1>
 
         <form className="recover__form" onSubmit={envioEmailRecuperacion}>
