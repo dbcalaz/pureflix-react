@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FetchPost from "../components/FetchPost";
 import { useNavigate } from "react-router-dom";
 
@@ -8,9 +8,14 @@ function RecuperarPage() {
   const [email, setEmail] = useState("");
   const [nombreUsuario, setNombreUsuario] = useState("");
   const [error, setError] = useState("");
+  const [ok, setOk] = useState("");
 
-  async function envioEmailRecuperacion() {
+  async function envioEmailRecuperacion(e) {
     e.preventDefault();
+
+    setError("");
+    setOk("");
+
     const datos = {
       email: email,
       nombre_usuario: nombreUsuario,
@@ -22,66 +27,88 @@ function RecuperarPage() {
       if (!res.ok) {
         const err = await res.json();
         setError(err.mensaje || "Error al enviar email de recuperación");
-        console.error(err.mensaje);
         return;
       }
 
-      console.log("Email de recuperación enviado con éxito.");
+      setOk("Se envió el email de recuperación correctamente.");
+      setEmail("");
+      setNombreUsuario("");
+
     } catch (e) {
-      console.error(e);
       setError("Error de conexión");
     }
   }
 
   return (
-    <>
-      <div className="recover-container">
-        <h1>Recuperar contraseña</h1>
+    <div className="recover">
+      <div className="recover__container">
 
-        <form className="recover-form">
-          <div className="recover-field">
-            <label htmlFor="gmail">E-mail</label>
+        <h1 className="recover__title">
+          Reestablecer contraseña
+        </h1>
+
+        <form className="recover__form" onSubmit={envioEmailRecuperacion}>
+
+          <div className="recover__field">
+            <label htmlFor="email" className="recover__label">
+              E-mail
+            </label>
+
             <input
               type="email"
+              id="email"
+              name="email"
+              className="recover__input"
               placeholder="Ingrese email"
-              name="gmail"
-              id="gmail"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
 
-          <div className="recover-field">
-            <label htmlFor="usuario">Nombre de usuario</label>
+          <div className="recover__field">
+            <label htmlFor="usuario" className="recover__label">
+              Nombre de usuario
+            </label>
+
             <input
               type="text"
-              placeholder="Ingrese nombre de usuario"
-              name="user"
               id="usuario"
+              name="usuario"
+              className="recover__input"
+              placeholder="Ingrese nombre de usuario"
+              value={nombreUsuario}
               onChange={(e) => setNombreUsuario(e.target.value)}
+              required
             />
           </div>
 
-          <section className="recover-actions">
+          {error && <p className="recover__error">{error}</p>}
+          {ok && <p className="recover__ok">{ok}</p>}
+
+          <div className="recover__actions">
+
             <button
-              className="recover-button recover-button--submit"
               type="submit"
+              className="recover__button recover__button--submit"
               disabled={!email || !nombreUsuario}
-              onClick={envioEmailRecuperacion}
             >
               Enviar email
             </button>
 
             <button
-              className="recover-button recover-button--cancel"
-              onClick={() => navigate("/login")}
               type="button"
+              className="recover__button recover__button--cancel"
+              onClick={() => navigate("/login")}
             >
               Volver
             </button>
-          </section>
+
+          </div>
+
         </form>
       </div>
-    </>
+    </div>
   );
 }
 
