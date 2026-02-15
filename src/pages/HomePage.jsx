@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 
-import NavBar from "../components/NavBar";
 import BottomNav from "../components/BottomNav";
+import HeaderPrincipal from "../components/HeaderPrincipal";
 import Galeria from "../components/Galeria";
 import ModalDetalle from "../components/ModalDetalle";
 import Filtros from "../components/Filtros";
@@ -75,7 +75,15 @@ function HomePage() {
 
   return (
     <>
-      <NavBar vista={vista} setVista={setVista} setTipo={setTipo} />
+      <HeaderPrincipal
+        vista={vista}
+        setVista={setVista}
+        tipo={tipo}
+        setTipo={setTipo}
+        categorias={categorias}
+        catSeleccionada={catSeleccionada}
+        setCatSeleccionada={setCatSeleccionada}
+      />
 
       {(vista === "home" || vista === "series" || vista === "peliculas") && (
         <>
