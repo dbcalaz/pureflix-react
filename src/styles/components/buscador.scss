@@ -1,0 +1,77 @@
+@use "../abstract/variables" as *;
+
+.buscador {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: $color-bg-main;
+  font-family: $font-main;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+
+    padding: $space-sm;
+    //border-bottom: 1px solid $color-border-soft;
+  }
+
+  &__back {
+    background: none;
+    border: none;
+    color: $color-text-primary;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  &__input {
+    flex: 1;
+
+    background-color: $color-input-bg;
+    border: 1px solid $color-input-border;
+    border-radius: $radius-md;
+
+    padding: $space-sm;
+    color: $color-text-primary;
+
+    font-size: 1rem;
+
+    &:focus {
+      outline: none;
+      border-color: $color-accent;
+    }
+  }
+
+  &__resultados {
+    flex: 1;
+    overflow-y: auto;
+
+    padding: $space-md $space-sm;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+
+    margin-bottom: $space-md;
+    cursor: pointer;
+  }
+
+  &__titulo {
+    color: $color-text-primary;
+    font-size: 0.95rem;
+  }
+}

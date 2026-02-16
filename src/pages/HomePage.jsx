@@ -5,12 +5,12 @@ import BottomNav from "../components/BottomNav";
 import HeaderPrincipal from "../components/HeaderPrincipal";
 import Galeria from "../components/Galeria";
 import ModalDetalle from "../components/ModalDetalle";
-import Filtros from "../components/Filtros";
 import Perfil from "../components/Perfil";
 import ProximosLanzamientos from "../components/ProximosLanzamientos";
 import ModalCancelarSuscripcion from "../components/ModalCancelarSuscripcion";
 import ModalFotoPerfil from "../components/ModalFotoPerfil";
 import ModalCategorias from "../components/ModalCategorias";
+import Buscador from "../components/Buscador";
 
 function HomePage() {
   const { user } = useAuth();
@@ -98,15 +98,6 @@ function HomePage() {
 
       {(vista === "home" || vista === "series" || vista === "peliculas") && (
         <>
-          <Filtros
-            categorias={categorias}
-            setCategorias={setCategorias}
-            catSeleccionada={catSeleccionada}
-            setCatSeleccionada={setCatSeleccionada}
-            palabra={palabra}
-            setPalabra={setPalabra}
-          />
-
           <Galeria
             tipo={tipo}
             setMostrarModalDetalle={setMostrarModalDetalle}
@@ -173,6 +164,14 @@ function HomePage() {
           setFavoritos={setFavoritos}
           notificaciones={notificaciones}
           setNotificaciones={setNotificaciones}
+        />
+      )}
+
+      {vistaGlobal === "buscar" && (
+        <Buscador
+          setVistaGlobal={setVistaGlobal}
+          setPalabra={setPalabra}
+          palabra={palabra}
         />
       )}
 

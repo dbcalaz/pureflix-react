@@ -14,7 +14,6 @@ function ProximosLanzamientos({setMostrarModalDetalle}) {
       const res = await fetch(url);
       const data = await res.json();
       setContenido(data);
-      console.log("Recibiendo", data);
     } catch (e) {
       console.log("Error:", e);
     }
