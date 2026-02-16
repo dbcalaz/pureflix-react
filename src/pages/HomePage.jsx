@@ -121,7 +121,7 @@ function HomePage() {
       )}
 
       {(vista === "home" || vista === "series" || vista === "peliculas") && (
-        <div className="main-content">
+        <div className={vista === "home" ? "vista-home" : ""}>
           <Galeria
             tipo={tipo}
             setMostrarModalDetalle={setMostrarModalDetalle}

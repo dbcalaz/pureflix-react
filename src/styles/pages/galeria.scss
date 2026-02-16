@@ -56,23 +56,32 @@
   }
 
   @media (min-width: 1200px) {
-
+    .vista-home .galeria {
+      margin-top: 70px;
+    }
+  
     &__fila {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       gap: $space-md;
-
+  
       overflow-x: visible;
       padding: 0 $space-sm $space-sm;
     }
-
+  
     &__item {
       flex: unset;
       width: 100%;
-
+  
       &:hover {
         transform: scale(1.05);
       }
     }
   }
 }
+
+  @media (min-width: 1200px) {
+    .vista-home .galeria {
+      margin-top: 90px;
+    }
+  }
