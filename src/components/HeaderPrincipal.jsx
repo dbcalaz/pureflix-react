@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ImagenExterna from "./ImagenExterna";
 import ModalCategorias from "./ModalCategorias";
 
 function HeaderPrincipal({
@@ -64,7 +65,7 @@ function HeaderPrincipal({
       <div className="header-bottom">
         {(!enHome || hayCategoria) && (
           <div className="header-back" onClick={volverAHome}>
-            ←
+            <ImagenExterna nombreImagen="arrowback.svg"/>
           </div>
         )}
 

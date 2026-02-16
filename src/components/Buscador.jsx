@@ -40,7 +40,7 @@ function Buscador({ setVistaGlobal, setPalabra, palabra }) {
           className="buscador__back"
           onClick={() => setVistaGlobal("inicio")}
         >
-          ←
+          <ImagenExterna nombreImagen="arrowback.svg"/>
         </button>
 
         <input

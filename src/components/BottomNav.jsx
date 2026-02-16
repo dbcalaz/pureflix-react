@@ -8,8 +8,8 @@ function BottomNav({ vistaGlobal, setVistaGlobal, user }) {
   const [datosUsuario, setDatosUsuario] = useState([]);
   const botones = [
     { key: "inicio", label: "Inicio", icon: "home" },
-    { key: "buscar", label: "Buscar", icon: "peliSerie" },
-    { key: "proximos", label: "Nuevos", icon: "peliSerie" },
+    { key: "buscar", label: "Buscar", icon: "lupa" },
+    { key: "proximos", label: "Nuevos", icon: "nuevo" },
     {
       key: "perfil",
       label: datosUsuario?.nombre_usuario || "Perfil",
@@ -53,7 +53,7 @@ function BottomNav({ vistaGlobal, setVistaGlobal, user }) {
           className={`bottomnav__item ${vistaGlobal === b.key ? "active" : ""}`}
           onClick={() => setVistaGlobal(b.key)}
         >
-          <ImagenExterna nombreImagen={b.icon + ".png"} />
+          <ImagenExterna nombreImagen={b.icon + ".svg"} />
           <span>{b.label}</span>
         </div>
       ))}
