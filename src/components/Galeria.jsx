@@ -12,7 +12,6 @@ function Galeria({ tipo, setMostrarModalDetalle, catSeleccionada, palabra }) {
       const res = await fetch(url);
       const data = await res.json();
       setContenido(data);
-      console.log("Recibiendo", data);
     } catch (e) {
       console.log("Error:", e);
     }

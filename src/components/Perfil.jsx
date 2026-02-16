@@ -126,7 +126,6 @@ function Perfil({
       const res = await fetch(url);
       const data = await res.json();
       setNotificaciones(data);
-      console.log("Recibiendo notificaciones", data);
     } catch (e) {
       console.log("Error:", e);
     }
@@ -142,7 +141,6 @@ function Perfil({
       const res = await fetch(url);
       const data = await res.json();
       setFavoritos(data);
-      console.log("Recibiendo favoritos", data);
     } catch (e) {
       console.log("Error:", e);
     }

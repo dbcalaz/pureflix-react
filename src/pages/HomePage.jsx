@@ -10,6 +10,7 @@ import Perfil from "../components/Perfil";
 import ProximosLanzamientos from "../components/ProximosLanzamientos";
 import ModalCancelarSuscripcion from "../components/ModalCancelarSuscripcion";
 import ModalFotoPerfil from "../components/ModalFotoPerfil";
+import ModalCategorias from "../components/ModalCategorias";
 
 function HomePage() {
   const { user } = useAuth();
@@ -22,6 +23,7 @@ function HomePage() {
   const [catSeleccionada, setCatSeleccionada] = useState(0);
   const [palabra, setPalabra] = useState("");
 
+  const [mostrarModalCategorias, setMostrarModalCategorias] = useState(false);
   const [mostrarModalDetalle, setMostrarModalDetalle] = useState({});
   const [mostrarModalFotoPerfil, setMostrarModalFotoPerfil] = useState(false);
   const [mostrarModalCancelarSuscripcion, setMostrarModalCancelarSuscripcion] =
@@ -83,7 +85,16 @@ function HomePage() {
         categorias={categorias}
         catSeleccionada={catSeleccionada}
         setCatSeleccionada={setCatSeleccionada}
+        abrirCategorias={() => setMostrarModalCategorias(true)}
       />
+      {mostrarModalCategorias && (
+        <ModalCategorias
+          categorias={categorias}
+          catSeleccionada={catSeleccionada}
+          setCatSeleccionada={setCatSeleccionada}
+          onClose={() => setMostrarModalCategorias(false)}
+        />
+      )}
 
       {(vista === "home" || vista === "series" || vista === "peliculas") && (
         <>

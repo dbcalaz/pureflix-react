@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ModalCategorias from "./ModalCategorias";
 
 function HeaderPrincipal({
   vista,
@@ -7,12 +8,11 @@ function HeaderPrincipal({
   categorias,
   catSeleccionada,
   setCatSeleccionada,
+  abrirCategorias,
 }) {
   const [scrolled, setScrolled] = useState(false);
 
-  const categoriaActiva = categorias.find(
-    (c) => c.id === catSeleccionada
-  );
+  const categoriaActiva = categorias.find((c) => c.id === catSeleccionada);
 
   const enHome = vista === "home";
   const enSeries = vista === "series";
@@ -57,13 +57,11 @@ function HeaderPrincipal({
 
   return (
     <div className={`header-principal ${scrolled ? "scrolled" : ""}`}>
-
       <div className="header-top">
         <h2>{titulo}</h2>
       </div>
 
       <div className="header-bottom">
-
         {(!enHome || hayCategoria) && (
           <div className="header-back" onClick={volverAHome}>
             ←
@@ -72,40 +70,41 @@ function HeaderPrincipal({
 
         {enHome && !hayCategoria && (
           <>
-            <button
-              className="header-pill"
-              onClick={irASeries}
-            >
+            <button className="header-pill" onClick={irASeries}>
               Series
             </button>
 
-            <button
-              className="header-pill"
-              onClick={irAPeliculas}
-            >
+            <button className="header-pill" onClick={irAPeliculas}>
               Películas
             </button>
 
-            <button className="header-pill">
-              Categorías
+            <button
+              className="header-pill"
+              onClick={abrirCategorias}
+            >
+              Categorías ▾
             </button>
           </>
         )}
 
         {enHome && hayCategoria && (
-          <button className="header-pill activo">
+          <button
+            className="header-pill activo"
+            onClick={abrirCategorias}
+          >
             {categoriaActiva?.nombre}
           </button>
         )}
 
         {enSeries && !hayCategoria && (
           <>
-            <button className="header-pill activo">
-              Series
-            </button>
+            <button className="header-pill activo">Series</button>
 
-            <button className="header-pill">
-              Categorías
+            <button
+              className="header-pill"
+              onClick={abrirCategorias}
+            >
+              Categorías ▾
             </button>
           </>
         )}
@@ -118,12 +117,13 @@ function HeaderPrincipal({
 
         {enPeliculas && !hayCategoria && (
           <>
-            <button className="header-pill activo">
-              Películas
-            </button>
+            <button className="header-pill activo">Películas</button>
 
-            <button className="header-pill">
-              Categorías
+            <button
+              className="header-pill"
+              onClick={abrirCategorias}
+            >
+              Categorías ▾
             </button>
           </>
         )}
@@ -133,7 +133,6 @@ function HeaderPrincipal({
             {categoriaActiva?.nombre}
           </button>
         )}
-
       </div>
     </div>
   );
