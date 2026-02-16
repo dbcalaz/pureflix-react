@@ -1,32 +1,103 @@
+@use "../abstract/variables" as *;
+
 .releases {
   display: flex;
   flex-direction: column;
+  gap: $space-lg;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border-bottom: 1px solid #222;
+  }
+
+  &__back {
+    background: none;
+    border: none;
+    color: $color-text-primary;
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+
+  &__main-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: $color-text-primary;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+  }
 
   &__title {
-    margin-top: 5rem;
-    padding-left: 1.2rem;
+    padding: 0 $space-sm;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $color-text-primary;
   }
 
+  /* ================= MOBILE + TABLET ================= */
+
   &__container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    padding: 0 1rem;
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
+    display: flex;
+    gap: $space-sm;
+
+    overflow-x: auto;
+    padding: 0 $space-sm $space-md;
+
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
+
   &__item {
-    width: 100%;
+    flex: 0 0 220px;
+    border-radius: $radius-md;
     overflow: hidden;
     cursor: pointer;
 
+    background-color: $color-bg-card;
+    transition: transform $transition-fast;
+
+    &:active {
+      transform: scale(0.96);
+    }
+
     img {
-      display: block;
       width: 100%;
-      height: auto;
+      aspect-ratio: 2 / 3;
       object-fit: cover;
+      display: block;
+    }
+  }
+
+  /* ================= DESKTOP ================= */
+
+  @media (min-width: 1200px) {
+
+    &__container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: $space-md;
+
+      overflow-x: visible;
+      padding: 0 $space-sm $space-sm;
+    }
+
+    &__item {
+      flex: unset;
+      width: 100%;
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }
 }

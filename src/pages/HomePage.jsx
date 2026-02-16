@@ -150,8 +150,7 @@ function HomePage() {
       {vista === "proximos" && (
         <ProximosLanzamientos
           setMostrarModalDetalle={setMostrarModalDetalle}
-          notificaciones={notificaciones}
-          setNotificaciones={setNotificaciones}
+          setVistaGlobal={setVistaGlobal}
         />
       )}
 

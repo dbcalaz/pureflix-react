@@ -1,46 +1,78 @@
+@use "../abstract/variables" as *;
+
 .galeria {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  padding: 0 1rem;
-  width: 100%;
-  box-sizing: border-box;
-  position: relative;
-  margin-bottom: 13rem;
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+  margin-top: $space-md;
+
+  &__seccion {
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+  }
+
+  &__titulo {
+    padding-left: $space-sm;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $color-text-primary;
+  }
+
+  &__fila {
+    display: flex;
+    gap: $space-sm;
+
+    overflow-x: auto;
+    padding: 0 $space-sm $space-md;
+
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 
   &__item {
-    position: relative;
-    width: 100%;
+    flex: 0 0 220px;
+    border-radius: $radius-md;
     overflow: hidden;
     cursor: pointer;
 
+    background-color: $color-bg-card;
+    transition: transform $transition-fast;
+
+    &:active {
+      transform: scale(0.96);
+    }
+
     img {
-      display: block;
       width: 100%;
-      height: auto;
+      aspect-ratio: 2 / 3;
       object-fit: cover;
+      display: block;
     }
   }
-}
 
+  @media (min-width: 1200px) {
 
-/* Responsive */
-@media screen and (max-width: 64em) {
-  .galeria {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+    &__fila {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: $space-md;
 
-@media screen and (max-width: 48em) {
-  .galeria {
-    grid-template-columns: repeat(2, 1fr);
-    margin-bottom: 14rem;
-  }
-}
+      overflow-x: visible;
+      padding: 0 $space-sm $space-sm;
+    }
 
-@media screen and (max-width: 30em) {
-  .galeria {
-    grid-template-columns: 1fr;
-    margin-bottom: 13.5rem;
+    &__item {
+      flex: unset;
+      width: 100%;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
   }
 }
