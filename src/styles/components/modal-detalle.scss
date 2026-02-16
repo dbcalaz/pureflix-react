@@ -9,7 +9,7 @@
   &__overlay {
     position: absolute;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(13, 13, 13, 0.539);
   }
 
   &__contenido {
@@ -17,7 +17,7 @@
     width: 95%;
     max-width: 1200px;
     max-height: 90vh;
-    background-color: #fff;
+    background-color: #1f1e1e;
     border-radius: 1rem;
     overflow-y: auto;
     z-index: 110;
@@ -156,7 +156,7 @@
   }
 
   &__actores a {
-    color: black;
+    color: #fff;
 
     &:hover {
       text-decoration: underline;

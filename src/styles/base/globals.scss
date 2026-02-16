@@ -29,3 +29,9 @@ select:-webkit-autofill {
   box-shadow: 0 0 0px 1000px $color-input-bg inset;
   border: 1px solid $color-input-border;
 }
+
+@media (min-width: 1200px) {
+  .main-content {
+    padding-top: 70px;
+  }
+}

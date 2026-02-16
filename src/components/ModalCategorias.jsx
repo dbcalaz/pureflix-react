@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const servidor = import.meta.env.VITE_SERVER;
 const puerto = import.meta.env.VITE_PORT;
@@ -7,8 +7,9 @@ function ModalCategorias({
   catSeleccionada,
   setCatSeleccionada,
   onClose,
+  setCategorias,
+  categorias
 }) {
-  const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";

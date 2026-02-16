@@ -12,6 +12,7 @@ import ModalFotoPerfil from "../components/ModalFotoPerfil";
 import ModalCategorias from "../components/ModalCategorias";
 import Buscador from "../components/Buscador";
 import NavbarDesktop from "../components/NavbarDesktop";
+import HeaderVistaDesktop from "../components/HeaderVistaDesktop";
 
 function HomePage() {
   const { user } = useAuth();
@@ -79,7 +80,7 @@ function HomePage() {
   return (
     <>
       <NavbarDesktop
-        setVistaGlobal={setVistaGlobal}
+        setCatSeleccionada={setCatSeleccionada}
         setVista={setVista}
         user={user}
         setTipo={setTipo}
@@ -87,27 +88,40 @@ function HomePage() {
         palabra={palabra}
       />
 
-      <HeaderPrincipal
+      <HeaderVistaDesktop
         vista={vista}
-        setVista={setVista}
         tipo={tipo}
-        setTipo={setTipo}
         categorias={categorias}
+        setCategorias={setCategorias}
         catSeleccionada={catSeleccionada}
         setCatSeleccionada={setCatSeleccionada}
-        abrirCategorias={() => setMostrarModalCategorias(true)}
       />
+
+      <div className="header-mobile">
+        <HeaderPrincipal
+          vista={vista}
+          setVista={setVista}
+          tipo={tipo}
+          setTipo={setTipo}
+          categorias={categorias}
+          catSeleccionada={catSeleccionada}
+          setCatSeleccionada={setCatSeleccionada}
+          abrirCategorias={() => setMostrarModalCategorias(true)}
+        />
+      </div>
+
       {mostrarModalCategorias && (
         <ModalCategorias
           categorias={categorias}
           catSeleccionada={catSeleccionada}
           setCatSeleccionada={setCatSeleccionada}
           onClose={() => setMostrarModalCategorias(false)}
+          setCategorias={setCategorias}
         />
       )}
 
       {(vista === "home" || vista === "series" || vista === "peliculas") && (
-        <>
+        <div className="main-content">
           <Galeria
             tipo={tipo}
             setMostrarModalDetalle={setMostrarModalDetalle}
@@ -115,7 +129,7 @@ function HomePage() {
             setCatSeleccionada={setCatSeleccionada}
             palabra={palabra}
           />
-        </>
+        </div>
       )}
 
       {vista === "perfil" && (

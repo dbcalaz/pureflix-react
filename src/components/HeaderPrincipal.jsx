@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import ImagenExterna from "./ImagenExterna";
-import ModalCategorias from "./ModalCategorias";
 
 function HeaderPrincipal({
   vista,

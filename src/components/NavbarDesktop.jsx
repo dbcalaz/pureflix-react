@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const servidor = import.meta.env.VITE_SERVER;
 const puerto = import.meta.env.VITE_PORT;
 
-function NavbarDesktop({ setVista, setTipo, user, palabra, setPalabra }) {
+function NavbarDesktop({ setVista, setTipo, user, palabra, setPalabra, setCatSeleccionada }) {
   const [datosUsuario, setDatosUsuario] = useState({});
   const [mostrarSearch, setMostrarSearch] = useState(false);
   const searchRef = useRef(null);
@@ -70,13 +70,18 @@ function NavbarDesktop({ setVista, setTipo, user, palabra, setPalabra }) {
     <nav className="navbar-desktop">
       <div className="navbar-desktop__left">
         <div className="navbar-desktop__left--logo">
-          <ImagenExterna nombreImagen="pure.png" />
+          <ImagenExterna nombreImagen="pure.png" onClick={() => {
+            setVista("home");
+            setTipo(0);
+            setCatSeleccionada(0);
+          }}/>
         </div>
 
         <span
           onClick={() => {
             setVista("home");
             setTipo(0);
+            setCatSeleccionada(0);
           }}
         >
           Inicio

@@ -1,0 +1,38 @@
+@use "../abstract/variables" as *;
+
+.header-vista-desktop {
+  position: relative;
+  margin-top: 70px;
+  padding: $space-md $space-xl;
+  display: flex;
+  align-items: center;
+  gap: $space-lg;
+
+  background-color: $color-bg-main;
+  color: $color-text-primary;
+
+  &__titulo {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  &__select {
+    background-color: $color-bg-soft;
+    border: 1px solid $color-border;
+    color: $color-text-primary;
+    padding: 6px 14px;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    font-family: $font-main;
+
+    &:hover {
+      border-color: $color-accent;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header-vista-desktop {
+    display: none;
+  }
+}
