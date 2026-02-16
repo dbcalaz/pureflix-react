@@ -102,9 +102,9 @@ const LoginPage = ({ mensajeOk, mensajeError }) => {
     <>
       <div className="login">
         <ImagenExterna
-          nombreImagen="logo.svg"
+          nombreImagen="log.png"
           alt="Pureflix"
-          className="login-logo"
+          className="login__logo"
         />
         <div>
           <form className="login__form" onSubmit={handleSubmit}>

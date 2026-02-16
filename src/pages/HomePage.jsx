@@ -83,6 +83,8 @@ function HomePage() {
         setVista={setVista}
         user={user}
         setTipo={setTipo}
+        setPalabra={setPalabra}
+        palabra={palabra}
       />
 
       <HeaderPrincipal
@@ -112,7 +114,6 @@ function HomePage() {
             catSeleccionada={catSeleccionada}
             setCatSeleccionada={setCatSeleccionada}
             palabra={palabra}
-            setPalabra={setPalabra}
           />
         </>
       )}

@@ -1,13 +1,42 @@
 import ImagenExterna from "./ImagenExterna";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const servidor = import.meta.env.VITE_SERVER;
 const puerto = import.meta.env.VITE_PORT;
 
-function NavbarDesktop({ setVista, setTipo, user }) {
+function NavbarDesktop({ setVista, setTipo, user, palabra, setPalabra }) {
   const [datosUsuario, setDatosUsuario] = useState({});
+  const [mostrarSearch, setMostrarSearch] = useState(false);
+  const searchRef = useRef(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        cerrarBusqueda();
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        cerrarBusqueda();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, []);
+
+  const cerrarBusqueda = () => {
+    setMostrarSearch(false);
+    setPalabra("");
+  };
 
   useEffect(() => {
     if (!user?.token) {
@@ -18,7 +47,7 @@ function NavbarDesktop({ setVista, setTipo, user }) {
     const getDatosUsuario = async () => {
       try {
         const res = await fetch(
-          `http://${servidor}:${puerto}/getDatosUsuario?token=${user.token}`
+          `http://${servidor}:${puerto}/getDatosUsuario?token=${user.token}`,
         );
 
         if (!res.ok) {
@@ -81,7 +110,25 @@ function NavbarDesktop({ setVista, setTipo, user }) {
       </div>
 
       <div className="navbar-desktop__right">
-        <ImagenExterna nombreImagen="lupa.svg" />
+        <div
+          ref={searchRef}
+          className={`search ${mostrarSearch ? "search--active" : ""}`}
+        >
+          {mostrarSearch && (
+            <input
+              type="text"
+              value={palabra}
+              onChange={(e) => setPalabra(e.target.value)}
+              placeholder="Títulos..."
+              autoFocus
+            />
+          )}
+
+          <ImagenExterna
+            nombreImagen="lupa.svg"
+            onClick={() => setMostrarSearch(true)}
+          />
+        </div>
 
         <div className="profile">
           <ImagenExterna

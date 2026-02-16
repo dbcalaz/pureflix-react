@@ -55,3 +55,28 @@
   display: flex;
   gap: 1rem;
 }
+
+.search {
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: 0.3s ease;
+
+  input {
+    width: 0;
+    opacity: 0;
+    background: transparent;
+    border: 1px solid #666;
+    color: white;
+    padding: 6px 10px;
+    margin-right: 10px;
+    transition: 0.3s ease;
+  }
+
+  &--active {
+    input {
+      width: 220px;
+      opacity: 1;
+    }
+  }
+}
