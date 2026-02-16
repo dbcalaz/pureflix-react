@@ -99,3 +99,10 @@
     padding: 10px 18px;
   }
 }
+
+@media (min-width: 1200px) {
+  .header-principal {
+    display: none;
+  }
+}
+  

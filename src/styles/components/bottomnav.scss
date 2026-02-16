@@ -23,3 +23,9 @@
 .bottomnav__item.active {
   color: white;
 }
+
+@media (min-width: 1200px) {
+  .bottomnav {
+    display: none;
+  }
+}

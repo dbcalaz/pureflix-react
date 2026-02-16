@@ -11,6 +11,7 @@ import ModalCancelarSuscripcion from "../components/ModalCancelarSuscripcion";
 import ModalFotoPerfil from "../components/ModalFotoPerfil";
 import ModalCategorias from "../components/ModalCategorias";
 import Buscador from "../components/Buscador";
+import NavbarDesktop from "../components/NavbarDesktop";
 
 function HomePage() {
   const { user } = useAuth();
@@ -77,6 +78,13 @@ function HomePage() {
 
   return (
     <>
+      <NavbarDesktop
+        setVistaGlobal={setVistaGlobal}
+        setVista={setVista}
+        user={user}
+        setTipo={setTipo}
+      />
+
       <HeaderPrincipal
         vista={vista}
         setVista={setVista}
