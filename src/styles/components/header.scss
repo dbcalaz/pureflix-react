@@ -1,6 +1,5 @@
 @use "../abstract/variables" as *;
 @use "../abstract/mixins" as *;
-@use "../abstract/breakpoints" as *;
 
 .header-principal {
   position: sticky;
@@ -17,7 +16,7 @@
   background: rgba($color-bg-main, 0.95);
   backdrop-filter: blur(0px);
 
-  transition: 
+  transition:
     backdrop-filter $transition-normal,
     background $transition-normal,
     box-shadow $transition-normal;
@@ -71,7 +70,7 @@
 
   cursor: pointer;
 
-  transition: 
+  transition:
     background $transition-fast,
     color $transition-fast,
     transform $transition-fast;
@@ -89,11 +88,10 @@
   }
 }
 
-@include respond(md) {
+@media (min-width: 768px) {
   .header-top h2 {
     font-size: 1.8rem;
   }
-
   .header-pill {
     font-size: 1rem;
     padding: 10px 18px;
@@ -105,4 +103,3 @@
     display: none;
   }
 }
-  

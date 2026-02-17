@@ -2,19 +2,18 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 
 import BottomNav from "../components/BottomNav";
+import NavbarDesktop from "../components/NavbarDesktop";
 import HeaderPrincipal from "../components/HeaderPrincipal";
+import HeaderVistaDesktop from "../components/HeaderVistaDesktop";
 import Galeria from "../components/Galeria";
 import ModalDetalle from "../components/ModalDetalle";
-//import Perfil from "../components/Perfil";
 import ProximosLanzamientos from "../components/ProximosLanzamientos";
 import ModalCancelarSuscripcion from "../components/ModalCancelarSuscripcion";
 import ModalFotoPerfil from "../components/ModalFotoPerfil";
 import ModalCategorias from "../components/ModalCategorias";
-import Buscador from "../components/Buscador";
-import NavbarDesktop from "../components/NavbarDesktop";
-import HeaderVistaDesktop from "../components/HeaderVistaDesktop";
-import PerfilMobile from "../components/PerfilMobile";
 import ModalMenuPerfil from "../components/ModalMenuPerfil";
+import Buscador from "../components/Buscador";
+import PerfilMobile from "../components/PerfilMobile";
 import AdministrarCuenta from "../components/AdministrarCuenta";
 
 function HomePage() {
@@ -197,7 +196,6 @@ function HomePage() {
                 setMostrarModalCancelarSuscripcion(false);
               }}
               onCancelar={() => setMostrarModalCancelarSuscripcion(false)}
-              user={user}
             />
           )}
         </>

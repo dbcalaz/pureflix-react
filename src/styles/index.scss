@@ -1,15 +1,10 @@
 @use "abstract/variables";
 @use "abstract/mixins";
-@use "abstract/breakpoints";
 
 @use "base/globals";
 @use "base/reset";
-@use "base/tipografia";
-
-@use "layout/container";
 
 /* Components */
-@use "./components/buttons";
 @use "./components/header";
 @use "./components/header-desktop";
 @use "./components/bottomnav";
@@ -25,7 +20,6 @@
 @use "./pages/recuperar";
 @use "./pages/galeria";
 @use "./pages/registro";
-@use "./pages/perfil";
 @use "./pages/perfil-mobile";
 @use "./pages/administrar-cuenta";
 @use "./pages/proximos-lanzamientos";

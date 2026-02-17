@@ -40,8 +40,6 @@
     color: $color-text-primary;
   }
 
-  /* ================= MOBILE + TABLET ================= */
-
   &__container {
     display: flex;
     gap: $space-sm;
@@ -77,8 +75,6 @@
       display: block;
     }
   }
-
-  /* ================= DESKTOP ================= */
 
   @media (min-width: 1200px) {
 

@@ -1,33 +1,16 @@
-function ModalCancelarSuscripcion({ onConfirmar, onCancelar, user }) {
-  /*async function cancelarSuscripcion(token) {
-    const token = user.token;
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
-    try {
-      const url = `http://${servidor}:${puerto}/cancelarSuscripcion?token=${token}`;
-
-      const res = await fetch(url, {
-        method: "DELETE",
-      });
-
-      if (!res.ok) {
-        const err = await res.json();
-        console.log(err);
-        return;
-      }
-
-      const data = await res.json();
-      console.log(data);
-    } catch (e) {
-      console.log(e);
-    }
-  }*/
+function ModalCancelarSuscripcion({ onConfirmar, onCancelar }) {
+  const navigate = useNavigate();
+  const { logout } = useAuth();
 
   return (
     <div className="perfil-modal">
       <div
         className="perfil-modal__overlay"
         onClick={() => {
-          (onCancelar, cancelarSuscripcion());
+          onCancelar;
         }}
       />
 
@@ -35,7 +18,17 @@ function ModalCancelarSuscripcion({ onConfirmar, onCancelar, user }) {
         <p>¿Estás seguro que querés cancelar la suscripción?</p>
 
         <div className="perfil-modal__acciones">
-          <button onClick={onConfirmar}>SÍ</button>
+          <button
+            onClick={() => {
+              (onConfirmar, (document.cookie = "token=; Max-Age=0; path=/"));
+              document.cookie = "nombre_usuario=; Max-Age=0; path=/";
+              document.cookie = "email=; Max-Age=0; path=/";
+              logout();
+              navigate("/login");
+            }}
+          >
+            SÍ
+          </button>
 
           <button onClick={onCancelar}>NO</button>
         </div>
