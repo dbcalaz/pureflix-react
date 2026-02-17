@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FetchPut from "../components/FetchPut";
+import ImagenExterna from "./ImagenExterna";
+const servidor = import.meta.env.VITE_SERVER;
+const puerto = import.meta.env.VITE_PORT;
 
 function AdministrarCuenta({ usuario, volver }) {
   const [newPass, setNewPass] = useState("");
@@ -10,10 +13,57 @@ function AdministrarCuenta({ usuario, volver }) {
 
   const [mensajeOk, setMensajeOk] = useState("");
   const [mensajeError, setMensajeError] = useState("");
+  const [datosUsuario, setDatosUsuario] = useState(null);
 
   const passwordValida = newPass.length > 0 && newPass === newPassRep;
   const metodoPagoCambiado = metodoPagoGuardado !== metodoPagoSeleccionado;
   const hayCambios = passwordValida || metodoPagoCambiado;
+
+  useEffect(() => {
+    const getDatosUsuario = async () => {
+      try {
+        const res = await fetch(
+          `http://${servidor}:${puerto}/getDatosUsuario?token=${usuario.token}`,
+        );
+
+        if (!res.ok) {
+          navigate("/login");
+          return;
+        }
+
+        const data = await res.json();
+        setDatosUsuario(data);
+
+        const metodoPagoBack = Number(data.metodo_pago);
+
+        let metodo = null;
+        switch (metodoPagoBack) {
+          case 1:
+            metodo = "tarjeta";
+            break;
+          case 2:
+            metodo = "transferencia";
+            break;
+          case 3:
+            metodo = "pago_facil";
+            break;
+          case 4:
+            metodo = "rapipago";
+            break;
+          default:
+            metodo = null;
+        }
+
+        setMetodoPagoGuardado(metodo);
+        setMetodoPagoSeleccionado(metodo);
+      } catch (e) {
+        console.error(e);
+        navigate("/login");
+      }
+    };
+
+    getDatosUsuario();
+  }, [usuario?.token]);
 
   async function updateDatos(e) {
     e.preventDefault();
@@ -52,137 +102,129 @@ function AdministrarCuenta({ usuario, volver }) {
   return (
     <div className="admin-cuenta">
       <header className="admin-cuenta__header">
-        <button onClick={volver}>←</button>
-        <h1>Administrar cuenta</h1>
+        <button className="admin-cuenta__back" onClick={volver}>
+          <ImagenExterna nombreImagen="arrowback.svg" />
+        </button>
+        <h1 className="admin-cuenta__title">Administrar cuenta</h1>
       </header>
 
-      <form className="perfil__form">
-        <div className="perfil__contenido">
-          <div className="perfil__columna perfil__columna--medio">
-            <div className="perfil__datos">
-              <section className="perfil__columna perfil__columna--central">
-                {/*<article className="perfil__campo">
-                  <label>Email</label>
-                  <p className="perfil__email">{datosUsuario?.email}</p>
-                </article>*/}
+      <form className="admin-cuenta__form" onSubmit={updateDatos}>
+        <div className="admin-cuenta__grid">
+          <section className="admin-cuenta__section">
+            <h2 className="admin-cuenta__section-title">Cambiar contraseña</h2>
 
-                <article className="perfil__campo">
-                  <label htmlFor="newpass">Nueva contraseña</label>
-                  <input
-                    type="password"
-                    placeholder="Ingrese nueva contraseña"
-                    id="newpass"
-                    onChange={(e) => setNewPass(e.target.value)}
-                  />
-                </article>
-
-                <article className="perfil__campo">
-                  <label htmlFor="newpass_rep">Repetir contraseña</label>
-                  <input
-                    type="password"
-                    placeholder="Repita nueva contraseña"
-                    id="newpass_rep"
-                    onChange={(e) => setNewPassRep(e.target.value)}
-                  />
-                </article>
-
-                <div className="perfil__error">
-                  <p className="perfil__error-text">{mensajeError}</p>
-                </div>
-              </section>
-
-              <section className="perfil__columna perfil__columna--derecha">
-                <p className="perfil__titulo">Método de pago</p>
-
-                <article className="perfil__pago">
-                  <div className="perfil__pago--opcion">
-                    <input
-                      type="radio"
-                      name="metodo-pago"
-                      id="credit_card"
-                      checked={metodoPagoSeleccionado === "tarjeta"}
-                      onChange={() => setMetodoPagoSeleccionado("tarjeta")}
-                    />
-                    <label htmlFor="credit_card">Tarjeta de crédito</label>
-                  </div>
-                </article>
-
-                <article className="perfil__pago">
-                  <div className="perfil__pago--opcion">
-                    <input
-                      type="radio"
-                      name="metodo-pago"
-                      id="cupon_pago"
-                      checked={
-                        metodoPagoSeleccionado === "pago_facil" ||
-                        metodoPagoSeleccionado === "rapipago"
-                      }
-                      readOnly
-                    />
-                    <label htmlFor="cupon_pago">Cupón de pago</label>
-                  </div>
-
-                  <div className="perfil__checkbox">
-                    <div className="perfil__pago--opcion">
-                      <input
-                        type="checkbox"
-                        id="pago_facil"
-                        checked={metodoPagoSeleccionado === "pago_facil"}
-                        onChange={() => setMetodoPagoSeleccionado("pago_facil")}
-                      />
-                      <label htmlFor="pago_facil">Pago fácil</label>
-                    </div>
-                    <div className="perfil__pago--opcion">
-                      <input
-                        type="checkbox"
-                        id="rapipago"
-                        checked={metodoPagoSeleccionado === "rapipago"}
-                        onChange={() => setMetodoPagoSeleccionado("rapipago")}
-                      />
-                      <label htmlFor="rapipago">RapiPago</label>
-                    </div>
-                  </div>
-                </article>
-
-                <article className="perfil__pago">
-                  <div className="perfil__pago--opcion">
-                    <input
-                      type="radio"
-                      name="metodo-pago"
-                      id="transferencia_bancaria"
-                      checked={metodoPagoSeleccionado === "transferencia"}
-                      onChange={() =>
-                        setMetodoPagoSeleccionado("transferencia")
-                      }
-                    />
-                    <label htmlFor="transferencia_bancaria">
-                      Transferencia bancaria
-                    </label>
-                  </div>
-                  <p className="perfil__cbu">CBU: 2183909411100018971375</p>
-                </article>
-              </section>
+            <div className="admin-cuenta__field">
+              <label htmlFor="newpass">Nueva contraseña</label>
+              <input
+                type="password"
+                id="newpass"
+                placeholder="Ingrese nueva contraseña"
+                value={newPass}
+                onChange={(e) => setNewPass(e.target.value)}
+              />
             </div>
-            <div className="perfil__acciones">
-              <button
-                type="submit"
-                className="perfil__btn perfil__btn--guardar"
-                disabled={!hayCambios}
-                onClick={updateDatos}
-              >
-                Guardar cambios
-              </button>
-              <button
-                type="button"
-                className="perfil__btn perfil__btn--cancelar"
-                onClick={() => setMostrarModalCancelarSuscripcion(true)}
-              >
-                Cancelar suscripción
-              </button>
+
+            <div className="admin-cuenta__field">
+              <label htmlFor="newpass_rep">Repetir contraseña</label>
+              <input
+                type="password"
+                id="newpass_rep"
+                placeholder="Repita nueva contraseña"
+                value={newPassRep}
+                onChange={(e) => setNewPassRep(e.target.value)}
+              />
             </div>
-          </div>
+
+            {mensajeError && (
+              <div className="admin-cuenta__message admin-cuenta__message--error">
+                {mensajeError}
+              </div>
+            )}
+          </section>
+
+          <section className="admin-cuenta__section">
+            <h2 className="admin-cuenta__section-title">Método de pago</h2>
+            <div className="admin-cuenta__payment-group">
+              <label className="admin-cuenta__payment-option">
+                <input
+                  type="radio"
+                  name="metodo-pago"
+                  checked={metodoPagoSeleccionado === "tarjeta"}
+                  onChange={() => setMetodoPagoSeleccionado("tarjeta")}
+                />
+                Tarjeta de crédito
+              </label>
+
+              <label className="admin-cuenta__payment-option">
+                <input
+                  type="radio"
+                  name="metodo-pago"
+                  checked={
+                    metodoPagoSeleccionado === "pago_facil" ||
+                    metodoPagoSeleccionado === "rapipago"
+                  }
+                  readOnly
+                />
+                Cupón de pago
+              </label>
+
+              <div className="admin-cuenta__payment-block">
+                <label className="admin-cuenta__payment-option">
+                  <input
+                    type="checkbox"
+                    checked={metodoPagoSeleccionado === "pago_facil"}
+                    onChange={() => setMetodoPagoSeleccionado("pago_facil")}
+                  />
+                  Pago Fácil
+                </label>
+
+                <label className="admin-cuenta__payment-option">
+                  <input
+                    type="checkbox"
+                    checked={metodoPagoSeleccionado === "rapipago"}
+                    onChange={() => setMetodoPagoSeleccionado("rapipago")}
+                  />
+                  RapiPago
+                </label>
+              </div>
+
+              <label className="admin-cuenta__payment-option">
+                <input
+                  type="radio"
+                  name="metodo-pago"
+                  checked={metodoPagoSeleccionado === "transferencia"}
+                  onChange={() => setMetodoPagoSeleccionado("transferencia")}
+                />
+                Transferencia bancaria
+              </label>
+
+              <p className="admin-cuenta__cbu">CBU: 2183909411100018971375</p>
+            </div>
+          </section>
         </div>
-        {mensajeOk && <p className="perfil__mensaje">{mensajeOk}</p>}
+
+        <div className="admin-cuenta__actions">
+          <button
+            type="submit"
+            className="admin-cuenta__btn admin-cuenta__btn--primary"
+            disabled={!hayCambios}
+          >
+            Guardar cambios
+          </button>
+
+          <button
+            type="button"
+            className="admin-cuenta__btn admin-cuenta__btn--danger"
+          >
+            Cancelar suscripción
+          </button>
+        </div>
+
+        {mensajeOk && (
+          <div className="admin-cuenta__message admin-cuenta__message--success">
+            {mensajeOk}
+          </div>
+        )}
       </form>
     </div>
   );

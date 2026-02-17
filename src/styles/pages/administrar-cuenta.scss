@@ -1,0 +1,182 @@
+@use "../abstract/variables" as *;
+
+.admin-cuenta {
+  min-height: 100vh;
+  background: $color-bg-main;
+  padding: $space-lg;
+  font-family: $font-main;
+  color: $color-text-primary;
+  padding-bottom: 90px;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    margin-bottom: $space-lg;
+  }
+
+  &__back {
+    background: none;
+    border: none;
+    color: $color-text-secondary;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  &__form {
+    background: $color-bg-card;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    padding: $space-lg;
+    width: 100%;
+  }
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    gap: $space-lg;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+    width: 100%;
+  }
+
+  &__section-title {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+    width: 100%;
+
+    label {
+      font-size: 0.85rem;
+      color: $color-text-secondary;
+    }
+
+    input {
+      width: 100%;
+      padding: $space-sm;
+      background: $color-input-bg;
+      border: 1px solid $color-input-border;
+      border-radius: $radius-md;
+      color: $color-text-primary;
+
+      &:focus {
+        outline: none;
+        border-color: $color-accent;
+      }
+    }
+  }
+
+  &__payment-group {
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+  }
+
+  &__payment-option {
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    font-size: 0.9rem;
+
+    input {
+      accent-color: $color-accent;
+      width: auto;
+    }
+  }
+
+  &__payment-block {
+    margin-left: $space-lg;
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+  }
+
+  &__cbu {
+    font-size: 0.8rem;
+    color: $color-text-secondary;
+  }
+
+  &__actions {
+    margin-top: $space-lg;
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+  }
+
+  &__btn {
+    width: 100%;
+    padding: $space-sm;
+    border-radius: $radius-md;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+
+    &--primary {
+      background: $color-accent;
+      color: white;
+
+      &:disabled {
+        background: #333;
+        color: #666;
+        cursor: not-allowed;
+      }
+    }
+
+    &--danger {
+      background: transparent;
+      border: 1px solid $color-error-border;
+      color: $color-error-text;
+    }
+  }
+
+  &__message {
+    margin-top: $space-md;
+    padding: $space-sm;
+    border-radius: $radius-md;
+    font-size: 0.9rem;
+
+    &--error {
+      background: $color-error-bg;
+      border: 1px solid $color-error-border;
+      color: $color-error-text;
+    }
+
+    &--success {
+      background: $color-ok-bg;
+      border: 1px solid $color-ok-border;
+      color: $color-ok-text;
+    }
+  }
+
+  @media (min-width: 768px) {
+    padding: $space-xl;
+
+    &__grid {
+      flex-direction: row;
+    }
+
+    &__section {
+      flex: 1;
+    }
+  }
+}

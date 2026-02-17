@@ -91,6 +91,7 @@ function NavbarDesktop({ setVista, setTipo, user, palabra, setPalabra, setCatSel
           onClick={() => {
             setVista("series");
             setTipo(2);
+            setCatSeleccionada(0);
           }}
         >
           Series
@@ -100,6 +101,7 @@ function NavbarDesktop({ setVista, setTipo, user, palabra, setPalabra, setCatSel
           onClick={() => {
             setVista("peliculas");
             setTipo(1);
+            setCatSeleccionada(0);
           }}
         >
           Películas
