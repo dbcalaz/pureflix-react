@@ -3,13 +3,13 @@ import ImagenExterna from "./ImagenExterna";
 const servidor = import.meta.env.VITE_SERVER;
 const puerto = import.meta.env.VITE_PORT;
 
-function BottomNav({ vistaGlobal, setVistaGlobal, user }) {
+function BottomNav({ vistaGlobal, setVistaGlobal, user, actualizarDatosUsuario }) {
 
   const [datosUsuario, setDatosUsuario] = useState([]);
   const botones = [
-    { key: "inicio", label: "Inicio", icon: "home" },
-    { key: "buscar", label: "Buscar", icon: "lupa" },
-    { key: "proximos", label: "Nuevos", icon: "nuevo" },
+    { key: "inicio", label: "Inicio", icon: "home.svg" },
+    { key: "buscar", label: "Buscar", icon: "lupa.svg" },
+    { key: "proximos", label: "Nuevos", icon: "nuevo.svg" },
     {
       key: "perfil",
       label: datosUsuario?.nombre_usuario || "Perfil",
@@ -43,18 +43,18 @@ function BottomNav({ vistaGlobal, setVistaGlobal, user }) {
     };
 
     getDatosUsuario();
-  }, [user?.token]);
+  }, [user?.token, actualizarDatosUsuario]);
 
   return (
     <nav className="bottomnav">
       {botones.map((b) => (
+        
         <div
           key={b.key}
           className={`bottomnav__item ${vistaGlobal === b.key ? "active" : ""}`}
           onClick={() => setVistaGlobal(b.key)}
         >
-          {/*<ImagenExterna nombreImagen={b.icon + ".png"} />*/}
-          <ImagenExterna nombreImagen={b.icon + ".svg"} />
+          <ImagenExterna className="bottomnav__foto" nombreImagen={b.icon} />
           <span>{b.label}</span>
         </div>
       ))}

@@ -18,10 +18,17 @@
       color: #888;
       cursor: pointer;
   }
+
+  &__foto{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+  }
 }
 
 .bottomnav__item.active {
   color: white;
+  font-weight: bold;
 }
 
 @media (min-width: 1200px) {

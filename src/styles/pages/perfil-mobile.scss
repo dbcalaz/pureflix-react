@@ -39,6 +39,11 @@
     padding: 6px;
   }
 
+  &__nombre{
+    font-weight: bold;
+    font-size: larger;
+  }
+
   &__listas {
     padding: 1rem;
 
@@ -83,6 +88,10 @@
   }
 }
 
+.perfil-mobile__menu {
+  display: block;
+}
+
 .menu-modal__logout {
   color: #ff4c4c;
   margin-top: 1rem;
@@ -123,5 +132,11 @@
     to {
       transform: translateY(0);
     }
+  }
+}
+
+@media (min-width: 1024px) {
+  .perfil-mobile__menu {
+    display: none;
   }
 }

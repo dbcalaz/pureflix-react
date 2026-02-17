@@ -168,6 +168,12 @@
     }
   }
 
+  @media (min-width: 1200px) {
+    &__header{
+      margin-top: 3rem;
+    }
+  }
+
   @media (min-width: 768px) {
     padding: $space-xl;
 

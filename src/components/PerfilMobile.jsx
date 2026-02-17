@@ -11,7 +11,6 @@ function PerfilMobile({
   setMostrarModalDetalle,
   setMostrarMenu,
   actualizarDatosUsuario,
-  setVistaPerfil,
 }) {
   const [datosUsuario, setDatosUsuario] = useState(null);
 

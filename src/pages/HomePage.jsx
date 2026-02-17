@@ -91,6 +91,9 @@ function HomePage() {
         setTipo={setTipo}
         setPalabra={setPalabra}
         palabra={palabra}
+        setVistaPerfil={setVistaPerfil}
+        vista={vista}
+        actualizarDatosUsuario={actualizarDatosUsuario}
       />
 
       <HeaderVistaDesktop
@@ -147,7 +150,6 @@ function HomePage() {
             notificaciones={notificaciones}
             setNotificaciones={setNotificaciones}
             setMostrarModalDetalle={setMostrarModalDetalle}
-            setVistaPerfil={setVistaPerfil}
             setMostrarMenu={setMostrarMenu}
             actualizarDatosUsuario={actualizarDatosUsuario}
           />
@@ -233,6 +235,7 @@ function HomePage() {
           vistaGlobal={vistaGlobal}
           setVistaGlobal={setVistaGlobal}
           user={user}
+          actualizarDatosUsuario={actualizarDatosUsuario}
         />
       )}
     </>
