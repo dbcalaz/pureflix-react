@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import FetchPost from "../components/FetchPost";
 import ImagenExterna from "../components/ImagenExterna";
 
-const LoginPage = ({ mensajeOk, mensajeError }) => {
+const LoginPage = ({ mensajeOk, mensajeError, setMensajeOk, setMensajeError }) => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -170,8 +170,8 @@ const LoginPage = ({ mensajeOk, mensajeError }) => {
               Registrarse
             </button>
           </section>
-          {mensajeOk && <p className="ok">{mensajeOk}</p>}
-          {mensajeError && <p className="error">{mensajeError}</p>}
+          {mensajeOk && <p onClick={() => setMensajeOk("")} className="ok">{mensajeOk}</p>}
+          {mensajeError && <p onClick={() => setMensajeError("")} className="error">{mensajeError}</p>}
         </div>
       </div>
     </>

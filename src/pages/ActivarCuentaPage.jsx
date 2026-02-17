@@ -27,7 +27,7 @@ function ActivarCuentaPage() {
       });
   }, []);
 
-  return <LoginPage mensajeOk={mensaje} mensajeError={error} />;
+  return <LoginPage mensajeOk={mensaje} mensajeError={error} setMensajeOk={setMensaje} setMensajeError={setError}/>;
 }
 
 export default ActivarCuentaPage;

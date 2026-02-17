@@ -119,19 +119,33 @@
       color: $color-accent;
     }
   }
+}
+.error {
+  margin-top: 2rem;
+  margin-bottom: $space-sm;
+  padding: 0.75rem;
 
-  &__error {
-    margin-bottom: $space-sm;
-    padding: 0.75rem;
+  background-color: $color-error-bg;
+  border: 1px solid $color-error-border;
+  border-radius: $radius-sm;
 
-    background-color: $color-error-bg;
-    border: 1px solid $color-error-border;
-    border-radius: $radius-sm;
+  color: $color-error-text;
+  font-size: 0.85rem;
+  text-align: center;
+}
 
-    color: $color-error-text;
-    font-size: 0.85rem;
-    text-align: center;
-  }
+.ok {
+  margin-top: 2rem;
+  margin-bottom: $space-sm;
+  padding: 0.75rem;
+
+  background-color: $color-ok-bg;
+  border: 1px solid $color-ok-border;
+  border-radius: $radius-sm;
+
+  color: $color-ok-text;
+  font-size: 0.85rem;
+  text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -148,4 +162,3 @@
     }
   }
 }
-
