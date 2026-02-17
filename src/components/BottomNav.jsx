@@ -53,6 +53,7 @@ function BottomNav({ vistaGlobal, setVistaGlobal, user }) {
           className={`bottomnav__item ${vistaGlobal === b.key ? "active" : ""}`}
           onClick={() => setVistaGlobal(b.key)}
         >
+          {/*<ImagenExterna nombreImagen={b.icon + ".png"} />*/}
           <ImagenExterna nombreImagen={b.icon + ".svg"} />
           <span>{b.label}</span>
         </div>

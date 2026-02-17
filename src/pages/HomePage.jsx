@@ -5,20 +5,24 @@ import BottomNav from "../components/BottomNav";
 import HeaderPrincipal from "../components/HeaderPrincipal";
 import Galeria from "../components/Galeria";
 import ModalDetalle from "../components/ModalDetalle";
-import Perfil from "../components/Perfil";
+//import Perfil from "../components/Perfil";
 import ProximosLanzamientos from "../components/ProximosLanzamientos";
-import ModalCancelarSuscripcion from "../components/ModalCancelarSuscripcion";
+//import ModalCancelarSuscripcion from "../components/ModalCancelarSuscripcion";
 import ModalFotoPerfil from "../components/ModalFotoPerfil";
 import ModalCategorias from "../components/ModalCategorias";
 import Buscador from "../components/Buscador";
 import NavbarDesktop from "../components/NavbarDesktop";
 import HeaderVistaDesktop from "../components/HeaderVistaDesktop";
+import PerfilMobile from "../components/PerfilMobile";
+import ModalMenuPerfil from "../components/ModalMenuPerfil";
+import AdministrarCuenta from "../components/AdministrarCuenta";
 
 function HomePage() {
   const { user } = useAuth();
 
   const [vista, setVista] = useState("");
   const [vistaGlobal, setVistaGlobal] = useState("inicio");
+  const [vistaPerfil, setVistaPerfil] = useState("perfil");
 
   const [tipo, setTipo] = useState(0);
   const [categorias, setCategorias] = useState([]);
@@ -27,9 +31,10 @@ function HomePage() {
 
   const [mostrarModalCategorias, setMostrarModalCategorias] = useState(false);
   const [mostrarModalDetalle, setMostrarModalDetalle] = useState({});
+  const [mostrarMenu, setMostrarMenu] = useState(false);
   const [mostrarModalFotoPerfil, setMostrarModalFotoPerfil] = useState(false);
-  const [mostrarModalCancelarSuscripcion, setMostrarModalCancelarSuscripcion] =
-    useState(false);
+  //const [mostrarModalCancelarSuscripcion, setMostrarModalCancelarSuscripcion] =
+  // useState(false);
 
   const [actualizarDatosUsuario, setActualizarDatosUsuario] = useState(false);
 
@@ -132,42 +137,54 @@ function HomePage() {
         </div>
       )}
 
-      {vista === "perfil" && (
-        <>
-          <Perfil
-            setVista={setVista}
-            setMostrarModalCancelarSuscripcion={
-              setMostrarModalCancelarSuscripcion
-            }
-            setMostrarModalFotoPerfil={setMostrarModalFotoPerfil}
-            usuario={user}
-            actualizarDatosUsuario={actualizarDatosUsuario}
-            setMostrarModalDetalle={setMostrarModalDetalle}
-            setFavoritos={setFavoritos}
-            favoritos={favoritos}
-            notificaciones={notificaciones}
-            setNotificaciones={setNotificaciones}
-          />
+      {vista === "perfil" && vistaPerfil === "perfil" && (
+        <PerfilMobile
+          usuario={user}
+          setMostrarModalFotoPerfil={setMostrarModalFotoPerfil}
+          favoritos={favoritos}
+          setFavoritos={setFavoritos}
+          notificaciones={notificaciones}
+          setNotificaciones={setNotificaciones}
+          setMostrarModalDetalle={setMostrarModalDetalle}
+          setVistaPerfil={setVistaPerfil}
+          setMostrarMenu={setMostrarMenu}
+          actualizarDatosUsuario={actualizarDatosUsuario}
+        />
+      )}
 
-          {mostrarModalFotoPerfil && (
-            <ModalFotoPerfil
-              mostrarModalFotoPerfil={mostrarModalFotoPerfil}
-              setMostrarModalFotoPerfil={setMostrarModalFotoPerfil}
-              usuario={user}
-              setActualizarDatosUsuario={setActualizarDatosUsuario}
-            />
-          )}
+      {mostrarMenu && (
+        <ModalMenuPerfil
+          onClose={() => setMostrarMenu(false)}
+          setVistaPerfil={setVistaPerfil}
+        />
+      )}
 
-          {mostrarModalCancelarSuscripcion && (
-            <ModalCancelarSuscripcion
-              onConfirmar={() => {
-                setMostrarModalCancelarSuscripcion(false);
-              }}
-              onCancelar={() => setMostrarModalCancelarSuscripcion(false)}
-              user={user}
-            />
-          )}
-        </>
+      {mostrarModalFotoPerfil && (
+        <ModalFotoPerfil
+          mostrarModalFotoPerfil={mostrarModalFotoPerfil}
+          setMostrarModalFotoPerfil={setMostrarModalFotoPerfil}
+          usuario={user}
+          setActualizarDatosUsuario={setActualizarDatosUsuario}
+        />
+      )}
+
+      {mostrarModalDetalle?.id > 0 && (
+        <ModalDetalle
+          mostrar={mostrarModalDetalle}
+          setMostrar={setMostrarModalDetalle}
+          user={user}
+          favoritos={favoritos}
+          setFavoritos={setFavoritos}
+          notificaciones={notificaciones}
+          setNotificaciones={setNotificaciones}
+        />
+        
+      )}
+      {vista === "perfil" && vistaPerfil === "administrar" && (
+        <AdministrarCuenta
+          usuario={user}
+          volver={() => setVistaPerfil("perfil")}
+        />
       )}
 
       {vista === "proximos" && (
@@ -197,11 +214,13 @@ function HomePage() {
         />
       )}
 
-      <BottomNav
-        vistaGlobal={vistaGlobal}
-        setVistaGlobal={setVistaGlobal}
-        user={user}
-      />
+      {!(vista === "perfil" && mostrarMenu) && (
+        <BottomNav
+          vistaGlobal={vistaGlobal}
+          setVistaGlobal={setVistaGlobal}
+          user={user}
+        />
+      )}
     </>
   );
 }
