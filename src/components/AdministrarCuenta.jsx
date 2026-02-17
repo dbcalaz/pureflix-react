@@ -4,7 +4,7 @@ import ImagenExterna from "./ImagenExterna";
 const servidor = import.meta.env.VITE_SERVER;
 const puerto = import.meta.env.VITE_PORT;
 
-function AdministrarCuenta({ usuario, volver }) {
+function AdministrarCuenta({ usuario, volver,setMostrarModalCancelarSuscripcion }) {
   const [newPass, setNewPass] = useState("");
   const [newPassRep, setNewPassRep] = useState("");
 
@@ -215,7 +215,8 @@ function AdministrarCuenta({ usuario, volver }) {
           <button
             type="button"
             className="admin-cuenta__btn admin-cuenta__btn--danger"
-          >
+            onClick={() => setMostrarModalCancelarSuscripcion(true)}
+            >
             Cancelar suscripción
           </button>
         </div>

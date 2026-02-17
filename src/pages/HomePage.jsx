@@ -7,7 +7,7 @@ import Galeria from "../components/Galeria";
 import ModalDetalle from "../components/ModalDetalle";
 //import Perfil from "../components/Perfil";
 import ProximosLanzamientos from "../components/ProximosLanzamientos";
-//import ModalCancelarSuscripcion from "../components/ModalCancelarSuscripcion";
+import ModalCancelarSuscripcion from "../components/ModalCancelarSuscripcion";
 import ModalFotoPerfil from "../components/ModalFotoPerfil";
 import ModalCategorias from "../components/ModalCategorias";
 import Buscador from "../components/Buscador";
@@ -33,8 +33,8 @@ function HomePage() {
   const [mostrarModalDetalle, setMostrarModalDetalle] = useState({});
   const [mostrarMenu, setMostrarMenu] = useState(false);
   const [mostrarModalFotoPerfil, setMostrarModalFotoPerfil] = useState(false);
-  //const [mostrarModalCancelarSuscripcion, setMostrarModalCancelarSuscripcion] =
-  // useState(false);
+  const [mostrarModalCancelarSuscripcion, setMostrarModalCancelarSuscripcion] =
+    useState(false);
 
   const [actualizarDatosUsuario, setActualizarDatosUsuario] = useState(false);
 
@@ -138,53 +138,67 @@ function HomePage() {
       )}
 
       {vista === "perfil" && vistaPerfil === "perfil" && (
-        <PerfilMobile
-          usuario={user}
-          setMostrarModalFotoPerfil={setMostrarModalFotoPerfil}
-          favoritos={favoritos}
-          setFavoritos={setFavoritos}
-          notificaciones={notificaciones}
-          setNotificaciones={setNotificaciones}
-          setMostrarModalDetalle={setMostrarModalDetalle}
-          setVistaPerfil={setVistaPerfil}
-          setMostrarMenu={setMostrarMenu}
-          actualizarDatosUsuario={actualizarDatosUsuario}
-        />
+        <>
+          <PerfilMobile
+            usuario={user}
+            setMostrarModalFotoPerfil={setMostrarModalFotoPerfil}
+            favoritos={favoritos}
+            setFavoritos={setFavoritos}
+            notificaciones={notificaciones}
+            setNotificaciones={setNotificaciones}
+            setMostrarModalDetalle={setMostrarModalDetalle}
+            setVistaPerfil={setVistaPerfil}
+            setMostrarMenu={setMostrarMenu}
+            actualizarDatosUsuario={actualizarDatosUsuario}
+          />
+
+          {mostrarMenu && (
+            <ModalMenuPerfil
+              onClose={() => setMostrarMenu(false)}
+              setVistaPerfil={setVistaPerfil}
+            />
+          )}
+          {mostrarModalFotoPerfil && (
+            <ModalFotoPerfil
+              mostrarModalFotoPerfil={mostrarModalFotoPerfil}
+              setMostrarModalFotoPerfil={setMostrarModalFotoPerfil}
+              usuario={user}
+              setActualizarDatosUsuario={setActualizarDatosUsuario}
+            />
+          )}
+          {mostrarModalDetalle?.id > 0 && (
+            <ModalDetalle
+              mostrar={mostrarModalDetalle}
+              setMostrar={setMostrarModalDetalle}
+              user={user}
+              favoritos={favoritos}
+              setFavoritos={setFavoritos}
+              notificaciones={notificaciones}
+              setNotificaciones={setNotificaciones}
+            />
+          )}
+        </>
       )}
 
-      {mostrarMenu && (
-        <ModalMenuPerfil
-          onClose={() => setMostrarMenu(false)}
-          setVistaPerfil={setVistaPerfil}
-        />
-      )}
-
-      {mostrarModalFotoPerfil && (
-        <ModalFotoPerfil
-          mostrarModalFotoPerfil={mostrarModalFotoPerfil}
-          setMostrarModalFotoPerfil={setMostrarModalFotoPerfil}
-          usuario={user}
-          setActualizarDatosUsuario={setActualizarDatosUsuario}
-        />
-      )}
-
-      {mostrarModalDetalle?.id > 0 && (
-        <ModalDetalle
-          mostrar={mostrarModalDetalle}
-          setMostrar={setMostrarModalDetalle}
-          user={user}
-          favoritos={favoritos}
-          setFavoritos={setFavoritos}
-          notificaciones={notificaciones}
-          setNotificaciones={setNotificaciones}
-        />
-        
-      )}
       {vista === "perfil" && vistaPerfil === "administrar" && (
-        <AdministrarCuenta
-          usuario={user}
-          volver={() => setVistaPerfil("perfil")}
-        />
+        <>
+          <AdministrarCuenta
+            usuario={user}
+            volver={() => setVistaPerfil("perfil")}
+            setMostrarModalCancelarSuscripcion={
+              setMostrarModalCancelarSuscripcion
+            }
+          />
+          {mostrarModalCancelarSuscripcion && (
+            <ModalCancelarSuscripcion
+              onConfirmar={() => {
+                setMostrarModalCancelarSuscripcion(false);
+              }}
+              onCancelar={() => setMostrarModalCancelarSuscripcion(false)}
+              user={user}
+            />
+          )}
+        </>
       )}
 
       {vista === "proximos" && (
