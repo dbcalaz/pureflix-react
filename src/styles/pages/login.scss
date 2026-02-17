@@ -96,6 +96,19 @@
     }
   }
 
+  &__error {
+    margin-bottom: $space-sm;
+    padding: 0.75rem;
+
+    background-color: $color-error-bg;
+    border: 1px solid $color-error-border;
+    border-radius: $radius-sm;
+
+    color: $color-error-text;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
   &__secondary {
     margin-top: $space-md;
 
