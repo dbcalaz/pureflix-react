@@ -11,7 +11,7 @@ function Galeria({ tipo, setMostrarModalDetalle, catSeleccionada, palabra }) {
       const url = `http://${servidor}:${puerto}/getContenido?tipo=${tipo}&categoria=${catSeleccionada}&palabra=${palabra}&proximo=false`;
       const res = await fetch(url);
       const data = await res.json();
-      setContenido(data);
+      setContenido(Array.isArray(data) ? data : []);
     } catch (e) {
       console.log("Error:", e);
     }
@@ -28,6 +28,10 @@ function Galeria({ tipo, setMostrarModalDetalle, catSeleccionada, palabra }) {
     }
     return grupos;
   }
+
+   if (contenido.length === 0) {
+    return <p className="galeria__sin-contenido">No hay contenido</p>;
+   }
 
   const grupos = dividirEnGrupos(contenido, 4);
 
