@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import ImagenExterna from "./ImagenExterna";
 
 const servidor = import.meta.env.VITE_SERVER;
@@ -16,11 +16,11 @@ function Buscador({ setVistaGlobal, setPalabra, palabra }) {
     const getContenido = async () => {
       try {
         const res = await fetch(
-          `http://${servidor}:${puerto}/getContenido?tipo=0&categoria=0&palabra=${palabra}`
+          `http://${servidor}:${puerto}/getContenido?tipo=0&categoria=0&palabra=${palabra}`,
         );
 
         const data = await res.json();
-        setResultados(data);
+        setResultados(Array.isArray(data) ? data : []);
       } catch (e) {
         console.log(e);
       }
@@ -40,7 +40,7 @@ function Buscador({ setVistaGlobal, setPalabra, palabra }) {
           className="buscador__back"
           onClick={() => setVistaGlobal("inicio")}
         >
-          <ImagenExterna nombreImagen="arrowback.svg"/>
+          <ImagenExterna nombreImagen="arrowback.svg" />
         </button>
 
         <input
@@ -53,13 +53,16 @@ function Buscador({ setVistaGlobal, setPalabra, palabra }) {
         />
       </div>
 
+      {palabra.trim() && resultados.length === 0 && (
+        <p className="buscador__sin-contenido">
+          No hay resultados para "{palabra}"
+        </p>
+      )}
       <div className="buscador__resultados">
         {resultados.map((item) => (
           <div key={item.id} className="buscador__item">
             <ImagenExterna nombreImagen={item.imagen} />
-            <span className="buscador__titulo">
-              {item.nombre}
-            </span>
+            <span className="buscador__titulo">{item.nombre}</span>
           </div>
         ))}
       </div>
