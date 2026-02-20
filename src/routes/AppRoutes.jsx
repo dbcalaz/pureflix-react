@@ -13,7 +13,7 @@ const AppRoutes = () => (
     <Route path="/activar-cuenta" element={<ActivarCuentaPage />} />
     <Route path="/registro" element={<RegistroPage />} />
     <Route path="/recuperar" element={<RecuperarPage />} />
-    <Route path="/newPass" element={<NewPassPage />} />
+    <Route path="/new-pass" element={<NewPassPage />} />
     <Route
       path="/"
       element={

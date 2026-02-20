@@ -8,12 +8,12 @@ function NewPassPage() {
 
   const token = searchParams.get("token");
 
-  const [newPass, setNewPass] = useState(""); 
+  const [newPass, setNewPass] = useState("");
   const [newPassRep, setNewPassRep] = useState("");
   const [error, setError] = useState("");
   const [ok, setOk] = useState("");
 
-   useEffect(() => {
+  useEffect(() => {
     if (newPass && newPassRep && newPass !== newPassRep) {
       setError("Las contraseñas no coinciden");
     } else {
@@ -58,59 +58,61 @@ function NewPassPage() {
   }
 
   return (
-    <div className="recover__container">
-      <h1 className="recover__title">Nueva contraseña</h1>
+    <div className="recover">
+      <div className="recover__container">
+        <h1 className="recover__title">Nueva contraseña</h1>
 
-      <form className="recover__form" onSubmit={actualizarContrasena}>
-        <div className="recover__field">
-          <label htmlFor="newpass" className="recover__label">
-            Nueva contraseña
-          </label>
-          <input
-            type="password"
-            id="newpass"
-            placeholder="Ingrese nueva contreseña"
-            value={newPass}
-            className="recover__input"
-            onChange={(e) => setNewPass(e.target.value)}
-          />
-        </div>
+        <form className="recover__form" onSubmit={actualizarContrasena}>
+          <div className="recover__field">
+            <label htmlFor="newpass" className="recover__label">
+              Nueva contraseña
+            </label>
+            <input
+              type="password"
+              id="newpass"
+              placeholder="Ingrese nueva contreseña"
+              value={newPass}
+              className="recover__input"
+              onChange={(e) => setNewPass(e.target.value)}
+            />
+          </div>
 
-        <div className="recover__field">
-          <label htmlFor="newpassrep" className="recover__label">
-            Repetir contraseña
-          </label>
-          <input
-            type="password"
-            id="newpassrep"
-            placeholder="Repita nueva contraseña"
-            value={newPassRep}
-            className="recover__input"
-            onChange={(e) => setNewPassRep(e.target.value)}
-          />
-        </div>
+          <div className="recover__field">
+            <label htmlFor="newpassrep" className="recover__label">
+              Repetir contraseña
+            </label>
+            <input
+              type="password"
+              id="newpassrep"
+              placeholder="Repita nueva contraseña"
+              value={newPassRep}
+              className="recover__input"
+              onChange={(e) => setNewPassRep(e.target.value)}
+            />
+          </div>
 
-        {error && <p className="recover__error">{error}</p>}
-        {ok && <p className="recover__ok">{ok}</p>}
+          {error && <p className="recover__error">{error}</p>}
+          {ok && <p className="recover__ok">{ok}</p>}
 
-        <section className="recover__actions">
-          <button
-            className="recover__button recover__button--submit"
-            type="submit"
-            disabled={!newPass || !newPassRep}
-          >
-            Actualizar contraseña
-          </button>
+          <section className="recover__actions">
+            <button
+              className="recover__button recover__button--submit"
+              type="submit"
+              disabled={!newPass || !newPassRep}
+            >
+              Actualizar contraseña
+            </button>
 
-          <button
-            className="recover__button recover__button--cancel"
-            type="button"
-            onClick={() => navigate("/login")}
-          >
-            Volver
-          </button>
-        </section>
-      </form>
+            <button
+              className="recover__button recover__button--cancel"
+              type="button"
+              onClick={() => navigate("/login")}
+            >
+              Volver
+            </button>
+          </section>
+        </form>
+      </div>
     </div>
   );
 }
