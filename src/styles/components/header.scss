@@ -80,12 +80,6 @@
     color: $color-text-primary;
     transform: translateY(-2px);
   }
-
-  &.activo {
-    background: $color-text-primary;
-    color: $color-bg-main;
-    border: 1px solid $color-text-primary;
-  }
 }
 
 @media (min-width: 768px) {

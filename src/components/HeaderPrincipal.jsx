@@ -12,7 +12,9 @@ function HeaderPrincipal({
 }) {
   const [scrolled, setScrolled] = useState(false);
 
-  const categoriaActiva = categorias.find((c) => c.id === catSeleccionada);
+  const categoriaActiva = categorias.find(
+    (c) => Number(c.id) === Number(catSeleccionada),
+  );
 
   const enHome = vista === "home";
   const enSeries = vista === "series";
@@ -64,7 +66,7 @@ function HeaderPrincipal({
       <div className="header-bottom">
         {(!enHome || hayCategoria) && (
           <div className="header-back" onClick={volverAHome}>
-            <ImagenExterna nombreImagen="arrowback.svg"/>
+            <ImagenExterna nombreImagen="arrowback.svg" />
           </div>
         )}
 
@@ -78,59 +80,47 @@ function HeaderPrincipal({
               Películas
             </button>
 
-            <button
-              className="header-pill"
-              onClick={abrirCategorias}
-            >
+            <button className="header-pill" onClick={abrirCategorias}>
               Categorías ▾
             </button>
           </>
         )}
 
         {enHome && hayCategoria && (
-          <button
-            className="header-pill activo"
-            onClick={abrirCategorias}
-          >
-            {categoriaActiva?.nombre}
+          <button className="header-pill" onClick={abrirCategorias}>
+            {categoriaActiva?.nombre || "Categorías"}
           </button>
         )}
 
         {enSeries && !hayCategoria && (
           <>
-            <button className="header-pill activo">Series</button>
+            <button className="header-pill">Series</button>
 
-            <button
-              className="header-pill"
-              onClick={abrirCategorias}
-            >
+            <button className="header-pill" onClick={abrirCategorias}>
               Categorías ▾
             </button>
           </>
         )}
 
         {enSeries && hayCategoria && (
-          <button className="header-pill activo">
-            {categoriaActiva?.nombre}
+          <button className="header-pill" onClick={abrirCategorias}>
+            {categoriaActiva?.nombre || "Categorías"}
           </button>
         )}
 
         {enPeliculas && !hayCategoria && (
           <>
-            <button className="header-pill activo">Películas</button>
+            <button className="header-pill">Películas</button>
 
-            <button
-              className="header-pill"
-              onClick={abrirCategorias}
-            >
+            <button className="header-pill" onClick={abrirCategorias}>
               Categorías ▾
             </button>
           </>
         )}
 
         {enPeliculas && hayCategoria && (
-          <button className="header-pill activo">
-            {categoriaActiva?.nombre}
+          <button className="header-pill activo" onClick={abrirCategorias}>
+            {categoriaActiva?.nombre || "Categorías"}
           </button>
         )}
       </div>
