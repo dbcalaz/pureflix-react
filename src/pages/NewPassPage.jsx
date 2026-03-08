@@ -12,6 +12,13 @@ function NewPassPage() {
   const [newPassRep, setNewPassRep] = useState("");
   const [error, setError] = useState("");
   const [ok, setOk] = useState("");
+  const [condiciones, setCondiciones] = useState({
+    mayuscula: false,
+    minuscula: false,
+    numero: false,
+    especial: false,
+    largo: false,
+  });
 
   useEffect(() => {
     if (newPass && newPassRep && newPass !== newPassRep) {
@@ -20,6 +27,16 @@ function NewPassPage() {
       setError("");
     }
   }, [newPass, newPassRep]);
+
+  function evaluarPassword(value) {
+    setCondiciones({
+      mayuscula: /[A-Z]/.test(value),
+      minuscula: /[a-z]/.test(value),
+      numero: /\d/.test(value),
+      especial: /[!@#$%^&*(),.?":{}|<>]/.test(value),
+      largo: value.length >= 8,
+    });
+  }
 
   async function actualizarContrasena(e) {
     e.preventDefault();
@@ -73,8 +90,30 @@ function NewPassPage() {
               placeholder="Ingrese nueva contreseña"
               value={newPass}
               className="recover__input"
-              onChange={(e) => setNewPass(e.target.value)}
+              onFocus={() => setMostrarCondiciones(true)}
+              onChange={(e) => {
+                const value = e.target.value;
+                setNewPass(value);
+                evaluarPassword(value);
+              }}
             />
+            {mostrarCondiciones && (
+              <div className="password-check">
+                <p className={condiciones.mayuscula ? "okey" : ""}>
+                  • 1 mayúscula
+                </p>
+                <p className={condiciones.minuscula ? "okey" : ""}>
+                  • 1 minúscula
+                </p>
+                <p className={condiciones.numero ? "okey" : ""}>• 1 número</p>
+                <p className={condiciones.especial ? "okey" : ""}>
+                  • 1 carácter especial
+                </p>
+                <p className={condiciones.largo ? "okey" : ""}>
+                  • mínimo 8 caracteres
+                </p>
+              </div>
+            )}
           </div>
 
           <div className="recover__field">
