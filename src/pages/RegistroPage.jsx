@@ -15,6 +15,15 @@ function RegistroPage() {
   const [tipoPago, setTipoPago] = useState("");
   const [cuponPago, setCuponPago] = useState("");
   const [mensajeOk, setMensajeOk] = useState("");
+  const [condiciones, setCondiciones] = useState({
+    mayuscula: false,
+    minuscula: false,
+    numero: false,
+    especial: false,
+    largo: false,
+  });
+
+  const [mostrarCondiciones, setMostrarCondiciones] = useState(false);
 
   useEffect(() => {
     if (tipoPago === "tarjeta") {
@@ -41,6 +50,16 @@ function RegistroPage() {
       setMensajeError("");
     }
   }, [email, usuario, pass, pass2, metodoPago]);
+
+  function evaluarPassword(value) {
+    setCondiciones({
+      mayuscula: /[A-Z]/.test(value),
+      minuscula: /[a-z]/.test(value),
+      numero: /\d/.test(value),
+      especial: /[!@#$%^&*(),.?":{}|<>]/.test(value),
+      largo: value.length >= 8,
+    });
+  }
 
   async function registrarUsuario() {
     const datos = {
@@ -134,8 +153,33 @@ function RegistroPage() {
                     placeholder="Contraseña"
                     className="register__input"
                     value={pass}
-                    onChange={(e) => setPass(e.target.value)}
+                    onFocus={() => setMostrarCondiciones(true)}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setPass(value);
+                      evaluarPassword(value);
+                    }}
                   />
+
+                  {mostrarCondiciones && (
+                    <div className="password-check">
+                      <p className={condiciones.mayuscula ? "okey" : ""}>
+                        • 1 mayúscula
+                      </p>
+                      <p className={condiciones.minuscula ? "okey" : ""}>
+                        • 1 minúscula
+                      </p>
+                      <p className={condiciones.numero ? "okey" : ""}>
+                        • 1 número
+                      </p>
+                      <p className={condiciones.especial ? "okey" : ""}>
+                        • 1 carácter especial
+                      </p>
+                      <p className={condiciones.largo ? "okey" : ""}>
+                        • mínimo 8 caracteres
+                      </p>
+                    </div>
+                  )}
                 </div>
               </article>
 

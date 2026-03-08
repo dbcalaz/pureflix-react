@@ -91,7 +91,7 @@
     text-align: center;
   }
 
-  &__ok{
+  &__ok {
     margin-bottom: $space-sm;
     padding: 0.75rem;
 
@@ -169,6 +169,24 @@
       color: white;
     }
   }
+}
+
+.password-check {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.password-check p {
+  color: gray;
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+.password-check p.okey {
+  color: $color-accent;
+  font-weight: 500;
 }
 
 @media (min-width: 768px) {
